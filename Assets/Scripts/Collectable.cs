@@ -9,8 +9,11 @@ public class Collectable : MonoBehaviour
     public float AliveTime; // how long the potion stays on the field
     public bool isVisible = false;
 
-    // here write code for when potion is dragged with mouse onto zombie type in shop
+    // here write code for when potion is dragged with mouse onto zombie type in shop??
+
+
     // if it is not dragged on zombietype then potion will go back where it was before
+
     // depending on potionname give the buff to zombie type
 
     public void OnBecameVisible()

@@ -6,7 +6,7 @@ public class Health : MonoBehaviour
 {
     public UnitData UnitData;
     public float MaxHealth;
-    public float CurrencyAmount;
+    public int CurrencyAmount;
     private float currentHealth;
     [HideInInspector]
     public float CurrentHealth {
@@ -15,14 +15,47 @@ public class Health : MonoBehaviour
             return currentHealth; 
         }
         set 
-        { 
-            currentHealth = Mathf.Clamp(value, 0, MaxHealth); 
-            // if health is <= 0 then do something here
+        {
+            currentHealth = Mathf.Clamp(value, 0, MaxHealth);
+            if (currentHealth <= 0 && UnitData.TeamName == "Zombie") // if zombie dies, just remove it from board
+            {
+                Destroy(gameObject);
+            } 
+            else if (currentHealth <= 0 && UnitData.TeamName == "Plant") // if plant dies, give money and remove it from board
+            {
+                Debug.Log("Plant died");
+                // give currencyamount to player and destroy plant
+                Events.SetMoney(Events.GetMoney() + CurrencyAmount);
+                Destroy(gameObject);
+            }
         }
     }
     public void Awake()
     {
         currentHealth = MaxHealth;
     }
-    // here check collision and if needed remove health
+
+    public void Start() // Add characters to EntityController
+    {
+        if (UnitData.TeamName == "Zombie")
+        {
+            EntityController.Instance.ZombieCharacters.Add(this);
+        }
+        else if (UnitData.TeamName == "Plant")
+        {
+            EntityController.Instance.PlantCharacters.Add(this);
+        }
+    }
+
+    public void OnDestroy()// Remove characters from EntityController
+    {
+        if (UnitData.TeamName == "Zombie")
+        {
+            EntityController.Instance.ZombieCharacters.Remove(this);
+        }
+        else if (UnitData.TeamName == "Plant")
+        {
+            EntityController.Instance.PlantCharacters.Remove(this);
+        }
+    }
 }
