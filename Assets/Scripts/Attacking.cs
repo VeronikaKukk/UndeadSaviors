@@ -6,13 +6,15 @@ public class Attacking : MonoBehaviour
 {
     public float AttackDamage;
     public float AttackSpeed;
-    public float AttackRange;
+    public float AttackRangeSize;
 
     private Movement movement;
     private Health health;
 
     private Vector2 direction;
     private bool isFighting;
+
+    private Health enemyToFight;
 
     void Start() { 
         health = GetComponent<Health>();
@@ -21,14 +23,46 @@ public class Attacking : MonoBehaviour
             movement = GetComponent<Movement>();
             direction = GetDirection();
         }
-    }
 
+    }
 
     public void Update()
     {
         if (movement != null && !isFighting)// non-attacking zombie moves to closest enemy
         {
             movement.Move(direction);
+        }
+        else if (movement == null) 
+        {
+            GetClosestEnemy();
+        }
+
+
+        if (enemyToFight != null)
+        {
+            if (!isFighting && Mathf.Abs((transform.position - enemyToFight.transform.position).sqrMagnitude) <= AttackRangeSize)
+            {
+                isFighting = true;
+            }
+            if (isFighting) // TODO: implement attack speed
+            {
+                enemyToFight.CurrentHealth -= AttackDamage;
+            }
+            if (enemyToFight.CurrentHealth < 0)
+            {
+                isFighting = false;
+                if (health.UnitData.TeamName != "Plant")
+                {
+                    direction = GetDirection();
+                }
+            }
+        }
+        else {
+            isFighting = false;
+            if (health.UnitData.TeamName != "Plant")
+            {
+                direction = GetDirection();
+            }
         }
     }
 
@@ -38,7 +72,7 @@ public class Attacking : MonoBehaviour
         {
             return (enemy.transform.position - transform.position).normalized;
         }
-        return Random.insideUnitCircle.normalized;
+        return Vector2.zero;
     }
     private Health GetClosestEnemy() 
     {
@@ -52,7 +86,6 @@ public class Attacking : MonoBehaviour
         }
         foreach (Health enemy in enemies) 
         {
-            Debug.Log(enemy.UnitData.TeamName);
             if (enemy.CurrentHealth > 0) 
             {
                 float dist = (enemy.transform.position - transform.position).sqrMagnitude;
@@ -62,6 +95,7 @@ public class Attacking : MonoBehaviour
                 }
             }
         }
+        enemyToFight = closestEnemy;
         return closestEnemy;
     }
 

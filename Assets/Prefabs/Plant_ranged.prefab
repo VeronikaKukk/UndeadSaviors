@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackDamage: 1
   AttackSpeed: 1
-  AttackRange: 5
+  AttackRangeSize: 5
 --- !u!114 &9009429959965017324
 MonoBehaviour:
   m_ObjectHideFlags: 0

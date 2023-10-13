@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
         }
         set 
         {
+            Debug.Log(gameObject.name + currentHealth);
             currentHealth = Mathf.Clamp(value, 0, MaxHealth);
             if (currentHealth <= 0 && UnitData.TeamName == "Zombie") // if zombie dies, just remove it from board
             {
@@ -23,7 +24,7 @@ public class Health : MonoBehaviour
             } 
             else if (currentHealth <= 0 && UnitData.TeamName == "Plant") // if plant dies, give money and remove it from board
             {
-                Debug.Log("Plant died");
+                Debug.Log(gameObject.name +" died");
                 // give currencyamount to player and destroy plant
                 Events.SetMoney(Events.GetMoney() + CurrencyAmount);
                 Destroy(gameObject);

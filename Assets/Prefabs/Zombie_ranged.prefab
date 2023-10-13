@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackDamage: 2
   AttackSpeed: 1
-  AttackRange: 5
+  AttackRangeSize: 5
 --- !u!114 &721039580137990286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitData: {fileID: 11400000, guid: 7b8f8a836d9d531419babd408d1ff529, type: 2}
   MaxHealth: 15
+  CurrencyAmount: 0
 --- !u!50 &5879806522265980164
 Rigidbody2D:
   serializedVersion: 4
