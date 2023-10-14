@@ -19,9 +19,9 @@ public class Courage : MonoBehaviour
     private void Awake()
     {
         Money = GameStartMoney;
-        MoneyText.text = Money.ToString();
         Events.OnGetMoney += getMoney;
         Events.OnSetMoney += setMoney;
+        MoneyText.text = Events.GetMoney().ToString();
     }
 
     private void Update()
