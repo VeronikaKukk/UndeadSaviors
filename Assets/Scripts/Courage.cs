@@ -40,6 +40,26 @@ public class Courage : MonoBehaviour
     {
         MoneyText.text = value.ToString();
     }
+
+    public void DecreaseMoney(int amount)
+    {
+            Money -= amount;
+            MoneyText.text = Money.ToString();
+    }
+
+    public void IncreaseMoney(int amount)
+    {
+        Money += amount;
+        MoneyText.text = Money.ToString();
+    }
+
+    public bool EnoughMoney(int amount)
+    {
+        if (Money >= amount)
+            return true;
+        return false;
+    }
+
     public void OnDestroy()
     {
         Events.OnGetMoney -= getMoney;

@@ -6,4 +6,5 @@ using UnityEngine;
 public class UnitData : ScriptableObject 
 {
     public string TeamName;
+
 }
