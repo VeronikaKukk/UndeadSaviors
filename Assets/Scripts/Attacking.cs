@@ -13,8 +13,9 @@ public class Attacking : MonoBehaviour
 
     private Vector2 direction;
     private bool isFighting;
-
     private Health enemyToFight;
+
+    private float NextAttackTime;
 
     void Start() { 
         health = GetComponent<Health>();
@@ -43,10 +44,13 @@ public class Attacking : MonoBehaviour
             if (!isFighting && Mathf.Abs((transform.position - enemyToFight.transform.position).sqrMagnitude) <= AttackRangeSize)
             {
                 isFighting = true;
+                NextAttackTime = Time.time;
             }
-            if (isFighting) // TODO: implement attack speed
+
+            if (isFighting && NextAttackTime <= Time.time)
             {
                 enemyToFight.CurrentHealth -= AttackDamage;
+                NextAttackTime = Time.time + 1/AttackSpeed; // the bigger the attackspeed the faster it hits
             }
             if (enemyToFight.CurrentHealth < 0)
             {

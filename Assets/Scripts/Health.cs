@@ -16,7 +16,6 @@ public class Health : MonoBehaviour
         }
         set 
         {
-            Debug.Log(gameObject.name + currentHealth);
             currentHealth = Mathf.Clamp(value, 0, MaxHealth);
             if (currentHealth <= 0 && UnitData.TeamName == "Zombie") // if zombie dies, just remove it from board
             {
