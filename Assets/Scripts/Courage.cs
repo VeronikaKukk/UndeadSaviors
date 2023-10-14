@@ -30,8 +30,8 @@ public class Courage : MonoBehaviour
         timeSinceLastGeneration += Time.deltaTime;
         if (timeSinceLastGeneration >= passiveGenerationTimer)
         {
-            Money += PassiveIncomeMoney;
-            PassiveMoneyGeneration(Money);
+            Events.SetMoney(Events.GetMoney() + PassiveIncomeMoney);
+            PassiveMoneyGeneration(Events.GetMoney());
             timeSinceLastGeneration = 0.0f;
         }
     }
@@ -43,14 +43,14 @@ public class Courage : MonoBehaviour
 
     public void DecreaseMoney(int amount)
     {
-            Money -= amount;
-            MoneyText.text = Money.ToString();
+        Events.SetMoney(Events.GetMoney() - amount);
+        MoneyText.text = Events.GetMoney().ToString();
     }
 
     public void IncreaseMoney(int amount)
     {
-        Money += amount;
-        MoneyText.text = Money.ToString();
+        Events.SetMoney(Events.GetMoney() + amount);
+        MoneyText.text = Events.GetMoney().ToString();
     }
 
     public bool EnoughMoney(int amount)
