@@ -12,14 +12,11 @@ public class ZombieBuilder : MonoBehaviour
     private BoxCollider2D startArea;
 
     private ShopData currentZombieData;
-
-    private Courage courage;
     private bool decreased;
 
     private void Awake()
     {
         Events.OnZombieSelected += ZombieSelected;
-        courage = GameObject.FindObjectOfType<Courage>();
         gameObject.SetActive(false);
     }
 
@@ -65,10 +62,8 @@ public class ZombieBuilder : MonoBehaviour
     private void ZombieSelected(ShopData data)
     {
         currentZombieData = data;
-        if (courage != null && courage.EnoughMoney(currentZombieData.Price))
-        {
+        if (Events.GetMoney() >= currentZombieData.Price)
              gameObject.SetActive(true);
-        }
     }
 
 
@@ -82,9 +77,8 @@ public class ZombieBuilder : MonoBehaviour
 
         if (EventSystem.current.IsPointerOverGameObject())
             return;
-        
-        if (courage != null)
-            courage.DecreaseMoney(currentZombieData.Price);
+
+        Events.SetMoney(Events.GetMoney() - currentZombieData.Price);
 
         GameObject.Instantiate(currentZombieData.ZombiePrefab, transform.position, Quaternion.identity, null);
         gameObject.SetActive(false);

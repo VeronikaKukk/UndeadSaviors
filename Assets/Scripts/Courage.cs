@@ -28,36 +28,12 @@ public class Courage : MonoBehaviour
     {
         // Call PassiveMoneyGeneration after every 5 (passiveGenerationTimer) seconds and increase Money by 10 (PassiveIncomeMoney)
         timeSinceLastGeneration += Time.deltaTime;
+        MoneyText.text = Events.GetMoney().ToString();
         if (timeSinceLastGeneration >= passiveGenerationTimer)
         {
             Events.SetMoney(Events.GetMoney() + PassiveIncomeMoney);
-            PassiveMoneyGeneration(Events.GetMoney());
             timeSinceLastGeneration = 0.0f;
         }
-    }
-
-    public void PassiveMoneyGeneration(int value)
-    {
-        MoneyText.text = value.ToString();
-    }
-
-    public void DecreaseMoney(int amount)
-    {
-        Events.SetMoney(Events.GetMoney() - amount);
-        MoneyText.text = Events.GetMoney().ToString();
-    }
-
-    public void IncreaseMoney(int amount)
-    {
-        Events.SetMoney(Events.GetMoney() + amount);
-        MoneyText.text = Events.GetMoney().ToString();
-    }
-
-    public bool EnoughMoney(int amount)
-    {
-        if (Money >= amount)
-            return true;
-        return false;
     }
 
     public void OnDestroy()
