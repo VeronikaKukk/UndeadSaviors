@@ -132,6 +132,7 @@ MonoBehaviour:
   UnitData: {fileID: 11400000, guid: 7b8f8a836d9d531419babd408d1ff529, type: 2}
   MaxHealth: 15
   CurrencyAmount: 0
+  PotionPrefabs: []
 --- !u!50 &5879806522265980164
 Rigidbody2D:
   serializedVersion: 4

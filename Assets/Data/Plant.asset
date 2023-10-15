@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: Plant
   m_EditorClassIdentifier: 
   TeamName: Plant
+  DroppablePotions:
+  - {fileID: 3425769060701832718, guid: cef1fcf4eb398d4488995fb216236b22, type: 3}
+  - {fileID: 7214415345411477701, guid: 323682bcd55257042b6d989072175ab1, type: 3}
+  - {fileID: 2701146648586863391, guid: 522eb865058250145ae088feff7a02ed, type: 3}

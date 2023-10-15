@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitData: {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
   MaxHealth: 10
-  CurrencyAmount: 50
+  CurrencyAmountOnDeath: 10
 --- !u!50 &9214748131479434584
 Rigidbody2D:
   serializedVersion: 4

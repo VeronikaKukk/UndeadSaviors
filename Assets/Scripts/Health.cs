@@ -6,7 +6,8 @@ public class Health : MonoBehaviour
 {
     public UnitData UnitData;
     public float MaxHealth;
-    public int CurrencyAmount;
+    public int CurrencyAmountOnDeath;
+
     private float currentHealth;
     [HideInInspector]
     public float CurrentHealth {
@@ -21,12 +22,34 @@ public class Health : MonoBehaviour
             {
                 Destroy(gameObject);
             } 
-            else if (currentHealth <= 0 && UnitData.TeamName == "Plant") // if plant dies, give money and remove it from board
+            else if (currentHealth <= 0 && UnitData.TeamName == "Plant") // if plant dies, give money and potion and remove it from board
             {
                 Debug.Log(gameObject.name +" died");
                 // give currencyamount to player and destroy plant
-                // MAYBE IT  SHOULD BE CURRENTTIME IN SECONDS?
-                Events.SetMoney(Events.GetMoney() + (int)(CurrencyAmount * CountdownTimer.Instance.currentTime));
+                // currenttime is made to minutes
+                Events.SetMoney(Events.GetMoney() + (int)(CurrencyAmountOnDeath * CountdownTimer.Instance.currentTime/60));
+                
+                // drop potion
+                float rnd = Random.Range(0f, 1f);
+                float rnd2 = Random.Range(0f, 1f);
+
+                if (rnd > 0.3) 
+                {
+                    GameObject collectable = null;
+                    if (rnd2 < 0.3)
+                    {
+                        collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[0], transform.position, Quaternion.identity, null);
+
+                    }
+                    else if (rnd2 < 0.6) {
+                        collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[1], transform.position, Quaternion.identity, null);
+
+                    }
+                    else
+                    {
+                        collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[2], transform.position, Quaternion.identity, null);
+                    }
+                }
                 Destroy(gameObject);
             }
         }

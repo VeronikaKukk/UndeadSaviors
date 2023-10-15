@@ -6,5 +6,6 @@ using UnityEngine;
 public class UnitData : ScriptableObject 
 {
     public string TeamName;
+    public List<GameObject> DroppablePotions; 
 
 }
