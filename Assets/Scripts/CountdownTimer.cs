@@ -5,10 +5,16 @@ using TMPro;
 
 public class CountdownTimer : MonoBehaviour
 {
+    public static CountdownTimer Instance;
     public TextMeshProUGUI TimerText;
     public float StartTime = 300.0f; // 5 minutes in seconds
-    private float currentTime;
+    public float currentTime;
 
+
+    public void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         currentTime = StartTime;

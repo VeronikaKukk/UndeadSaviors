@@ -25,7 +25,8 @@ public class Health : MonoBehaviour
             {
                 Debug.Log(gameObject.name +" died");
                 // give currencyamount to player and destroy plant
-                Events.SetMoney(Events.GetMoney() + CurrencyAmount);
+                // MAYBE IT  SHOULD BE CURRENTTIME IN SECONDS?
+                Events.SetMoney(Events.GetMoney() + (int)(CurrencyAmount * CountdownTimer.Instance.currentTime));
                 Destroy(gameObject);
             }
         }

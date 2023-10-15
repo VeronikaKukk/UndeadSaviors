@@ -98,9 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e2ec15d2b694f4f96e22371a42e200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PotionName: Speed
-  BuffAmount: 0.2
-  AliveTime: 10
+  PotionData: {fileID: 11400000, guid: 24c2e1b1bf6ca444c83390dc28f9f58c, type: 2}
   isVisible: 0
 --- !u!61 &-28440979518434813
 BoxCollider2D:
