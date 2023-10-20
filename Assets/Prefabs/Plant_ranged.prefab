@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7e15c34fe7d112147b444e3392ff2f58, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 039ae631867ed8b4ab6b458736e6145e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,6 +103,8 @@ MonoBehaviour:
   AttackDamage: 1
   AttackSpeed: 1
   AttackRangeSize: 5
+  maxSize: {x: 3, y: 3, z: 3}
+  minSize: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!114 &9009429959965017324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitData: {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
   MaxHealth: 10
-  CurrencyAmount: 100
+  CurrencyAmountOnDeath: 0
 --- !u!50 &4566825454909306845
 Rigidbody2D:
   serializedVersion: 4
@@ -181,7 +183,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
