@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PotionData: {fileID: 11400000, guid: 2b85ba2c0210b3b40bdf814a555b6e4a, type: 2}
   isVisible: 0
+  CursorUIObjectPrefab: {fileID: 5991257783359319455, guid: 60a8c895b4ad7ce43af841a156ee1c3a, type: 3}
 --- !u!61 &-7466829656653548862
 BoxCollider2D:
   m_ObjectHideFlags: 0

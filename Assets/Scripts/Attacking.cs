@@ -21,6 +21,36 @@ public class Attacking : MonoBehaviour
     private float NextAttackTime;
     private float PrevAttackTime;
 
+    private void Awake()
+    {
+        Events.OnSetDamage += SetDamage;
+        Events.OnSetAttackSpeed += SetAttackSpeed;
+        Events.OnGetDamage += GetDamage;
+        Events.OnGetAttackSpeed += GetAttackSpeed;
+    }
+
+    private void OnDestroy()
+    {
+        Events.OnSetDamage -= SetDamage;
+        Events.OnSetAttackSpeed -= SetAttackSpeed;
+        Events.OnGetDamage -= GetDamage;
+        Events.OnGetAttackSpeed -= GetAttackSpeed;
+    }
+
+    void SetDamage(float damage)
+    {
+        this.AttackDamage = damage;
+    }
+
+    float GetDamage() => AttackDamage;
+
+    void SetAttackSpeed(float attackSpeed)
+    {
+        this.AttackSpeed = attackSpeed;
+    }
+
+    float GetAttackSpeed() => AttackSpeed;
+
     void Start() { 
         health = GetComponent<Health>();
         if (health.UnitData.TeamName != "Plant")

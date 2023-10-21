@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PotionData: {fileID: 11400000, guid: 548de2a9ece05ec49bf30b2a8306614e, type: 2}
   isVisible: 0
+  CursorUIObjectPrefab: {fileID: 8946976642614904879, guid: 2daaac98461f0ff4a8ef9960f09c8608, type: 3}
 --- !u!61 &3500957895205426289
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 1.024, y: 1.024}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

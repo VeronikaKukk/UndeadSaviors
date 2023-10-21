@@ -1,36 +1,163 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Collectable : MonoBehaviour
 {
     public PotionData PotionData;
-    
+
     public bool isVisible = false;
     private float aliveTimeLeft; // how long the potion stays on the field
+    private bool isPickedUp = false;
+    private Vector3 offset;
+
+    public GameObject CursorUIObjectPrefab;
+    private GameObject cursorUIObject;
+    private SpriteRenderer spriteRenderer;
+    private Canvas canvas;
+    private Transform potionBuffs;
+    private string zombieType;
+
+    private void Start()
+    {
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+    }
 
 
-    // here write code for when potion is dragged with mouse onto zombie type in shop??
-
-    // if it is not dragged on zombietype then potion will go back where it was before
-
-    // depending on potionname give the buff to zombie type
+    public bool IsPickedUp()
+    {
+        return isPickedUp;
+    }
 
     public void OnBecameVisible()
     {
         isVisible = true;
         aliveTimeLeft = PotionData.AliveTime;
     }
-    public void Update()
+
+    private void OnMouseDown()
     {
-        if (isVisible && aliveTimeLeft > 0) 
+        if (!isPickedUp)
         {
-            aliveTimeLeft -= Time.deltaTime;
+            spriteRenderer = transform.GetComponent<SpriteRenderer>();
+            spriteRenderer.enabled = false;
+            isPickedUp = true;
+            cursorUIObject = Instantiate(CursorUIObjectPrefab, canvas.transform);
+            offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
-        if(isVisible && aliveTimeLeft <= 0)
+        else
         {
-            aliveTimeLeft = 0;
-            Destroy(gameObject); // if the aliveTimeLeft is 0 then remove potion from board
+            if (IsPointerOverUIButton())
+            {
+                ApplyPotionEffectsToZombies();
+            }
+            else
+            {
+                spriteRenderer.enabled = true;
+                isPickedUp = false;
+                Destroy(cursorUIObject);
+            }
         }
     }
+
+    private void ApplyPotionEffectsToZombies()
+    {
+        List<Health> zombieUnits = EntityController.Instance.ZombieCharacters;
+        HashSet<string> uniqueZombies = new HashSet<string>();
+        foreach (Health zombieUnit in zombieUnits)
+        {
+            uniqueZombies.Add(zombieUnit.name.Replace("(Clone)", ""));
+        }
+
+        bool entered = false;
+        Image[] images = potionBuffs.GetComponentsInChildren<Image>();
+        if (PotionData.PotionName.Equals("Health") && !images[1].enabled)
+        {
+            images[1].enabled = true;
+            Events.SetMaxHealth(Events.GetMaxHealth() + PotionData.BuffAmount);
+            Debug.Log("HealthPotion applied");
+        }
+        else if (PotionData.PotionName.Equals("Speed") && !images[2].enabled)
+        {
+            images[2].enabled = true;
+            Events.SetAttackSpeed(Events.GetAttackSpeed() + PotionData.BuffAmount);
+            Events.SetMovementSpeed(Events.GetMovementSpeed() + PotionData.BuffAmount);
+            Debug.Log("SpeedPotion applied");
+        }
+        else if (PotionData.PotionName.Equals("Damage") && !images[3].enabled)
+        {
+            images[3].enabled = true;
+            Events.SetDamage(Events.GetDamage() + PotionData.BuffAmount);
+            Debug.Log("DamagePotion applied");
+        }
+        else
+        {
+            entered = true;
+            Debug.Log("No empty slot");
+            spriteRenderer.enabled = true;
+            isPickedUp = false;
+            Destroy(cursorUIObject);
+        }
+        if (!entered) 
+        { 
+        Destroy(gameObject);
+        Destroy(cursorUIObject);
+        }
+    }
+
+    private bool IsPointerOverUIButton()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+        foreach (RaycastResult result in results)
+        {
+            if (result.gameObject.CompareTag("ShopZombie"))
+            {
+                // Mouse is over a UI button with the specified tag
+                Shop zombieShop = result.gameObject.GetComponent<Shop>();
+                Transform findPanel = result.gameObject.transform.Find("Potions");
+
+                if (findPanel != null && zombieShop != null)
+                {
+                    zombieType = zombieShop.ShopData.ZombiePrefab.name;
+                    potionBuffs = findPanel;
+                }
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void Update()
+    {
+
+        if (isPickedUp)
+        {
+            Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+            transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
+
+            Vector3 relativePosition = Camera.main.WorldToScreenPoint(transform.position); // Adjust the Z-coordinate as needed.
+            cursorUIObject.transform.position = new Vector3(relativePosition.x, relativePosition.y, cursorUIObject.transform.position.z);
+        }
+        else
+        {
+            if (isVisible && aliveTimeLeft > 0)
+            {
+                aliveTimeLeft -= Time.deltaTime;
+            }
+            if (isVisible && aliveTimeLeft <= 0)
+            {
+                aliveTimeLeft = 0;
+                Destroy(gameObject); // if the aliveTimeLeft is 0 then remove potion from board
+            }
+        }
+    }
+
 }
