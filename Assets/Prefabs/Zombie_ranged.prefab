@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 471248317be7e9246863f83665d00cc0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 900445b7e62bcae44bddcfe91753ea6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,6 +104,8 @@ MonoBehaviour:
   AttackDamage: 2
   AttackSpeed: 1
   AttackRangeSize: 5
+  maxSize: {x: 3, y: 3, z: 3}
+  minSize: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!114 &721039580137990286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,8 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitData: {fileID: 11400000, guid: 7b8f8a836d9d531419babd408d1ff529, type: 2}
   MaxHealth: 15
-  CurrencyAmount: 0
-  PotionPrefabs: []
+  CurrencyAmountOnDeath: 0
 --- !u!50 &5879806522265980164
 Rigidbody2D:
   serializedVersion: 4
@@ -196,7 +197,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
