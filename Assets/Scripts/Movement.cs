@@ -8,22 +8,20 @@ public class Movement : MonoBehaviour
 
     private void Awake()
     {
-        Events.OnSetMovementSpeed += SetMovementSpeed;
-        Events.OnGetMovementSpeed += GetMovementSpeed;
+        Events.OnAddMovementSpeedValue += AddMovementSpeed;
     }
 
     private void OnDestroy()
     {
-        Events.OnSetMovementSpeed -= SetMovementSpeed;
-        Events.OnGetMovementSpeed -= GetMovementSpeed;
+        Events.OnAddMovementSpeedValue -= AddMovementSpeed;
     }
 
-    void SetMovementSpeed(float speed)
+    void AddMovementSpeed(string unitName, float speed)
     {
-        this.MovementSpeed = speed;
+        if(gameObject.name.StartsWith(unitName)) { 
+            MovementSpeed += speed;
+        }
     }
-
-    float GetMovementSpeed() => MovementSpeed;
 
     public void Move(Vector2 value) 
     {

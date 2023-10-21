@@ -17,31 +17,22 @@ public static class Events
 
 
 
-    public static event Action<float> OnSetDamage;
-    public static void SetDamage(float value) => OnSetDamage?.Invoke(value);
-
-    public static event Func<float> OnGetDamage;
-    public static float GetDamage() => OnGetDamage?.Invoke() ?? 0;
+    public static event Action<string ,float> OnAddDamageValue;
+    public static void AddDamageValue(string unitName, float value) => OnAddDamageValue?.Invoke(unitName, value);
 
 
-    public static event Action<float> OnSetAttackSpeed;
-    public static void SetAttackSpeed(float value) => OnSetAttackSpeed?.Invoke(value);
-
-    public static event Func<float> OnGetAttackSpeed;
-    public static float GetAttackSpeed() => OnGetAttackSpeed?.Invoke() ?? 0;
 
 
-    public static event Action<float> OnSetMovementSpeed;
-    public static void SetMovementSpeed(float value) => OnSetMovementSpeed?.Invoke(value);
-
-    public static event Func<float> OnGetMovementSpeed;
-    public static float GetMovementSpeed() => OnGetMovementSpeed?.Invoke() ?? 0;
+    public static event Action<string,float> OnAddAttackSpeedValue;
+    public static void AddAttackSpeedValue(string unitName, float value) => OnAddAttackSpeedValue?.Invoke(unitName, value);
 
 
-    public static event Action<float> OnSetMaxHealth;
-    public static void SetMaxHealth(float value) => OnSetMaxHealth?.Invoke(value);
 
-    public static event Func<float> OnGetMaxHealth;
-    public static float GetMaxHealth() => OnGetMaxHealth?.Invoke() ?? 0;
+    public static event Action<string, float> OnAddMovementSpeedValue;
+    public static void AddMovementSpeedValue(string unitName, float value) => OnAddMovementSpeedValue?.Invoke(unitName, value);
 
+
+
+    public static event Action<string, float> OnAddMaxHealthValue;
+    public static void AddMaxHealthValue(string unitName, float value) => OnAddMaxHealthValue?.Invoke(unitName, value);
 }

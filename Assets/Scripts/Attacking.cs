@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Attacking : MonoBehaviour
@@ -23,33 +24,32 @@ public class Attacking : MonoBehaviour
 
     private void Awake()
     {
-        Events.OnSetDamage += SetDamage;
-        Events.OnSetAttackSpeed += SetAttackSpeed;
-        Events.OnGetDamage += GetDamage;
-        Events.OnGetAttackSpeed += GetAttackSpeed;
+        Events.OnAddDamageValue += AddDamage;
+        Events.OnAddAttackSpeedValue += AddAttackSpeed;
     }
 
     private void OnDestroy()
     {
-        Events.OnSetDamage -= SetDamage;
-        Events.OnSetAttackSpeed -= SetAttackSpeed;
-        Events.OnGetDamage -= GetDamage;
-        Events.OnGetAttackSpeed -= GetAttackSpeed;
+        Events.OnAddDamageValue -= AddDamage;
+        Events.OnAddAttackSpeedValue -= AddAttackSpeed;
     }
 
-    void SetDamage(float damage)
+    void AddDamage(string unitName,float damage)
     {
-        this.AttackDamage = damage;
+        if (gameObject.name.StartsWith(unitName))
+        {
+            AttackDamage += damage;
+        }
     }
 
-    float GetDamage() => AttackDamage;
-
-    void SetAttackSpeed(float attackSpeed)
+    void AddAttackSpeed(string unitName, float attackSpeed)
     {
-        this.AttackSpeed = attackSpeed;
+        if (gameObject.name.StartsWith(unitName))
+        {
+            AttackSpeed += attackSpeed;
+        }
     }
 
-    float GetAttackSpeed() => AttackSpeed;
 
     void Start() { 
         health = GetComponent<Health>();

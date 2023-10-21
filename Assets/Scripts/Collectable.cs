@@ -64,6 +64,7 @@ public class Collectable : MonoBehaviour
 
     private void ApplyPotionEffectsToZombies()
     {
+        Debug.Log(zombieType);
         List<Health> zombieUnits = EntityController.Instance.ZombieCharacters;
         HashSet<string> uniqueZombies = new HashSet<string>();
         foreach (Health zombieUnit in zombieUnits)
@@ -76,20 +77,20 @@ public class Collectable : MonoBehaviour
         if (PotionData.PotionName.Equals("Health") && !images[1].enabled)
         {
             images[1].enabled = true;
-            Events.SetMaxHealth(Events.GetMaxHealth() + PotionData.BuffAmount);
+            Events.AddMaxHealthValue(zombieType, PotionData.BuffAmount);
             Debug.Log("HealthPotion applied");
         }
         else if (PotionData.PotionName.Equals("Speed") && !images[2].enabled)
         {
             images[2].enabled = true;
-            Events.SetAttackSpeed(Events.GetAttackSpeed() + PotionData.BuffAmount);
-            Events.SetMovementSpeed(Events.GetMovementSpeed() + PotionData.BuffAmount);
+            Events.AddAttackSpeedValue(zombieType, PotionData.BuffAmount);
+            Events.AddMovementSpeedValue(zombieType, PotionData.BuffAmount);
             Debug.Log("SpeedPotion applied");
         }
         else if (PotionData.PotionName.Equals("Damage") && !images[3].enabled)
         {
             images[3].enabled = true;
-            Events.SetDamage(Events.GetDamage() + PotionData.BuffAmount);
+            Events.AddDamageValue(zombieType, PotionData.BuffAmount);
             Debug.Log("DamagePotion applied");
         }
         else
