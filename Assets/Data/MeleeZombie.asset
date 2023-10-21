@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Melee Zombie
   Price: 50
-  Icon: {fileID: 21300000, guid: 3859b46d932266c46a78758c6b1d240b, type: 3}
+  Icon: {fileID: 21300000, guid: 6c4128ef026444e4abca7a66227e1e41, type: 3}
   ZombiePrefab: {fileID: 5654820010355793823, guid: 5f9bef6ea6ec9e844b4b541be3c3bf93, type: 3}
