@@ -9,7 +9,7 @@ public static class Events
     public static void SetMoney(int value) => OnSetMoney?.Invoke(value);
 
     public static event Func<int> OnGetMoney;
-    public static int GetMoney() => OnGetMoney?.Invoke() ?? 0; // kui on null - siis 0
+    public static int GetMoney() => OnGetMoney?.Invoke() ?? 0; 
 
     
     public static event Action<ShopData> OnZombieSelected;
@@ -23,17 +23,20 @@ public static class Events
     public static event Func<float> OnGetDamage;
     public static float GetDamage() => OnGetDamage?.Invoke() ?? 0;
 
+
     public static event Action<float> OnSetAttackSpeed;
     public static void SetAttackSpeed(float value) => OnSetAttackSpeed?.Invoke(value);
 
     public static event Func<float> OnGetAttackSpeed;
     public static float GetAttackSpeed() => OnGetAttackSpeed?.Invoke() ?? 0;
 
+
     public static event Action<float> OnSetMovementSpeed;
     public static void SetMovementSpeed(float value) => OnSetMovementSpeed?.Invoke(value);
 
     public static event Func<float> OnGetMovementSpeed;
     public static float GetMovementSpeed() => OnGetMovementSpeed?.Invoke() ?? 0;
+
 
     public static event Action<float> OnSetMaxHealth;
     public static void SetMaxHealth(float value) => OnSetMaxHealth?.Invoke(value);

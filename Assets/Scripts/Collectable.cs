@@ -100,10 +100,11 @@ public class Collectable : MonoBehaviour
             isPickedUp = false;
             Destroy(cursorUIObject);
         }
+
         if (!entered) 
         { 
-        Destroy(gameObject);
-        Destroy(cursorUIObject);
+            Destroy(gameObject);
+            Destroy(cursorUIObject);
         }
     }
 
@@ -127,9 +128,8 @@ public class Collectable : MonoBehaviour
                 {
                     zombieType = zombieShop.ShopData.ZombiePrefab.name;
                     potionBuffs = findPanel;
+                    return true;
                 }
-
-                return true;
             }
         }
         return false;

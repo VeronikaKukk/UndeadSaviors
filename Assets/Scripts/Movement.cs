@@ -9,13 +9,13 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         Events.OnSetMovementSpeed += SetMovementSpeed;
-        Events.OnGetDamage += GetMovementSpeed;
+        Events.OnGetMovementSpeed += GetMovementSpeed;
     }
 
     private void OnDestroy()
     {
         Events.OnSetMovementSpeed -= SetMovementSpeed;
-        Events.OnGetDamage -= GetMovementSpeed;
+        Events.OnGetMovementSpeed -= GetMovementSpeed;
     }
 
     void SetMovementSpeed(float speed)

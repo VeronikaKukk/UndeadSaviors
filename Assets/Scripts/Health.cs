@@ -57,8 +57,8 @@ public class Health : MonoBehaviour
     public void Awake()
     {
         currentHealth = MaxHealth;
-        Events.OnSetMovementSpeed += SetMaxHealth;
-        Events.OnGetDamage += GetMaxHealth;
+        Events.OnSetMaxHealth += SetMaxHealth;
+        Events.OnGetMaxHealth += GetMaxHealth;
     }
 
     public void Start() // Add characters to EntityController
@@ -75,8 +75,8 @@ public class Health : MonoBehaviour
 
     public void OnDestroy()// Remove characters from EntityController
     {
-        Events.OnSetMovementSpeed -= SetMaxHealth;
-        Events.OnGetDamage -= GetMaxHealth;
+        Events.OnSetMaxHealth -= SetMaxHealth;
+        Events.OnGetMaxHealth -= GetMaxHealth;
 
         if (UnitData.TeamName == "Zombie")
         {
