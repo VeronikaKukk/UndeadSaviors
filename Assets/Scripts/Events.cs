@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public static class Events
@@ -15,6 +16,9 @@ public static class Events
     public static event Action<ShopData> OnZombieSelected;
     public static void SelectZombie(ShopData data) => OnZombieSelected?.Invoke(data);
 
+
+    public static event Action<string, PotionData> OnApplyPotion;
+    public static void ApplyPotion(string unitName, PotionData data) => OnApplyPotion?.Invoke(unitName, data);
 
 
     public static event Action<string ,float> OnAddDamageValue;

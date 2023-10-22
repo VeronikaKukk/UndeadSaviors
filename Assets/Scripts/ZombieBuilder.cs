@@ -78,9 +78,12 @@ public class ZombieBuilder : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        Events.SetMoney(Events.GetMoney() - currentZombieData.Price);
-
-        GameObject.Instantiate(currentZombieData.ZombiePrefab, transform.position, Quaternion.identity, null);
-        gameObject.SetActive(false);
+        GameObject zombieToBeCreated= ZombieFactory.Instance.GetUnit(currentZombieData.Name);
+        if (zombieToBeCreated != null) {
+            Events.SetMoney(Events.GetMoney() - currentZombieData.Price);
+            GameObject.Instantiate(zombieToBeCreated, transform.position, Quaternion.identity, null);
+            gameObject.SetActive(false);
+        }
+        else { Debug.Log(currentZombieData.name+" not created"); }
     }
 }
