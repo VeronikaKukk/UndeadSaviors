@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayLevel()
     {
-        // TODO, kui mitu levelit valmis saavad:  SceneManager.LoadSceneAsync(leveli number vm);
+        // TBC when we add levels;
         SceneManager.LoadSceneAsync("MainScene");
     }
 
