@@ -15,6 +15,7 @@ public class Shop : MonoBehaviour
 
     private void Awake()
     {
+        Events.OnSetMoney += SetMoney;
         button = GetComponent<Button>();
         if (button != null)
         {
@@ -27,9 +28,19 @@ public class Shop : MonoBehaviour
             IconImage.sprite = ShopData.Icon;
         }
     }
+    void SetMoney(int value) {
+        button = GetComponent<Button>();
+        button.interactable = ShopData.Price <= value;
+    }
 
     public void Pressed()
     {
         Events.SelectZombie(ShopData);
+    }
+
+    public void OnDestroy()
+    {
+        Events.OnSetMoney -= SetMoney;
+
     }
 }

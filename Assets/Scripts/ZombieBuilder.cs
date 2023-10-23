@@ -48,6 +48,10 @@ public class ZombieBuilder : MonoBehaviour
         {
             Build(mousePos);
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void TintSprite(Color col)
