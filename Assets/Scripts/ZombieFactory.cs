@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class ZombieFactory : MonoBehaviour
+public class ZombieFactory : MonoBehaviour
 {
 
     public static ZombieFactory Instance;
-    public  GameObject[] UnitTypes;
+    public GameObject[] UnitTypes;
     private Dictionary<string, GameObject> unitNamesAndPrefabs;
     private Dictionary<GameObject, List<PotionData>> appliedPotionsOnUnit;
 
@@ -20,44 +20,46 @@ public  class ZombieFactory : MonoBehaviour
             unitNamesAndPrefabs.Add(unit.name, unit);
             appliedPotionsOnUnit.Add(unit, new List<PotionData>());
         }
-        
+
         Instance = this;
 
         Events.OnApplyPotion += ApplyPotion;
     }
-    void ApplyPotion(string unitName, PotionData potionData) {
-        if(unitNamesAndPrefabs.ContainsKey(unitName))
+    void ApplyPotion(string unitName, PotionData potionData)
+    {
+        if (unitNamesAndPrefabs.ContainsKey(unitName))
         {
             GameObject prefab = unitNamesAndPrefabs[unitName];
             appliedPotionsOnUnit[prefab].Add(potionData);
         }
     }
-    public GameObject GetUnit(string unitName) 
+    public GameObject ApplyPotionsOnUnit(GameObject zombie, string unitName)
     {
-        if (unitNamesAndPrefabs.ContainsKey(unitName)) {
+        if (unitNamesAndPrefabs.ContainsKey(unitName))
+        {
             GameObject unitPrefab = unitNamesAndPrefabs[unitName];
             List<PotionData> appliedPotions = appliedPotionsOnUnit[unitPrefab];
-            foreach (PotionData potionData in appliedPotions) 
+            foreach (PotionData potionData in appliedPotions)
             {
                 if (potionData.PotionName == "Damage")
                 {
                     Debug.Log("new zombie " + unitName + "got damage potion");
-                    var attack = unitPrefab.GetComponent<Attacking>();
+                    var attack = zombie.GetComponent<Attacking>();
                     attack.AttackDamage += potionData.BuffAmount;
                 }
                 else if (potionData.PotionName == "Health")
                 {
                     Debug.Log("new zombie " + unitName + "got health potion");
 
-                    var health = unitPrefab.GetComponent<Health>();
+                    var health = zombie.GetComponent<Health>();
                     health.MaxHealth += potionData.BuffAmount;
                 }
-                else if (potionData.PotionName == "Speed") 
+                else if (potionData.PotionName == "Speed")
                 {
                     Debug.Log("new zombie " + unitName + "got speed potion");
 
-                    var movespeed = unitPrefab.GetComponent<Movement>();
-                    var attackspeed = unitPrefab.GetComponent<Attacking>();
+                    var movespeed = zombie.GetComponent<Movement>();
+                    var attackspeed = zombie.GetComponent<Attacking>();
 
                     movespeed.MovementSpeed += potionData.BuffAmount;
                     attackspeed.AttackSpeed += potionData.BuffAmount;
@@ -67,7 +69,7 @@ public  class ZombieFactory : MonoBehaviour
             return unitPrefab;
         }
         return null;
-        
+
     }
 
     public void OnDestroy()
