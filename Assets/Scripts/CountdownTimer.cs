@@ -31,7 +31,6 @@ public class CountdownTimer : MonoBehaviour
         else
         {
             currentTime = 0;
-            // Handle timer completion here
         }
     }
 

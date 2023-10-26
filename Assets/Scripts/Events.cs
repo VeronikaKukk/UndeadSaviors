@@ -39,4 +39,9 @@ public static class Events
 
     public static event Action<string, float> OnAddMaxHealthValue;
     public static void AddMaxHealthValue(string unitName, float value) => OnAddMaxHealthValue?.Invoke(unitName, value);
+
+
+
+    public static event Action<bool> OnEndLevel;
+    public static void EndLevel(bool isWin) => OnEndLevel?.Invoke(isWin);
 }
