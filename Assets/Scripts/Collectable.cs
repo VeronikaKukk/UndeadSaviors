@@ -20,15 +20,11 @@ public class Collectable : MonoBehaviour
     private Transform potionBuffs;
     private string zombieType;
 
+    private GameObject potionToDestroy;
+
     private void Start()
     {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-    }
-
-
-    public bool IsPickedUp()
-    {
-        return isPickedUp;
     }
 
     public void OnBecameVisible()
@@ -44,6 +40,7 @@ public class Collectable : MonoBehaviour
             spriteRenderer = transform.GetComponent<SpriteRenderer>();
             spriteRenderer.enabled = false;
             isPickedUp = true;
+            GameController.Instance.SetPotionPickedUp(true);
             cursorUIObject = Instantiate(CursorUIObjectPrefab, canvas.transform);
             offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
@@ -56,10 +53,25 @@ public class Collectable : MonoBehaviour
             else
             {
                 spriteRenderer.enabled = true;
-                isPickedUp = false;
-                Destroy(cursorUIObject);
+                GameController.Instance.SetPotionPickedUp(false);
             }
+
+            Destroy(cursorUIObject);
+            isPickedUp = false;
+            
+            if (potionToDestroy != null)
+            {
+                Invoke("PutPotionDown", 0.1f);
+            }
+            
         }
+    }
+
+    private void PutPotionDown()
+    {
+        GameController.Instance.SetPotionPickedUp(false);
+        Destroy(potionToDestroy);
+        potionToDestroy = null;
     }
 
     private void ApplyPotionEffectsToZombies()
@@ -96,14 +108,12 @@ public class Collectable : MonoBehaviour
             entered = true;
             Debug.Log("No empty slot");
             spriteRenderer.enabled = true;
-            isPickedUp = false;
-            Destroy(cursorUIObject);
+            GameController.Instance.SetPotionPickedUp(false);
         }
 
-        if (!entered) 
-        { 
-            Destroy(gameObject);
-            Destroy(cursorUIObject);
+        if (!entered)
+        {
+            potionToDestroy = gameObject;
         }
     }
 
@@ -117,9 +127,9 @@ public class Collectable : MonoBehaviour
 
         foreach (RaycastResult result in results)
         {
+            // Mouse is over a UI button with the specified tag
             if (result.gameObject.CompareTag("ShopZombie"))
             {
-                // Mouse is over a UI button with the specified tag
                 Shop zombieShop = result.gameObject.GetComponent<Shop>();
                 Transform findPanel = result.gameObject.transform.Find("Potions");
 
@@ -136,7 +146,6 @@ public class Collectable : MonoBehaviour
 
     public void Update()
     {
-
         if (isPickedUp)
         {
             Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;

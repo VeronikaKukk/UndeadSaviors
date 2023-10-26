@@ -4848,6 +4848,7 @@ GameObject:
   - component: {fileID: 1919925721}
   - component: {fileID: 1919925720}
   - component: {fileID: 1919925722}
+  - component: {fileID: 1919925723}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: Untagged
@@ -4899,6 +4900,19 @@ MonoBehaviour:
   UnitTypes:
   - {fileID: 5654820010355793823, guid: 5f9bef6ea6ec9e844b4b541be3c3bf93, type: 3}
   - {fileID: 2140568854778588184, guid: c22be686da960de4a8c316ed9a83798e, type: 3}
+--- !u!114 &1919925723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919925719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b635fc2d60ccaf84c8f11fbca6cca546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPotionPickedUp: 0
 --- !u!1 &2105593896
 GameObject:
   m_ObjectHideFlags: 0

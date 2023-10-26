@@ -28,14 +28,16 @@ public class Shop : MonoBehaviour
             IconImage.sprite = ShopData.Icon;
         }
     }
-    void SetMoney(int value) {
+    void SetMoney(int value)
+    {
         button = GetComponent<Button>();
         button.interactable = ShopData.Price <= value;
     }
 
     public void Pressed()
     {
-        Events.SelectZombie(ShopData);
+        if (!GameController.Instance.IsPotionPickedUp)
+            Events.SelectZombie(ShopData);
     }
 
     public void OnDestroy()
