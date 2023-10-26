@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f9aeb9f6778fc41a5d6b1b3a73caa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 5
+  AttackDamage: 1
   AttackSpeed: 1
   AttackRangeSize: 5
   maxSize: {x: 3, y: 3, z: 3}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b15a1cc9a10334fa6e343a9f438385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 5
+  MovementSpeed: 4
 --- !u!114 &4973471284390440791
 MonoBehaviour:
   m_ObjectHideFlags: 0

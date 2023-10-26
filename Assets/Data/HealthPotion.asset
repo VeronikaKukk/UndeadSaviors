@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
   PotionName: Health
-  BuffAmount: 30
+  BuffAmount: 15
   AliveTime: 10

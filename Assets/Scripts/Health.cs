@@ -33,7 +33,7 @@ public class Health : MonoBehaviour
                 float rnd = Random.Range(0f, 1f);
                 float rnd2 = Random.Range(0f, 1f);
 
-                if (rnd > 0.3) 
+                if (rnd > 0.4) 
                 {
                     GameObject collectable = null;
                     if (rnd2 < 0.3)

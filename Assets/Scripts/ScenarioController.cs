@@ -27,18 +27,16 @@ public class ScenarioController : MonoBehaviour
 
     private void Update()
     {
-
-        List<Health> plants = EntityController.Instance.PlantCharacters;
         if (CountdownTimer.Instance.currentTime < 1)
         {
-            if (plants.Count >= 1)
+            if (EntityController.Instance.PlantCharacters.Count >= 1)
             {
                 OnEndLevel(false);
             }
         }
         else
         {
-            if (plants.Count < 1)
+            if (EntityController.Instance.PlantCharacters.Count < 1)
             {
                 OnEndLevel(true);
             }

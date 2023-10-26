@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SpeedPotion
   m_EditorClassIdentifier: 
   PotionName: Speed
-  BuffAmount: 0.2
+  BuffAmount: 0.4
   AliveTime: 10
