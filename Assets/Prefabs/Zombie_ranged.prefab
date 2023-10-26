@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackDamage: 1
-  AttackSpeed: 1
+  AttackSpeed: 0.8
   AttackRangeSize: 5
   maxSize: {x: 3, y: 3, z: 3}
   minSize: {x: 0.2, y: 0.2, z: 0.2}
