@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScenarioController : MonoBehaviour
 {
     public GameObject EndGamePanel;
     public TextMeshProUGUI EndGameText;
+    public Scene currentScene;
     //private bool levelRunning;
 
     private void Awake()
     {
+        currentScene = SceneManager.GetActiveScene();
         Events.OnEndLevel += OnEndLevel;
+
     }
 
     private void Start()
@@ -58,4 +62,15 @@ public class ScenarioController : MonoBehaviour
             EndGameText.text = "Defeat!";
         }
     }
+
+        public void ReplayButton()
+        {
+            SceneManager.LoadScene(currentScene.name);
+        }
+
+        public void LevelChooserButton()
+        {
+            SceneManager.LoadScene("StartScene");
+
+        }
 }
