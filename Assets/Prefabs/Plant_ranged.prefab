@@ -100,9 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f9aeb9f6778fc41a5d6b1b3a73caa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 1
-  AttackSpeed: 1
-  AttackRangeSize: 5
+  AttackDamage: 0
+  AttackSpeed: 0
+  AttackRangeSize: 0
   maxSize: {x: 3, y: 3, z: 3}
   minSize: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!114 &9009429959965017324
@@ -117,9 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23983e173700f54695282b7b4d4d3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitData: {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
-  MaxHealth: 10
-  CurrencyAmountOnDeath: 15
+  UnitData: {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
+  MaxHealth: 0
 --- !u!50 &4566825454909306845
 Rigidbody2D:
   serializedVersion: 4

@@ -9,8 +9,14 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         Events.OnAddMovementSpeedValue += AddMovementSpeed;
+        // this was in start before
+        Health health = GetComponent<Health>();
+        MovementSpeed = health.UnitData.MovementSpeed;
     }
-
+    private void Start()
+    {
+        
+    }
     private void OnDestroy()
     {
         Events.OnAddMovementSpeedValue -= AddMovementSpeed;

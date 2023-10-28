@@ -5,8 +5,9 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public UnitData UnitData;
+
     public float MaxHealth;
-    public int CurrencyAmountOnDeath;
+    private int CurrencyAmountOnDeath;
 
     private float currentHealth;
     [HideInInspector]
@@ -56,6 +57,10 @@ public class Health : MonoBehaviour
     }
     public void Awake()
     {
+        // replace health data with unidata info
+        MaxHealth = UnitData.MaxHealth;
+        CurrencyAmountOnDeath = UnitData.CurrencyAmountOnDeath;
+
         currentHealth = MaxHealth;
         Events.OnAddMaxHealthValue += AddMaxHealth;
     }

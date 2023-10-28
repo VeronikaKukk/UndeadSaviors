@@ -84,7 +84,7 @@ public class Collectable : MonoBehaviour
 
             images[1].enabled = true;
             Events.AddMaxHealthValue(zombieType, PotionData.BuffAmount);
-            Debug.Log("HealthPotion applied");
+            //Debug.Log("HealthPotion applied");
         }
         else if (PotionData.PotionName.Equals("Speed") && !images[2].enabled)
         {
@@ -93,7 +93,7 @@ public class Collectable : MonoBehaviour
             images[2].enabled = true;
             Events.AddAttackSpeedValue(zombieType, PotionData.BuffAmount);
             Events.AddMovementSpeedValue(zombieType, PotionData.BuffAmount);
-            Debug.Log("SpeedPotion applied");
+            //Debug.Log("SpeedPotion applied");
         }
         else if (PotionData.PotionName.Equals("Damage") && !images[3].enabled)
         {
@@ -101,12 +101,12 @@ public class Collectable : MonoBehaviour
 
             images[3].enabled = true;
             Events.AddDamageValue(zombieType, PotionData.BuffAmount);
-            Debug.Log("DamagePotion applied");
+            //Debug.Log("DamagePotion applied");
         }
         else
         {
             entered = true;
-            Debug.Log("No empty slot");
+            //Debug.Log("No empty slot");
             spriteRenderer.enabled = true;
             GameController.Instance.SetPotionPickedUp(false);
         }

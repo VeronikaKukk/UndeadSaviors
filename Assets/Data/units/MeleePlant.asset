@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4acf6a9a5f54ee840bd1277948e5752c, type: 3}
+  m_Name: MeleePlant
+  m_EditorClassIdentifier: 
+  TeamName: Plant
+  DroppablePotions:
+  - {fileID: 3425769060701832718, guid: cef1fcf4eb398d4488995fb216236b22, type: 3}
+  - {fileID: 7214415345411477701, guid: 323682bcd55257042b6d989072175ab1, type: 3}
+  - {fileID: 2701146648586863391, guid: 522eb865058250145ae088feff7a02ed, type: 3}
+  UnitName: Plant_melee
+  CurrencyAmountOnDeath: 10
+  MaxHealth: 15
+  MovementSpeed: 0
+  AttackDamage: 3
+  AttackSpeed: 1
+  AttackRangeSize: 1

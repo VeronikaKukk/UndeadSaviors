@@ -26,6 +26,19 @@ public class Attacking : MonoBehaviour
     {
         Events.OnAddDamageValue += AddDamage;
         Events.OnAddAttackSpeedValue += AddAttackSpeed;
+
+        // this was in start before
+        health = GetComponent<Health>();
+        if (health.UnitData.TeamName != "Plant")
+        {
+            movement = GetComponent<Movement>();
+            direction = GetDirection();
+        }
+
+        AttackDamage = health.UnitData.AttackDamage;
+        AttackRangeSize = health.UnitData.AttackRangeSize;
+        AttackSpeed = health.UnitData.AttackSpeed;
+        print("applied unitdata values");
     }
 
     private void OnDestroy()
@@ -52,13 +65,6 @@ public class Attacking : MonoBehaviour
 
 
     void Start() { 
-        health = GetComponent<Health>();
-        if (health.UnitData.TeamName != "Plant")
-        {
-            movement = GetComponent<Movement>();
-            direction = GetDirection();
-        }
-
     }
 
     public void Update()

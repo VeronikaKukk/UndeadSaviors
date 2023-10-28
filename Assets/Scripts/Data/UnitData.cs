@@ -6,6 +6,12 @@ using UnityEngine;
 public class UnitData : ScriptableObject 
 {
     public string TeamName;
-    public List<GameObject> DroppablePotions; 
-
+    public List<GameObject> DroppablePotions;
+    public string UnitName;
+    public int CurrencyAmountOnDeath;
+    public float MaxHealth;
+    public float MovementSpeed;
+    public float AttackDamage;
+    public float AttackSpeed;
+    public float AttackRangeSize;
 }

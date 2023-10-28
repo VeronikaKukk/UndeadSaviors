@@ -43,20 +43,20 @@ public class ZombieFactory : MonoBehaviour
             {
                 if (potionData.PotionName == "Damage")
                 {
-                    Debug.Log("new zombie " + unitName + "got damage potion");
+                    //Debug.Log("new zombie " + unitName + "got damage potion");
                     var attack = zombie.GetComponent<Attacking>();
                     attack.AttackDamage += potionData.BuffAmount;
                 }
                 else if (potionData.PotionName == "Health")
                 {
-                    Debug.Log("new zombie " + unitName + "got health potion");
+                    //Debug.Log("new zombie " + unitName + "got health potion");
 
                     var health = zombie.GetComponent<Health>();
                     health.MaxHealth += potionData.BuffAmount;
                 }
                 else if (potionData.PotionName == "Speed")
                 {
-                    Debug.Log("new zombie " + unitName + "got speed potion");
+                    //Debug.Log("new zombie " + unitName + "got speed potion");
 
                     var movespeed = zombie.GetComponent<Movement>();
                     var attackspeed = zombie.GetComponent<Attacking>();
