@@ -4719,7 +4719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerText: {fileID: 2105593898}
-  StartTime: 61
+  StartTime: 71
   currentTime: 0
 --- !u!114 &1331004040
 MonoBehaviour:
