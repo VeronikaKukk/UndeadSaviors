@@ -21,6 +21,6 @@ MonoBehaviour:
   CurrencyAmountOnDeath: 10
   MaxHealth: 15
   MovementSpeed: 0
-  AttackDamage: 3
-  AttackSpeed: 1
+  AttackDamage: 1
+  AttackSpeed: 0.8
   AttackRangeSize: 5

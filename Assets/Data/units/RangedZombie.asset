@@ -16,7 +16,7 @@ MonoBehaviour:
   DroppablePotions: []
   UnitName: Zombie_ranged
   CurrencyAmountOnDeath: 0
-  MaxHealth: 10
+  MaxHealth: 15
   MovementSpeed: 3
   AttackDamage: 2
   AttackSpeed: 1
