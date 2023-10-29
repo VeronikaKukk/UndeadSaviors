@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class Health : MonoBehaviour
 
     public float MaxHealth;
     private int CurrencyAmountOnDeath;
+    public event Action<float, float> OnHealthChanged;
 
     private float currentHealth;
     [HideInInspector]
@@ -22,7 +24,7 @@ public class Health : MonoBehaviour
             if (currentHealth <= 0 && UnitData.TeamName == "Zombie") // if zombie dies, just remove it from board
             {
                 Destroy(gameObject);
-            } 
+            }
             else if (currentHealth <= 0 && UnitData.TeamName == "Plant") // if plant dies, give money and potion and remove it from board
             {
                 Debug.Log(gameObject.name +" died");
@@ -31,8 +33,8 @@ public class Health : MonoBehaviour
                 Events.SetMoney(Events.GetMoney() + (int)(CurrencyAmountOnDeath * CountdownTimer.Instance.currentTime/60));
                 
                 // drop potion
-                float rnd = Random.Range(0f, 1f);
-                float rnd2 = Random.Range(0f, 1f);
+                float rnd = UnityEngine.Random.Range(0f, 1f);
+                float rnd2 = UnityEngine.Random.Range(0f, 1f);
 
                 if (rnd > 0.4) 
                 {
@@ -53,6 +55,7 @@ public class Health : MonoBehaviour
                 }
                 Destroy(gameObject);
             }
+            OnHealthChanged?.Invoke(currentHealth, MaxHealth);
         }
     }
     public void Awake()
@@ -96,6 +99,7 @@ public class Health : MonoBehaviour
         if (gameObject.name.StartsWith(unitName))
         {
             MaxHealth += health;
+            CurrentHealth += health;
         }
     }
 }

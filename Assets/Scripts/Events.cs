@@ -44,4 +44,11 @@ public static class Events
 
     public static event Action<bool> OnEndLevel;
     public static void EndLevel(bool isWin) => OnEndLevel?.Invoke(isWin);
+
+
+    /*
+    public static event Action<float, float> OnHealthChanged;
+
+    public static void SetCurrentHealth(float currentHealth, float maxHealth) => OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    */
 }

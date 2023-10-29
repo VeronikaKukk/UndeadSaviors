@@ -5,15 +5,21 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
-    Slider healthbar;
+    public Image HealthBar;
+    public Health Health;
 
-    // get maxvalue -> healthbar.value = max
-    // get currentvalue -> healthbar.value = current
-
-    private void Start()
+    private void Awake()
     {
-        healthbar = GetComponent<Slider>();
+        Health.OnHealthChanged += SetHealth;
     }
 
+    private void OnDestroy()
+    {
+        Health.OnHealthChanged -= SetHealth;
+    }
 
+    public void SetHealth(float health, float maxHealth)
+    {
+        HealthBar.fillAmount = health / (float)maxHealth;
+    }
 }
