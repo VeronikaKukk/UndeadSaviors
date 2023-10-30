@@ -10,20 +10,28 @@ public class CountdownTimer : MonoBehaviour
     public float StartTime = 300.0f; // 5 minutes in seconds
     public float currentTime;
 
+    private bool isGameRunning;
 
     public void Awake()
     {
         Instance = this;
+        isGameRunning = true;
     }
     private void Start()
     {
         currentTime = StartTime;
         UpdateTimerDisplay();
+        Events.OnEndLevel += OnEndLevel;
+
+    }
+
+    void OnEndLevel(bool isWin) {
+        isGameRunning = false;
     }
 
     private void Update()
     {
-        if (currentTime > 1) // Has to be 1. With 0 will go into negative digits. Dunno why
+        if (currentTime > 1 && isGameRunning) // Has to be 1
         {
             currentTime -= Time.deltaTime;
             UpdateTimerDisplay();
@@ -39,5 +47,10 @@ public class CountdownTimer : MonoBehaviour
         int minutes = Mathf.FloorToInt(currentTime / 60);
         int seconds = Mathf.FloorToInt(currentTime % 60);
         TimerText.text = string.Format("{0}:{1:00}", minutes, seconds);
+    }
+
+    public void OnDestroy()
+    {
+        Events.OnEndLevel -= OnEndLevel;
     }
 }

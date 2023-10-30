@@ -11,6 +11,10 @@ public class Health : MonoBehaviour
     private int CurrencyAmountOnDeath;
     public event Action<float, float> OnHealthChanged;
 
+    public Vector3 maxSize = new Vector3(2f, 2f, 2f);
+
+    private float lastDamaged;
+
     private float currentHealth;
     [HideInInspector]
     public float CurrentHealth {
@@ -28,11 +32,8 @@ public class Health : MonoBehaviour
             else if (currentHealth <= 0 && UnitData.TeamName == "Plant") // if plant dies, give money and potion and remove it from board
             {
                 Debug.Log(gameObject.name +" died");
-                // give currencyamount to player and destroy plant
-                // currenttime is made to minutes
                 Events.SetMoney(Events.GetMoney() + (int)(CurrencyAmountOnDeath * CountdownTimer.Instance.currentTime/60));
                 
-                // drop potion
                 float rnd = UnityEngine.Random.Range(0f, 1f);
                 float rnd2 = UnityEngine.Random.Range(0f, 1f);
 
@@ -56,6 +57,8 @@ public class Health : MonoBehaviour
                 Destroy(gameObject);
             }
             OnHealthChanged?.Invoke(currentHealth, MaxHealth);
+
+            lastDamaged = Time.time;
         }
     }
     public void Awake()
@@ -66,6 +69,7 @@ public class Health : MonoBehaviour
 
         currentHealth = MaxHealth;
         Events.OnAddMaxHealthValue += AddMaxHealth;
+        lastDamaged = Time.time;
     }
 
     public void Start() // Add characters to EntityController
@@ -100,6 +104,18 @@ public class Health : MonoBehaviour
         {
             MaxHealth += health;
             CurrentHealth += health;
+        }
+    }
+
+    public void Update()
+    {
+        if (UnitData.TeamName == "Plant" && lastDamaged + 7.0f < Time.time && transform.localScale.magnitude < maxSize.magnitude)
+        {
+            transform.localScale = new Vector3(transform.localScale.x + 0.05f, transform.localScale.y + 0.05f, transform.localScale.z + 0.05f);
+            lastDamaged = Time.time;
+            MaxHealth += 2;
+            CurrentHealth += 2;
+            CurrencyAmountOnDeath += 2;
         }
     }
 }

@@ -10,7 +10,7 @@ public class ScenarioController : MonoBehaviour
     public GameObject EndGamePanel;
     public TextMeshProUGUI EndGameText;
     public Scene currentScene;
-    //private bool levelRunning;
+    private bool levelRunning = true;
 
     private void Awake()
     {
@@ -31,18 +31,20 @@ public class ScenarioController : MonoBehaviour
 
     private void Update()
     {
-        if (CountdownTimer.Instance.currentTime < 1)
+        if (levelRunning && CountdownTimer.Instance.currentTime < 1)
         {
             if (EntityController.Instance.PlantCharacters.Count >= 1)
             {
-                OnEndLevel(false);
+                levelRunning = false;
+                Events.EndLevel(false);
             }
         }
-        else
+        else if(levelRunning)
         {
             if (EntityController.Instance.PlantCharacters.Count < 1)
             {
-                OnEndLevel(true);
+                levelRunning = false;
+                Events.EndLevel(true);
             }
         }
     }

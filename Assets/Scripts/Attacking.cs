@@ -9,7 +9,6 @@ public class Attacking : MonoBehaviour
     public float AttackSpeed;
     public float AttackRangeSize;
 
-    public Vector3 maxSize = new Vector3(3f,3f,3f);
     public Vector3 minSize = new Vector3(0.2f,0.2f,0.2f);
 
     private Movement movement;
@@ -38,7 +37,6 @@ public class Attacking : MonoBehaviour
         AttackDamage = health.UnitData.AttackDamage;
         AttackRangeSize = health.UnitData.AttackRangeSize;
         AttackSpeed = health.UnitData.AttackSpeed;
-        print("applied unitdata values");
     }
 
     private void OnDestroy()
@@ -92,7 +90,7 @@ public class Attacking : MonoBehaviour
                 // if unit that takes damage is plant then change plant object size
                 if (enemyToFight.UnitData.TeamName == "Plant" && enemyToFight.transform.localScale.magnitude >  minSize.magnitude) 
                 {
-                    enemyToFight.transform.localScale = new Vector3(enemyToFight.transform.localScale.x - 0.1f, enemyToFight.transform.localScale.y - 0.1f, enemyToFight.transform.localScale.z - 0.1f);
+                    enemyToFight.transform.localScale = new Vector3(enemyToFight.transform.localScale.x - 0.05f, enemyToFight.transform.localScale.y - 0.05f, enemyToFight.transform.localScale.z - 0.05f);
                 }
                 PrevAttackTime = NextAttackTime;
                 NextAttackTime = Time.time + 1/AttackSpeed; // the bigger the attackspeed the faster it hits

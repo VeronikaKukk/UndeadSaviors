@@ -13,7 +13,7 @@ public class Courage : MonoBehaviour
     public int PassiveIncomeMoney = 10;
 
     public TextMeshProUGUI MoneyText;
-    private float passiveGenerationTimer = 5.0f; // Timer for passive money generation
+    public float PassiveGenerationTimer = 5.0f; // Timer for passive money generation
     private float timeSinceLastGeneration = 0.0f;
 
     private void Awake()
@@ -26,10 +26,10 @@ public class Courage : MonoBehaviour
 
     private void Update()
     {
-        // Call PassiveMoneyGeneration after every 5 (passiveGenerationTimer) seconds and increase Money by 10 (PassiveIncomeMoney)
+        // Call PassiveMoneyGeneration after every passiveGenerationTimer seconds and increase Money by PassiveIncomeMoney
         timeSinceLastGeneration += Time.deltaTime;
         MoneyText.text = Events.GetMoney().ToString();
-        if (timeSinceLastGeneration >= passiveGenerationTimer)
+        if (timeSinceLastGeneration >= PassiveGenerationTimer)
         {
             Events.SetMoney(Events.GetMoney() + PassiveIncomeMoney);
             timeSinceLastGeneration = 0.0f;

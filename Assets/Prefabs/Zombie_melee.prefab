@@ -191,9 +191,9 @@ GameObject:
   - component: {fileID: 2805511562679500409}
   - component: {fileID: 6025292045245235294}
   - component: {fileID: 5155459111252918465}
+  - component: {fileID: 5523782261973835021}
   - component: {fileID: 1652023722640494305}
   - component: {fileID: 3847767227698529165}
-  - component: {fileID: 5523782261973835021}
   m_Layer: 0
   m_Name: Zombie_melee
   m_TagString: Untagged
@@ -313,6 +313,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitData: {fileID: 11400000, guid: 7b8f8a836d9d531419babd408d1ff529, type: 2}
   MaxHealth: 0
+--- !u!114 &5523782261973835021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654820010355793823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a097fd394be49874eb59595aaee9b33f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthBar: {fileID: 6998332694454991771}
+  Health: {fileID: 5155459111252918465}
 --- !u!50 &1652023722640494305
 Rigidbody2D:
   serializedVersion: 4
@@ -385,20 +399,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &5523782261973835021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5654820010355793823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a097fd394be49874eb59595aaee9b33f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthBar: {fileID: 6998332694454991771}
-  Health: {fileID: 5155459111252918465}
 --- !u!1 &7511886534151684856
 GameObject:
   m_ObjectHideFlags: 0
