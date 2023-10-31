@@ -67,7 +67,10 @@ public class ZombieBuilder : MonoBehaviour
     {
         currentZombieData = data;
         if (Events.GetMoney() >= currentZombieData.Price)
-             gameObject.SetActive(true);
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = currentZombieData.Icon;
+            gameObject.SetActive(true);
+        }
     }
 
 
