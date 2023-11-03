@@ -14,4 +14,5 @@ public class UnitData : ScriptableObject
     public float AttackDamage;
     public float AttackSpeed;
     public float AttackRangeSize;
+    public GameObject UnitPrefab;
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public static class Events
@@ -45,6 +46,8 @@ public static class Events
     public static event Action<bool> OnEndLevel;
     public static void EndLevel(bool isWin) => OnEndLevel?.Invoke(isWin);
 
+    public static event Action<LevelData> OnStartLevel;
+    public static void StartLevel(LevelData data) => OnStartLevel?.Invoke(data);
 
     /*
     public static event Action<float, float> OnHealthChanged;

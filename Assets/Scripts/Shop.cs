@@ -16,6 +16,10 @@ public class Shop : MonoBehaviour
     private void Awake()
     {
         Events.OnSetMoney += SetMoney;
+    }
+
+    private void Start()
+    {
         button = GetComponent<Button>();
         if (button != null)
         {

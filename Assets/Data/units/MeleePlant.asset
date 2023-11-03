@@ -24,3 +24,4 @@ MonoBehaviour:
   AttackDamage: 3
   AttackSpeed: 1
   AttackRangeSize: 1
+  UnitPrefab: {fileID: 4958010571189545127, guid: 2b62e1ee1264cba43b3cac7ea9eed193, type: 3}
