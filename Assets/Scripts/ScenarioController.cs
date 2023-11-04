@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Linq;
+using System;
 
 public class ScenarioController : MonoBehaviour
 {
@@ -74,8 +76,13 @@ public class ScenarioController : MonoBehaviour
         SpawnEnemies(data.Plants);
     }
     public void SpawnEnemies(List<UnitData> plants) {
+        List<GameObject> keys = SpawnPoints;
+        var rnd = new System.Random();
+        keys = keys.OrderBy(x => rnd.Next()).ToList();
         for (int i = 0; i < plants.Count; i++) {
-            GameObject plant = GameObject.Instantiate(plants[i].UnitPrefab, SpawnPoints[i].transform.position, Quaternion.identity, SpawnPoints[i].transform);
+            GameObject spawn = keys[0];
+            keys.Remove(spawn);
+            GameObject plant = GameObject.Instantiate(plants[i].UnitPrefab, spawn.transform.position, Quaternion.identity, spawn.transform);
         }
     }
     public void OnEndLevel(bool isWin)
