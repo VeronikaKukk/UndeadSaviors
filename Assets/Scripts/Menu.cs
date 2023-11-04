@@ -5,11 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
+    public GameObject LevelChooserObject;
+    public GameObject MainMenuObject;
     public GameObject LevelPanel;
     public LevelCard LevelCardPrefab;
 
     public List<LevelData> Levels;
     public LevelData selectedLevel;
+
+    public AudioSource ButtonClickSound;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -26,6 +31,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayLevel(LevelData level)
     {
+        ButtonClickSound.Play();
         selectedLevel = level;
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene(level.SceneName);
@@ -37,7 +43,13 @@ public class MainMenu : MonoBehaviour
         Destroy(gameObject);
     }
     public void QuitGame() {
+        ButtonClickSound.Play();
         Application.Quit();
     }
 
+    public void StartGameButton() {
+        ButtonClickSound.Play();
+        MainMenuObject.SetActive(false);
+        LevelChooserObject.SetActive(true);
+    }
 }
