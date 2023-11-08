@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Attacking : MonoBehaviour
 {
@@ -12,37 +14,62 @@ public class Attacking : MonoBehaviour
     public Vector3 minSize = new Vector3(0.2f,0.2f,0.2f);
 
     private Movement movement;
-    private Health health;
+    private Health currentUnitHealth;
 
     private Vector2 direction;
     private bool isFighting;
-    private Health enemyToFight;
 
     private float NextAttackTime;
-    private float PrevAttackTime;
 
+    private int MaxUnitsAttackingAtOnce;
+
+    public AttackRange CurrentUnitAttackRange;
+
+    private List<Health> targetsInRange = new List<Health>();
+    private List<Health> currentTargets = new List<Health>();
     private void Awake()
     {
         Events.OnAddDamageValue += AddDamage;
         Events.OnAddAttackSpeedValue += AddAttackSpeed;
+        CurrentUnitAttackRange.OnEnemyEnteredAttackRange += AddEnemyToTargets;
+        CurrentUnitAttackRange.OnEnemyExitedAttackRange += RemoveEnemyFromTargets;
 
         // this was in start before
-        health = GetComponent<Health>();
-        if (health.UnitData.TeamName != "Plant")
+        currentUnitHealth = GetComponent<Health>();
+        if (currentUnitHealth.UnitData.TeamName != "Plant")
         {
             movement = GetComponent<Movement>();
             direction = GetDirection();
         }
 
-        AttackDamage = health.UnitData.AttackDamage;
-        AttackRangeSize = health.UnitData.AttackRangeSize;
-        AttackSpeed = health.UnitData.AttackSpeed;
+        AttackDamage = currentUnitHealth.UnitData.AttackDamage;
+        AttackRangeSize = currentUnitHealth.UnitData.AttackRangeSize;
+        AttackSpeed = currentUnitHealth.UnitData.AttackSpeed;
+        CurrentUnitAttackRange.GetComponent<CircleCollider2D>().radius = AttackRangeSize;
+        MaxUnitsAttackingAtOnce = currentUnitHealth.UnitData.MaxUnitsAttackingAtOnce;
+        NextAttackTime = Time.time;
     }
 
     private void OnDestroy()
     {
         Events.OnAddDamageValue -= AddDamage;
         Events.OnAddAttackSpeedValue -= AddAttackSpeed;
+        CurrentUnitAttackRange.OnEnemyEnteredAttackRange -= AddEnemyToTargets;
+        CurrentUnitAttackRange.OnEnemyExitedAttackRange -= RemoveEnemyFromTargets;
+    }
+
+    void RemoveEnemyFromTargets(Health enemy) {
+        if (enemy.UnitData.TeamName != currentUnitHealth.UnitData.TeamName)
+        {
+            targetsInRange.Remove(enemy);
+        }
+    }
+    void AddEnemyToTargets(Health enemy)
+    {
+        if (enemy.UnitData.TeamName != currentUnitHealth.UnitData.TeamName)
+        {
+            targetsInRange.Add(enemy);
+        }
     }
 
     void AddDamage(string unitName,float damage)
@@ -61,10 +88,6 @@ public class Attacking : MonoBehaviour
         }
     }
 
-
-    void Start() { 
-    }
-
     public void Update()
     {
         if (movement != null && !isFighting)// non-attacking zombie moves to closest enemy
@@ -73,40 +96,31 @@ public class Attacking : MonoBehaviour
         }
         else if (movement == null) 
         {
-            GetClosestEnemy();
+            currentTargets = GetNClosestTargets();
         }
 
-        if (enemyToFight != null)
+        if (targetsInRange.Count > 0)
         {
-            if (!isFighting && Mathf.Abs((transform.position - enemyToFight.transform.position).sqrMagnitude) <= AttackRangeSize)
+            currentTargets = GetNClosestTargets();
+            isFighting = true;
+            if (NextAttackTime <= Time.time)
             {
-                isFighting = true;
-                NextAttackTime = Time.time;
-            }
-
-            if (isFighting && NextAttackTime <= Time.time)
-            {
-                enemyToFight.CurrentHealth -= AttackDamage;
-                // if unit that takes damage is plant then change plant object size
-                if (enemyToFight.UnitData.TeamName == "Plant" && enemyToFight.transform.localScale.magnitude >  minSize.magnitude) 
-                {
-                    enemyToFight.transform.localScale = new Vector3(enemyToFight.transform.localScale.x - 0.01f*AttackDamage, enemyToFight.transform.localScale.y - 0.01f * AttackDamage, enemyToFight.transform.localScale.z - 0.01f * AttackDamage);
-                }
-                PrevAttackTime = NextAttackTime;
+                foreach (var target in currentTargets) {
+                    if (target != null)
+                    {
+                        target.CurrentHealth -= AttackDamage;
+                        if (target.UnitData.TeamName == "Plant" && target.transform.localScale.magnitude > minSize.magnitude)// if unit that takes damage is plant then change plant object size
+                        {
+                            target.transform.localScale = new Vector3(target.transform.localScale.x - 0.01f * AttackDamage, target.transform.localScale.y - 0.01f * AttackDamage, target.transform.localScale.z - 0.01f * AttackDamage);
+                        }
+                    }
+                }               
                 NextAttackTime = Time.time + 1/AttackSpeed; // the bigger the attackspeed the faster it hits
-            }
-            if (enemyToFight.CurrentHealth < 0)
-            {
-                isFighting = false;
-                if (health.UnitData.TeamName != "Plant")
-                {
-                    direction = GetDirection();
-                }
             }
         }
         else {
             isFighting = false;
-            if (health.UnitData.TeamName != "Plant")
+            if (currentUnitHealth.UnitData.TeamName != "Plant")
             {
                 direction = GetDirection();
             }
@@ -115,36 +129,50 @@ public class Attacking : MonoBehaviour
     }
 
     private Vector2 GetDirection() {
-        Health enemy = GetClosestEnemy();
-        if (enemy != null)
-        {
-            return (enemy.transform.position - transform.position).normalized;
-        }
+        List<Health> closestEnemies = GetNClosestTargets();
+        if (closestEnemies.Count > 0) {
+            Health enemy = closestEnemies[0];
+            if (enemy != null)
+            {
+                return (enemy.transform.position - transform.position).normalized;
+            }
+        }        
         return Vector2.zero;
     }
-    private Health GetClosestEnemy() 
-    {
-        Health closestEnemy = null;
-        float minDist = 999999999999.0f;
+
+    private List<Health> GetNClosestTargets() {
+        List<Health> nClosestTargets = new List<Health>();
+        List<(Health,float)> targetsWithDist = new List<(Health,float)>();
+
         List<Health> enemies = null;
-        if (health.UnitData.TeamName == "Zombie") {
+        if (currentUnitHealth.UnitData.TeamName == "Zombie")
+        {
             enemies = EntityController.Instance.PlantCharacters;
-        } else if (health.UnitData.TeamName == "Plant") {
+        }
+        else if (currentUnitHealth.UnitData.TeamName == "Plant")
+        {
             enemies = EntityController.Instance.ZombieCharacters;
         }
-        foreach (Health enemy in enemies) 
+
+        if (targetsInRange.Count > 0)
         {
-            if (enemy.CurrentHealth > 0) 
+            foreach (Health target in targetsInRange)
             {
-                float dist = (enemy.transform.position - transform.position).sqrMagnitude;
-                if (dist < minDist) {
-                    closestEnemy = enemy;
-                    minDist = dist;
-                }
+                float dist = Vector2.Distance(target.transform.position, transform.position);
+                targetsWithDist.Add((target, dist));
             }
         }
-        enemyToFight = closestEnemy;
-        return closestEnemy;
+        else {
+            foreach (Health enemy in enemies)
+            {
+                float dist = Vector2.Distance(enemy.transform.position, transform.position);
+                targetsWithDist.Add((enemy, dist));
+            }
+        }
+        targetsWithDist.Sort((x, y) => x.Item2.CompareTo(y.Item2));
+        for (int i = 0; i < Math.Min(targetsWithDist.Count, MaxUnitsAttackingAtOnce); i++) {
+            nClosestTargets.Add(targetsWithDist[i].Item1);
+        }
+        return nClosestTargets;
     }
-
 }
