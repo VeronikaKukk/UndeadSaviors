@@ -41,7 +41,9 @@ public class Shop : MonoBehaviour
     public void Pressed()
     {
         if (!GameController.Instance.IsPotionPickedUp)
+        {
             Events.SelectZombie(ShopData);
+        }
     }
 
     public void OnDestroy()

@@ -12,5 +12,7 @@ public class EntityController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        ZombieCharacters = new List<Health>();
+        PlantCharacters = new List<Health>();
     }
 }

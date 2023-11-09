@@ -9,6 +9,9 @@ public class ZombieBuilder : MonoBehaviour
     public Color DenyColor;
     public GameObject ZombiePrefab;
 
+    public AudioClipGroup ClickOnShopButtonActiveAudio;
+    public AudioClipGroup ClickOnShopButtonInactiveAudio;
+
     private BoxCollider2D startArea;
 
     private ShopData currentZombieData;
@@ -68,6 +71,7 @@ public class ZombieBuilder : MonoBehaviour
         currentZombieData = data;
         if (Events.GetMoney() >= currentZombieData.Price)
         {
+            ClickOnShopButtonActiveAudio.Play();
             gameObject.GetComponent<SpriteRenderer>().sprite = currentZombieData.Icon;
             gameObject.SetActive(true);
         }
