@@ -14,6 +14,11 @@ public class Collectable : MonoBehaviour
     private Vector3 offset;
 
     public GameObject CursorUIObjectPrefab;
+
+    public AudioClipGroup ClickOnPotionAudio;
+    public AudioClipGroup ApplyPotionAudio;
+
+
     private GameObject cursorUIObject;
     private SpriteRenderer spriteRenderer;
     private Canvas canvas;
@@ -37,6 +42,8 @@ public class Collectable : MonoBehaviour
     {
         if (!isPickedUp)
         {
+            ClickOnPotionAudio.Play();
+
             spriteRenderer = transform.GetComponent<SpriteRenderer>();
             spriteRenderer.enabled = false;
             isPickedUp = true;
@@ -80,6 +87,8 @@ public class Collectable : MonoBehaviour
         Image[] images = potionBuffs.GetComponentsInChildren<Image>();
         if (PotionData.PotionName.Equals("Health") && !images[1].enabled)
         {
+            ApplyPotionAudio.Play();
+
             Events.ApplyPotion(zombieType, PotionData);
 
             images[1].enabled = true;
@@ -88,6 +97,8 @@ public class Collectable : MonoBehaviour
         }
         else if (PotionData.PotionName.Equals("Speed") && !images[2].enabled)
         {
+            ApplyPotionAudio.Play();
+
             Events.ApplyPotion(zombieType, PotionData);
 
             images[2].enabled = true;
@@ -97,6 +108,8 @@ public class Collectable : MonoBehaviour
         }
         else if (PotionData.PotionName.Equals("Damage") && !images[3].enabled)
         {
+            ApplyPotionAudio.Play();
+
             Events.ApplyPotion(zombieType, PotionData);
 
             images[3].enabled = true;

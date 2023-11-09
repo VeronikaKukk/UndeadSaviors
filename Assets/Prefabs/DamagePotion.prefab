@@ -101,6 +101,8 @@ MonoBehaviour:
   PotionData: {fileID: 11400000, guid: 548de2a9ece05ec49bf30b2a8306614e, type: 2}
   isVisible: 0
   CursorUIObjectPrefab: {fileID: 8946976642614904879, guid: 2daaac98461f0ff4a8ef9960f09c8608, type: 3}
+  ClickOnPotionAudio: {fileID: 11400000, guid: 0c3bbe60086d0da43aa4f3d46459a330, type: 2}
+  ApplyPotionAudio: {fileID: 11400000, guid: 3a5b9459091a4c34288b88d9708fafc9, type: 2}
 --- !u!61 &3500957895205426289
 BoxCollider2D:
   m_ObjectHideFlags: 0
