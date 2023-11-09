@@ -367,6 +367,7 @@ MonoBehaviour:
   AttackRangeSize: 0
   minSize: {x: 0.2, y: 0.2, z: 0.2}
   CurrentUnitAttackRange: {fileID: 6803470970425785832}
+  CombatTextPrefab: {fileID: 8832612426596585339, guid: f5e229f8616d01e47883d9d3e4fe8ef0, type: 3}
 --- !u!114 &6025292045245235294
 MonoBehaviour:
   m_ObjectHideFlags: 0

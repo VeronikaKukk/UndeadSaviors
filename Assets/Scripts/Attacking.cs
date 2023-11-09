@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using DG.Tweening;
+using TMPro;
 
 public class Attacking : MonoBehaviour
 {
@@ -24,6 +26,7 @@ public class Attacking : MonoBehaviour
     private int MaxUnitsAttackingAtOnce;
 
     public AttackRange CurrentUnitAttackRange;
+    public GameObject CombatTextPrefab;
 
     private List<Health> targetsInRange = new List<Health>();
     private List<Health> currentTargets = new List<Health>();
@@ -109,6 +112,12 @@ public class Attacking : MonoBehaviour
                     if (target != null)
                     {
                         target.CurrentHealth -= AttackDamage;
+
+                        GameObject combatText = Instantiate(CombatTextPrefab,new Vector3(target.transform.position.x+ UnityEngine.Random.Range(-0.5f,0.5f), target.transform.position.y+ UnityEngine.Random.Range(-0.5f, 0.5f), target.transform.position.z), Quaternion.identity);
+                        combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "-" + AttackDamage;
+                        TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
+                        combatText.transform.DOScale(combatText.transform.localScale*0.5f, 0.5f).OnComplete(tweenCallback);
+
                         if (target.UnitData.TeamName == "Plant" && target.transform.localScale.magnitude > minSize.magnitude)// if unit that takes damage is plant then change plant object size
                         {
                             target.transform.localScale = new Vector3(target.transform.localScale.x - 0.01f * AttackDamage, target.transform.localScale.y - 0.01f * AttackDamage, target.transform.localScale.z - 0.01f * AttackDamage);
