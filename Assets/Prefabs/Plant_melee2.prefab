@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitData: {fileID: 11400000, guid: f0c02b834579d6344a316f0d127a272e, type: 2}
   MaxHealth: 0
+  CombatTextPrefab: {fileID: 8832612426596585339, guid: f5e229f8616d01e47883d9d3e4fe8ef0, type: 3}
   maxSize: {x: 2, y: 2, z: 2}
 --- !u!50 &810700441480846761
 Rigidbody2D:

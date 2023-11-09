@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -10,6 +12,8 @@ public class Health : MonoBehaviour
     public float MaxHealth;
     private int CurrencyAmountOnDeath;
     public event Action<float, float> OnHealthChanged;
+    public GameObject CombatTextPrefab;
+
 
     public Vector3 maxSize = new Vector3(2f, 2f, 2f);
 
@@ -104,6 +108,7 @@ public class Health : MonoBehaviour
         {
             MaxHealth += health;
             CurrentHealth += health;
+            ShowHealthText(health);
         }
     }
 
@@ -116,6 +121,15 @@ public class Health : MonoBehaviour
             MaxHealth += 2;
             CurrentHealth += 2;
             CurrencyAmountOnDeath += 2;
+            ShowHealthText(2);
         }
+    }
+
+    private void ShowHealthText(float health) {
+        GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.y + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.z), Quaternion.identity);
+        combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + health;
+        combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
+        TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
+        combatText.transform.DOScale(combatText.transform.localScale * 0.5f, 0.5f).OnComplete(tweenCallback);
     }
 }

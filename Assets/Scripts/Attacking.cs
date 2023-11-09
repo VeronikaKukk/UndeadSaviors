@@ -80,6 +80,11 @@ public class Attacking : MonoBehaviour
         if (gameObject.name.StartsWith(unitName))
         {
             AttackDamage += damage;
+            GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.y + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.z), Quaternion.identity);
+            combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + damage;
+            combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
+            TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
+            combatText.transform.DOScale(combatText.transform.localScale * 0.5f, 0.5f).OnComplete(tweenCallback);
         }
     }
 
@@ -88,6 +93,11 @@ public class Attacking : MonoBehaviour
         if (gameObject.name.StartsWith(unitName))
         {
             AttackSpeed += attackSpeed;
+            GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.y + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.z), Quaternion.identity);
+            combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + attackSpeed;
+            combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
+            TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
+            combatText.transform.DOScale(combatText.transform.localScale * 0.5f, 0.5f).OnComplete(tweenCallback);
         }
     }
 
@@ -115,6 +125,7 @@ public class Attacking : MonoBehaviour
 
                         GameObject combatText = Instantiate(CombatTextPrefab,new Vector3(target.transform.position.x+ UnityEngine.Random.Range(-0.5f,0.5f), target.transform.position.y+ UnityEngine.Random.Range(-0.5f, 0.5f), target.transform.position.z), Quaternion.identity);
                         combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "-" + AttackDamage;
+                        combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.red;
                         TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
                         combatText.transform.DOScale(combatText.transform.localScale*0.5f, 0.5f).OnComplete(tweenCallback);
 
