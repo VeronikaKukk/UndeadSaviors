@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject MainMenuObject;
     public GameObject LevelPanel;
     public LevelCard LevelCardPrefab;
+    public GameObject OptionsPanel;
 
     public List<LevelData> Levels;
     public LevelData selectedLevel;
