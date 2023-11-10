@@ -15,20 +15,20 @@ MonoBehaviour:
   LevelName: Level 2
   SceneName: MainScene
   Gametime: 91
-  StartingMoney: 50
+  StartingMoney: 100
   Plants:
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
   - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
+  - {fileID: 11400000, guid: f0c02b834579d6344a316f0d127a272e, type: 2}
   - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
   - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
   - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
-  - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
-  - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
+  - {fileID: 11400000, guid: f0c02b834579d6344a316f0d127a272e, type: 2}
   - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
-  - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
+  - {fileID: 11400000, guid: f0c02b834579d6344a316f0d127a272e, type: 2}
   - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
   - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
