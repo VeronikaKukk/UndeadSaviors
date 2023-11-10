@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
     public event Action<float, float> OnHealthChanged;
     public GameObject CombatTextPrefab;
 
+    public GameObject DeathParticlePrefab;
 
     public Vector3 maxSize = new Vector3(2f, 2f, 2f);
 
@@ -31,6 +32,9 @@ public class Health : MonoBehaviour
             currentHealth = Mathf.Clamp(value, 0, MaxHealth);
             if (currentHealth <= 0 && UnitData.TeamName == "Zombie") // if zombie dies, just remove it from board
             {
+                // spawn DeathParticle
+                GameObject deathParticle = GameObject.Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity, null);
+                deathParticle.GetComponent<ParticleSystem>().Play();
                 Destroy(gameObject);
             }
             else if (currentHealth <= 0 && UnitData.TeamName == "Plant") // if plant dies, give money and potion and remove it from board
@@ -58,7 +62,11 @@ public class Health : MonoBehaviour
                         collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[2], transform.position, Quaternion.identity, null);
                     }
                 }
+                // spawn DeathParticle
+                GameObject deathParticle = GameObject.Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity, null);
+                deathParticle.GetComponent<ParticleSystem>().Play();
                 Destroy(gameObject);
+
             }
             OnHealthChanged?.Invoke(currentHealth, MaxHealth);
 

@@ -122,6 +122,7 @@ MonoBehaviour:
   UnitData: {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
   MaxHealth: 0
   CombatTextPrefab: {fileID: 8832612426596585339, guid: f5e229f8616d01e47883d9d3e4fe8ef0, type: 3}
+  DeathParticlePrefab: {fileID: 2885851884092767682, guid: a0e88f65babf21b4c82de2ad240b1a99, type: 3}
   maxSize: {x: 2, y: 2, z: 2}
 --- !u!50 &4566825454909306845
 Rigidbody2D:

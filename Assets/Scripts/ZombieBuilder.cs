@@ -12,6 +12,8 @@ public class ZombieBuilder : MonoBehaviour
     public AudioClipGroup ClickOnShopButtonActiveAudio;
     public AudioClipGroup ClickOnShopButtonInactiveAudio;
 
+    public GameObject SpawnParticlePrefab;
+
     private BoxCollider2D startArea;
 
     private ShopData currentZombieData;
@@ -91,6 +93,10 @@ public class ZombieBuilder : MonoBehaviour
 
         Events.SetMoney(Events.GetMoney() - currentZombieData.Price);
         GameObject zombie = GameObject.Instantiate(currentZombieData.ZombiePrefab, transform.position, Quaternion.identity, null);
+        // spawnparticles
+        GameObject spawnParticle = GameObject.Instantiate(SpawnParticlePrefab, transform.position, Quaternion.identity, null);
+        spawnParticle.GetComponent<ParticleSystem>().Play();
+
         ZombieFactory.Instance.ApplyPotionsOnUnit(zombie, currentZombieData.Name);
         gameObject.SetActive(false);
     }
