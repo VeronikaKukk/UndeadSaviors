@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject MainMenuObject;
     public GameObject LevelPanel;
     public LevelCard LevelCardPrefab;
-    public GameObject OptionsPanel;
+    public GameObject OptionsMenuObject;
 
     public List<LevelData> Levels;
     public LevelData selectedLevel;
@@ -48,5 +48,11 @@ public class MainMenu : MonoBehaviour
     public void StartGameButton() {
         MainMenuObject.SetActive(false);
         LevelChooserObject.SetActive(true);
+    }
+
+    public void OptionsMenuButtonPressed()
+    {
+        MainMenuObject.SetActive(false);
+        OptionsMenuObject.SetActive(true);
     }
 }
