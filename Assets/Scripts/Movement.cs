@@ -7,7 +7,6 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float MovementSpeed;
-    public GameObject CombatTextPrefab;
 
     private void Awake()
     {
@@ -29,13 +28,6 @@ public class Movement : MonoBehaviour
     {
         if(gameObject.name.StartsWith(unitName)) { 
             MovementSpeed += speed;
-
-            GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.y + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.z), Quaternion.identity);
-            combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + speed;
-            combatText.transform.Find("Speed").gameObject.SetActive(true);
-            combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
-            TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
-            combatText.transform.DOScale(combatText.transform.localScale * 0.5f, 0.5f).OnComplete(tweenCallback);
         }
     }
 
