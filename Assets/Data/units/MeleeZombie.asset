@@ -16,8 +16,8 @@ MonoBehaviour:
   DroppablePotions: []
   UnitName: Zombie_melee
   CurrencyAmountOnDeath: 0
-  MaxHealth: 20
-  MovementSpeed: 3
+  MaxHealth: 15
+  MovementSpeed: 2.5
   AttackDamage: 2
   AttackSpeed: 1.5
   AttackRangeSize: 1
