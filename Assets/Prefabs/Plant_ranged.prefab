@@ -107,6 +107,7 @@ MonoBehaviour:
   minSize: {x: 0.2, y: 0.2, z: 0.2}
   CurrentUnitAttackRange: {fileID: 5813190157760787947}
   CombatTextPrefab: {fileID: 8832612426596585339, guid: f5e229f8616d01e47883d9d3e4fe8ef0, type: 3}
+  AttackSound: {fileID: 11400000, guid: 0fea4f54196227c4c96171cfc7c531e1, type: 2}
 --- !u!114 &9009429959965017324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +124,7 @@ MonoBehaviour:
   MaxHealth: 0
   CombatTextPrefab: {fileID: 8832612426596585339, guid: f5e229f8616d01e47883d9d3e4fe8ef0, type: 3}
   DeathParticlePrefab: {fileID: 2885851884092767682, guid: a0e88f65babf21b4c82de2ad240b1a99, type: 3}
+  DeathSound: {fileID: 11400000, guid: 58366efcc91258542bf9ffd1f4460b4b, type: 2}
   maxSize: {x: 2, y: 2, z: 2}
 --- !u!50 &4566825454909306845
 Rigidbody2D:

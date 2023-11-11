@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
     public GameObject CombatTextPrefab;
 
     public GameObject DeathParticlePrefab;
+    public AudioClipGroup DeathSound;
 
     public Vector3 maxSize = new Vector3(2f, 2f, 2f);
 
@@ -33,6 +34,7 @@ public class Health : MonoBehaviour
             if (currentHealth <= 0 && UnitData.TeamName == "Zombie") // if zombie dies, just remove it from board
             {
                 // spawn DeathParticle
+                DeathSound.Play();
                 GameObject deathParticle = GameObject.Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity, null);
                 deathParticle.GetComponent<ParticleSystem>().Play();
                 Destroy(gameObject);
@@ -63,6 +65,7 @@ public class Health : MonoBehaviour
                     }
                 }
                 // spawn DeathParticle
+                DeathSound.Play();
                 GameObject deathParticle = GameObject.Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity, null);
                 deathParticle.GetComponent<ParticleSystem>().Play();
                 Destroy(gameObject);

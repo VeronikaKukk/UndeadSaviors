@@ -27,6 +27,7 @@ public class Attacking : MonoBehaviour
 
     public AttackRange CurrentUnitAttackRange;
     public GameObject CombatTextPrefab;
+    public AudioClipGroup AttackSound;
 
     private List<Health> targetsInRange = new List<Health>();
     private List<Health> currentTargets = new List<Health>();
@@ -122,12 +123,14 @@ public class Attacking : MonoBehaviour
                     if (target != null)
                     {
                         target.CurrentHealth -= AttackDamage;
+                        AttackSound.Play();
 
                         GameObject combatText = Instantiate(CombatTextPrefab,new Vector3(target.transform.position.x+ UnityEngine.Random.Range(-0.5f,0.5f), target.transform.position.y+ UnityEngine.Random.Range(-0.5f, 0.5f), target.transform.position.z), Quaternion.identity);
                         combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "-" + AttackDamage;
                         combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.red;
                         TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
-                        combatText.transform.DOScale(combatText.transform.localScale*0.5f, 0.5f).OnComplete(tweenCallback);
+                        DOTween.Sequence().Append(combatText.transform.DOScale(combatText.transform.localScale * 0.5f, 0.5f)).Append(combatText.transform.DOJump(combatText.transform.position + new Vector3(UnityEngine.Random.Range(-0.5f,0.5f),0.2f,0), UnityEngine.Random.Range(0.01f, 0.1f), 1, 0.5f, false)).OnComplete(tweenCallback);
+                        //combatText.transform.DOScale(combatText.transform.localScale*0.5f, 0.5f).OnComplete(tweenCallback);
 
                         if (target.UnitData.TeamName == "Plant" && target.transform.localScale.magnitude > minSize.magnitude)// if unit that takes damage is plant then change plant object size
                         {

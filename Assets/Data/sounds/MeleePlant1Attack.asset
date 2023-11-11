@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4582f9ddfaaeb7946a8523546847f235, type: 3}
-  m_Name: SpeedPotion
+  m_Script: {fileID: 11500000, guid: fdbdbedf50e6cab4bbcac2d1f5653141, type: 3}
+  m_Name: MeleePlant1Attack
   m_EditorClassIdentifier: 
-  PotionName: Speed
-  BuffAmount: 0.3
-  AliveTime: 10
+  VolumeMin: 1
+  VolumeMax: 1
+  PitchMin: 0.9
+  PicthMax: 1.1
+  Cooldown: 0.15
+  AudioClips:
+  - {fileID: 8300000, guid: 4f8589952e6f746419f3548df231cc22, type: 3}
