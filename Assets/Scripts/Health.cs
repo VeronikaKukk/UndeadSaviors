@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Health : MonoBehaviour
 {
@@ -125,9 +126,10 @@ public class Health : MonoBehaviour
 
     public void Update()
     {
-        if (UnitData.TeamName == "Plant" && lastDamaged + 7.0f < Time.time && transform.localScale.magnitude < maxSize.magnitude)
+        if (UnitData.TeamName == "Plant" && lastDamaged + UnityEngine.Random.Range(7.0f,10.0f) < Time.time && transform.localScale.magnitude < maxSize.magnitude)
         {
             transform.localScale = new Vector3(transform.localScale.x + 0.05f, transform.localScale.y + 0.05f, transform.localScale.z + 0.05f);
+            
             lastDamaged = Time.time;
             MaxHealth += 2;
             CurrentHealth += 2;

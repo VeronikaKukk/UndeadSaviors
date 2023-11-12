@@ -22,7 +22,7 @@ MonoBehaviour:
   MaxHealth: 70
   MovementSpeed: 0
   AttackDamage: 1
-  AttackSpeed: 1
+  AttackSpeed: 0.6
   AttackRangeSize: 1
   UnitPrefab: {fileID: 2398547272694445393, guid: b34af7b73f2aed54eb415a5fbc5823c7, type: 3}
   MaxUnitsAttackingAtOnce: 3

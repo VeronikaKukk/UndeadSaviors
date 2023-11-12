@@ -138,6 +138,8 @@ public class Attacking : MonoBehaviour
                         if (target.UnitData.TeamName == "Plant" && target.transform.localScale.magnitude > minSize.magnitude)// if unit that takes damage is plant then change plant object size
                         {
                             target.transform.localScale = new Vector3(target.transform.localScale.x - 0.01f * AttackDamage, target.transform.localScale.y - 0.01f * AttackDamage, target.transform.localScale.z - 0.01f * AttackDamage);
+                            var targetAttackRange = target.transform.Find("AttackRange");
+                            targetAttackRange.localScale = new Vector3(targetAttackRange.localScale.x + 0.01f * AttackDamage, targetAttackRange.localScale.y + 0.01f * AttackDamage, targetAttackRange.localScale.z + 0.01f * AttackDamage);
                         }
                     }
                 }               
