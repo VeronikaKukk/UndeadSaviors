@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioSource musicSource, sfxSource;
     [SerializeField] private AudioClip[] MusicSounds, SfxSounds;
 
@@ -28,7 +30,7 @@ public class AudioManager : MonoBehaviour
 
     public void ChangeMasterVolume(float value)
     {
-        AudioListener.volume = value;
+        audioMixer.SetFloat("masterVolume", Mathf.Log10(value) * 20); // converting since audiomixer uses dB
     }
 
 
