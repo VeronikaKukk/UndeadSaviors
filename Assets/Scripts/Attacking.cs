@@ -48,7 +48,11 @@ public class Attacking : MonoBehaviour
         AttackDamage = currentUnitHealth.UnitData.AttackDamage;
         AttackRangeSize = currentUnitHealth.UnitData.AttackRangeSize;
         AttackSpeed = currentUnitHealth.UnitData.AttackSpeed;
+
         CurrentUnitAttackRange.GetComponent<CircleCollider2D>().radius = AttackRangeSize;
+        var attackRangeVisual = CurrentUnitAttackRange.transform.Find("AttackRangeVisual");
+        // shown a little bigger because then it is more logical to player (they cant see pixels)
+        attackRangeVisual.localScale = new Vector3(AttackRangeSize*2+0.3f, AttackRangeSize*2 + 0.3f, AttackRangeSize * 2 + 0.3f);
         MaxUnitsAttackingAtOnce = currentUnitHealth.UnitData.MaxUnitsAttackingAtOnce;
         NextAttackTime = Time.time;
     }
@@ -160,6 +164,24 @@ public class Attacking : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnMouseEnter()
+    {
+        var attackRangeVisual = CurrentUnitAttackRange.transform.Find("AttackRangeVisual");
+        if(attackRangeVisual != null)
+        {
+            attackRangeVisual.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        var attackRangeVisual = CurrentUnitAttackRange.transform.Find("AttackRangeVisual");
+        if(attackRangeVisual != null)
+        {
+            attackRangeVisual.gameObject.SetActive(false);
+        }
     }
 
     private Vector2 GetDirection() {
