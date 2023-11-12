@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 5523782261973835021}
   - component: {fileID: 1652023722640494305}
   - component: {fileID: 3847767227698529165}
+  - component: {fileID: -442199217144163358}
   m_Layer: 0
   m_Name: Zombie_melee
   m_TagString: Unit
@@ -423,14 +424,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5654820010355793823}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -487,6 +488,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!58 &-442199217144163358
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654820010355793823}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 247
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 247
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 247
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 247
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.007065445, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.21648422
 --- !u!1 &7511886534151684856
 GameObject:
   m_ObjectHideFlags: 0
