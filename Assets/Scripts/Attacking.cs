@@ -43,7 +43,6 @@ public class Attacking : MonoBehaviour
         if (currentUnitHealth.UnitData.TeamName != "Plant")
         {
             movement = GetComponent<Movement>();
-            direction = GetDirection();
         }
 
         AttackDamage = currentUnitHealth.UnitData.AttackDamage;
@@ -52,6 +51,13 @@ public class Attacking : MonoBehaviour
         CurrentUnitAttackRange.GetComponent<CircleCollider2D>().radius = AttackRangeSize;
         MaxUnitsAttackingAtOnce = currentUnitHealth.UnitData.MaxUnitsAttackingAtOnce;
         NextAttackTime = Time.time;
+    }
+    private void Start()
+    {
+        if (currentUnitHealth.UnitData.TeamName != "Plant")
+        {
+            direction = GetDirection();
+        }
     }
 
     private void OnDestroy()
