@@ -491,7 +491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8268446229960292112}
   - component: {fileID: 2715987593040209300}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AttackRangeVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
