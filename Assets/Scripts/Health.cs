@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
     public Vector3 maxSize = new Vector3(2f, 2f, 2f);
 
     private float lastDamaged;
+    private float healthRegenWaitTime;
 
     private float currentHealth;
     [HideInInspector]
@@ -86,6 +87,7 @@ public class Health : MonoBehaviour
         currentHealth = MaxHealth;
         Events.OnAddMaxHealthValue += AddMaxHealth;
         lastDamaged = Time.time;
+        healthRegenWaitTime = UnityEngine.Random.Range(8.0f,15.0f);
     }
 
     public void Start() // Add characters to EntityController
@@ -126,7 +128,7 @@ public class Health : MonoBehaviour
 
     public void Update()
     {
-        if (UnitData.TeamName == "Plant" && lastDamaged + UnityEngine.Random.Range(7.0f,10.0f) < Time.time && transform.localScale.magnitude < maxSize.magnitude)
+        if (UnitData.TeamName == "Plant" && lastDamaged + healthRegenWaitTime < Time.time && transform.localScale.magnitude < maxSize.magnitude)
         {
             transform.localScale = new Vector3(transform.localScale.x + 0.05f, transform.localScale.y + 0.05f, transform.localScale.z + 0.05f);
             
@@ -135,6 +137,7 @@ public class Health : MonoBehaviour
             CurrentHealth += 2;
             CurrencyAmountOnDeath += 2;
             ShowHealthText(2);
+            healthRegenWaitTime = UnityEngine.Random.Range(8.0f, 15.0f);
         }
     }
 
