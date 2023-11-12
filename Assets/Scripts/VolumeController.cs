@@ -6,13 +6,14 @@ using UnityEngine.Audio;
 
 public class VolumeSlider : MonoBehaviour
 {
-    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private Slider musicVolumeSlider, sfxVolumeSlider;
     [SerializeField] private bool toggleMusic, toggleSfx; // for the mute button(s) 
 
     private void Start()
     {
-        AudioManager.Instance.ChangeMasterVolume(volumeSlider.value); // starting with default value
-        volumeSlider.onValueChanged.AddListener(value => AudioManager.Instance.ChangeMasterVolume(value));
+        AudioManager.Instance.ChangeMasterVolume(0.5f); // starting with default value
+        musicVolumeSlider.onValueChanged.AddListener(value => AudioManager.Instance.ChangeMusicVolume(value));
+        sfxVolumeSlider.onValueChanged.AddListener(value => AudioManager.Instance.ChangeSfxVolume(value));
     }
 
     public void Toggle()

@@ -33,6 +33,16 @@ public class AudioManager : MonoBehaviour
         audioMixer.SetFloat("masterVolume", Mathf.Log10(value) * 20); // converting since audiomixer uses dB
     }
 
+    public void ChangeMusicVolume(float value)
+    {
+        audioMixer.SetFloat("musicVolume", Mathf.Log10(value) * 20); // converting since audiomixer uses dB
+    }
+
+    public void ChangeSfxVolume(float value)
+    {
+        audioMixer.SetFloat("sfxVolume", Mathf.Log10(value) * 20); // converting since audiomixer uses dB
+    }
+
 
     public void ToggleMusic() // muting and un-muting music
     {
