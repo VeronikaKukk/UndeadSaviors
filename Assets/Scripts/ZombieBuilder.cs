@@ -14,7 +14,7 @@ public class ZombieBuilder : MonoBehaviour
 
     public GameObject SpawnParticlePrefab;
 
-    private BoxCollider2D startArea;
+    private List<BoxCollider2D> startAreas = new List<BoxCollider2D>();
 
     private ShopData currentZombieData;
     private bool decreased;
@@ -27,7 +27,16 @@ public class ZombieBuilder : MonoBehaviour
 
     private void Start()
     {
-        startArea = GameObject.Find("StartArea").GetComponent<BoxCollider2D>();
+        //startArea = GameObject.Find("StartArea").GetComponent<BoxCollider2D>(); // old solution for single startArea
+
+        BoxCollider2D[] allBoxColliders = GameObject.FindObjectsOfType<BoxCollider2D>();
+        foreach (BoxCollider2D area in allBoxColliders)
+        {
+            if (area.gameObject.name.Contains("StartArea"))
+            {
+                startAreas.Add(area);
+            }
+        }
     }
 
     private void OnDestroy()
@@ -41,14 +50,26 @@ public class ZombieBuilder : MonoBehaviour
         mousePos.z = 0;
         transform.position = mousePos;
 
-        if (startArea.OverlapPoint(mousePos))
+        bool isOverlapping = false;
+
+        foreach (BoxCollider2D startArea in startAreas)
+        {
+            if (startArea.OverlapPoint(mousePos))
+            {
+                isOverlapping = true;
+                break;
+            }
+        }
+
+        if (isOverlapping)
         {
             TintSprite(AllowColor);
-        } else
+        }
+        else
         {
             TintSprite(DenyColor);
         }
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             Build(mousePos);
@@ -82,7 +103,18 @@ public class ZombieBuilder : MonoBehaviour
 
     void Build(Vector3 mousePos)
     {
-        if (!startArea.OverlapPoint(mousePos)) 
+        bool isOverlapping = false;
+
+        foreach (BoxCollider2D startArea in startAreas)
+        {
+            if (startArea.OverlapPoint(mousePos))
+            {
+                isOverlapping = true;
+                break;
+            }
+        }
+
+        if (!isOverlapping)
         {
             gameObject.SetActive(false);
             return;
