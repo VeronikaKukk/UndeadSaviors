@@ -31,6 +31,9 @@ public class Attacking : MonoBehaviour
 
     private List<Health> targetsInRange = new List<Health>();
     private List<Health> currentTargets = new List<Health>();
+
+    public Projectile ProjectilePrefab;
+
     private void Awake()
     {
         Events.OnAddDamageValue += AddDamage;
@@ -134,6 +137,10 @@ public class Attacking : MonoBehaviour
                 foreach (var target in currentTargets) {
                     if (target != null)
                     {
+                        if (currentUnitHealth.UnitData.UnitName.Equals("Zombie_ranged") || currentUnitHealth.UnitData.UnitName.Equals("Plant_ranged"))
+                        {
+                            ProjectileShooting.Instance.Shoot(ProjectilePrefab, target, gameObject);
+                        }
                         target.CurrentHealth -= AttackDamage;
                         AttackSound.Play();
 

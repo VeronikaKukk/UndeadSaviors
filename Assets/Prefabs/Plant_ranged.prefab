@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7304077728887859043}
   - component: {fileID: 871296214552435652}
   - component: {fileID: 9009429959965017324}
+  - component: {fileID: -5864890697506895901}
   - component: {fileID: 4566825454909306845}
   - component: {fileID: 6753070140800277437}
   m_Layer: 0
@@ -108,6 +109,7 @@ MonoBehaviour:
   CurrentUnitAttackRange: {fileID: 5813190157760787947}
   CombatTextPrefab: {fileID: 8832612426596585339, guid: f5e229f8616d01e47883d9d3e4fe8ef0, type: 3}
   AttackSound: {fileID: 11400000, guid: 0fea4f54196227c4c96171cfc7c531e1, type: 2}
+  ProjectilePrefab: {fileID: 2120347906506951909, guid: fa8a3b2fdf5b94f4c8faf7367a2b5404, type: 3}
 --- !u!114 &9009429959965017324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +128,18 @@ MonoBehaviour:
   DeathParticlePrefab: {fileID: 2885851884092767682, guid: a0e88f65babf21b4c82de2ad240b1a99, type: 3}
   DeathSound: {fileID: 11400000, guid: 58366efcc91258542bf9ffd1f4460b4b, type: 2}
   maxSize: {x: 2, y: 2, z: 2}
+--- !u!114 &-5864890697506895901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5579698584588843383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4be83cd0a15b064b8a37cd6ac411990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &4566825454909306845
 Rigidbody2D:
   serializedVersion: 4
