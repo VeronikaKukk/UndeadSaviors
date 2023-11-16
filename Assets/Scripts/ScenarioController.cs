@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,12 +19,16 @@ public class ScenarioController : MonoBehaviour
 
     public List<GameObject> SpawnPoints;
 
+    private bool levelPaused = false;
+    public TextMeshProUGUI PauseButtonText;
+    public Button pauseButton;
+
     private void Awake()
     {
         currentScene = SceneManager.GetActiveScene();
         Events.OnEndLevel += OnEndLevel;
         Events.OnStartLevel += OnStartLevel;
-
+        PauseButtonText.text = "II";
     }
 
     private void Start()
@@ -56,6 +60,22 @@ public class ScenarioController : MonoBehaviour
                 levelRunning = false;
                 Events.EndLevel(true);
             }
+        }
+    }
+
+    public void PauseLevel()
+    {
+        if (levelPaused)
+        {
+            Time.timeScale = 1;
+            PauseButtonText.text = "II";
+            levelPaused = false;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            PauseButtonText.text = "►";
+            levelPaused = true;
         }
     }
 
