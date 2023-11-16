@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4792251981624807285}
   - component: {fileID: 3250436575830550166}
   - component: {fileID: 5937834491096519452}
+  - component: {fileID: 8658624891000648683}
   - component: {fileID: 810700441480846761}
   - component: {fileID: 8129486474754774997}
   m_Layer: 0
@@ -127,6 +128,19 @@ MonoBehaviour:
   DeathParticlePrefab: {fileID: 2885851884092767682, guid: a0e88f65babf21b4c82de2ad240b1a99, type: 3}
   DeathSound: {fileID: 11400000, guid: 58366efcc91258542bf9ffd1f4460b4b, type: 2}
   maxSize: {x: 2, y: 2, z: 2}
+--- !u!114 &8658624891000648683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2398547272694445393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d747bf1bd582d1940a05c6b9a7e5faf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticlesPrefab: {fileID: 1299766435147643458, guid: 0962f5bb1dc79ab449b26d33442e54e9, type: 3}
 --- !u!50 &810700441480846761
 Rigidbody2D:
   serializedVersion: 4

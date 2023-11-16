@@ -35,6 +35,8 @@ public class Attacking : MonoBehaviour
     public Projectile ProjectilePrefab;
     public static Attacking Instance;
 
+    private Particles particleEffects;
+
     private void Awake()
     {
         Instance = this;
@@ -66,6 +68,10 @@ public class Attacking : MonoBehaviour
         if (currentUnitHealth.UnitData.TeamName != "Plant")
         {
             direction = GetDirection();
+        }
+        if (currentUnitHealth.UnitData.UnitName == "Plant_melee2")
+        {
+            particleEffects = GetComponent<Particles>();
         }
     }
 
@@ -147,9 +153,13 @@ public class Attacking : MonoBehaviour
                             projectile.transform.position = firePoint;
                             projectile.Target = target;
                             AttackSound.Play();
-                        }
+                        } 
                         else // for melee fighters
                         {
+                            if (currentUnitHealth.UnitData.UnitName == "Plant_melee2" && particleEffects != null) // for poison cloud plant
+                            {
+                                particleEffects.PlayParticles(transform.position);
+                            }
                             target.CurrentHealth -= AttackDamage;
                             AttackSound.Play();
                             CombatDamageTexts(target);
