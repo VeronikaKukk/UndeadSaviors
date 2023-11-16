@@ -371,6 +371,7 @@ MonoBehaviour:
   CurrentUnitAttackRange: {fileID: 6803470970425785832}
   CombatTextPrefab: {fileID: 8832612426596585339, guid: f5e229f8616d01e47883d9d3e4fe8ef0, type: 3}
   AttackSound: {fileID: 11400000, guid: 0167911bb14efab4ba6a7052d7ec723b, type: 2}
+  ProjectilePrefab: {fileID: 0}
 --- !u!114 &6025292045245235294
 MonoBehaviour:
   m_ObjectHideFlags: 0

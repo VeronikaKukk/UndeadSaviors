@@ -108,6 +108,7 @@ MonoBehaviour:
   CurrentUnitAttackRange: {fileID: 7978208710181257028}
   CombatTextPrefab: {fileID: 8832612426596585339, guid: f5e229f8616d01e47883d9d3e4fe8ef0, type: 3}
   AttackSound: {fileID: 11400000, guid: d018f4ab93b8ffc44bda1ab88d3e1413, type: 2}
+  ProjectilePrefab: {fileID: 0}
 --- !u!114 &5937834491096519452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +183,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.013093233, y: -0.39889407}

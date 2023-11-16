@@ -33,9 +33,11 @@ public class Attacking : MonoBehaviour
     private List<Health> currentTargets = new List<Health>();
 
     public Projectile ProjectilePrefab;
+    public static Attacking Instance;
 
     private void Awake()
     {
+        Instance = this;
         Events.OnAddDamageValue += AddDamage;
         Events.OnAddAttackSpeedValue += AddAttackSpeed;
         CurrentUnitAttackRange.OnEnemyEnteredAttackRange += AddEnemyToTargets;
@@ -137,26 +139,27 @@ public class Attacking : MonoBehaviour
                 foreach (var target in currentTargets) {
                     if (target != null)
                     {
-                        if (currentUnitHealth.UnitData.UnitName.Equals("Zombie_ranged") || currentUnitHealth.UnitData.UnitName.Equals("Plant_ranged"))
+                        if (ProjectilePrefab != null) // for ranged fighters
                         {
-                            ProjectileShooting.Instance.Shoot(ProjectilePrefab, target, gameObject);
+                            Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
+                            projectile.SetShooter(gameObject, AttackDamage, target);
+                            Vector3 firePoint = new Vector3((float)(gameObject.transform.position.x + 0.05), (float)(gameObject.transform.position.y + 0.244), 0);
+                            projectile.transform.position = firePoint;
+                            projectile.Target = target;
+                            AttackSound.Play();
                         }
-                        target.CurrentHealth -= AttackDamage;
-                        AttackSound.Play();
-
-                        GameObject combatText = Instantiate(CombatTextPrefab,new Vector3(target.transform.position.x+ UnityEngine.Random.Range(-0.5f,0.5f), target.transform.position.y+ UnityEngine.Random.Range(-0.5f, 0.5f), target.transform.position.z), Quaternion.identity);
-                        combatText.transform.Find("combat_text").GetComponent<TextMeshPro>().text = "-" + AttackDamage;
-                        combatText.transform.Find("Health").gameObject.SetActive(true);
-                        combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.red;
-                        TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
-                        DOTween.Sequence().Append(combatText.transform.DOScale(combatText.transform.localScale * 0.5f, 0.5f)).Append(combatText.transform.DOJump(combatText.transform.position + new Vector3(UnityEngine.Random.Range(-0.5f,0.5f),0.2f,0), UnityEngine.Random.Range(0.01f, 0.1f), 1, 0.5f, false)).OnComplete(tweenCallback);
-                        //combatText.transform.DOScale(combatText.transform.localScale*0.5f, 0.5f).OnComplete(tweenCallback);
-
+                        else // for melee fighters
+                        {
+                            target.CurrentHealth -= AttackDamage;
+                            AttackSound.Play();
+                            CombatDamageTexts(target);
+                        }
                         if (target.UnitData.TeamName == "Plant" && target.transform.localScale.magnitude > minSize.magnitude)// if unit that takes damage is plant then change plant object size
                         {
                             target.transform.localScale = new Vector3(target.transform.localScale.x - 0.01f * AttackDamage, target.transform.localScale.y - 0.01f * AttackDamage, target.transform.localScale.z - 0.01f * AttackDamage);
                             var targetAttackRange = target.transform.Find("AttackRange");
                             targetAttackRange.localScale = new Vector3(targetAttackRange.localScale.x + 0.01f * AttackDamage, targetAttackRange.localScale.y + 0.01f * AttackDamage, targetAttackRange.localScale.z + 0.01f * AttackDamage);
+                        
                         }
                     }
                 }               
@@ -171,6 +174,17 @@ public class Attacking : MonoBehaviour
             }
         }
 
+    }
+
+    public void CombatDamageTexts(Health target)
+    {
+        GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(target.transform.position.x + UnityEngine.Random.Range(-0.5f, 0.5f), target.transform.position.y + UnityEngine.Random.Range(-0.5f, 0.5f), target.transform.position.z), Quaternion.identity);
+        combatText.transform.Find("combat_text").GetComponent<TextMeshPro>().text = "-" + AttackDamage;
+        combatText.transform.Find("Health").gameObject.SetActive(true);
+        combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.red;
+        TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
+        DOTween.Sequence().Append(combatText.transform.DOScale(combatText.transform.localScale * 0.5f, 0.5f)).Append(combatText.transform.DOJump(combatText.transform.position + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 0.2f, 0), UnityEngine.Random.Range(0.01f, 0.1f), 1, 0.5f, false)).OnComplete(tweenCallback);
+        //combatText.transform.DOScale(combatText.transform.localScale*0.5f, 0.5f).OnComplete(tweenCallback);
     }
 
     private void OnMouseEnter()
