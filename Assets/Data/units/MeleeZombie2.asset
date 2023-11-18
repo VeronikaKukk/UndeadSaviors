@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamName: Zombie
   DroppablePotions: []
-  UnitName: Zombie_melee
+  UnitName: Zombie_fast
   CurrencyAmountOnDeath: 0
   MaxHealth: 5
   MovementSpeed: 5

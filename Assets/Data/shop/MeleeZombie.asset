@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1441cd0a52f32374f970a1b473e6c492, type: 3}
   m_Name: MeleeZombie
   m_EditorClassIdentifier: 
-  Name: Zombie_melee
+  Name: Zombie_Buffed
   Price: 30
   Icon: {fileID: 21300000, guid: 6c4128ef026444e4abca7a66227e1e41, type: 3}
   ZombiePrefab: {fileID: 5654820010355793823, guid: 5f9bef6ea6ec9e844b4b541be3c3bf93, type: 3}

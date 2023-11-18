@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 3847767227698529165}
   - component: {fileID: -442199217144163358}
   m_Layer: 0
-  m_Name: Zombie_melee
+  m_Name: Zombie_Buffed
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

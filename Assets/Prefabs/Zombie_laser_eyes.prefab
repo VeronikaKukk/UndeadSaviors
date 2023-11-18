@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 5500253778724455777}
   - component: {fileID: 4666161735388713457}
   m_Layer: 0
-  m_Name: Zombie_ranged
+  m_Name: Zombie_laser_eyes
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
