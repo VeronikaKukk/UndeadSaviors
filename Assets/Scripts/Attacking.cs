@@ -37,6 +37,8 @@ public class Attacking : MonoBehaviour
 
     private Particles particleEffects;
 
+    private Animator animator;
+
     private void Awake()
     {
         Instance = this;
@@ -64,12 +66,20 @@ public class Attacking : MonoBehaviour
         NextAttackTime = Time.time;
 
         particleEffects = GetComponent<Particles>();
+        animator = GetComponent<Animator>();
     }
     private void Start()
     {
         if (currentUnitHealth.UnitData.TeamName != "Plant")
         {
             direction = GetDirection();
+        }
+        
+        if(animator != null)
+        {
+            String currentStateName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+            float randomNormalizedTime = UnityEngine.Random.Range(0f, 1f);
+            animator.Play(currentStateName, -1, randomNormalizedTime);
         }
     }
 
