@@ -198,7 +198,7 @@ public class Attacking : MonoBehaviour
     {
         GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(target.transform.position.x + UnityEngine.Random.Range(-0.5f, 0.5f), target.transform.position.y + UnityEngine.Random.Range(-0.5f, 0.5f), target.transform.position.z), Quaternion.identity);
         combatText.transform.Find("combat_text").GetComponent<TextMeshPro>().text = "-" + AttackDamage;
-        combatText.transform.Find("Health").gameObject.SetActive(true);
+        combatText.transform.Find("HealthNeg").gameObject.SetActive(true);
         combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.red;
         TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
         DOTween.Sequence().Append(combatText.transform.DOScale(combatText.transform.localScale * 0.5f, 0.5f)).Append(combatText.transform.DOJump(combatText.transform.position + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 0.2f, 0), UnityEngine.Random.Range(0.01f, 0.1f), 1, 0.5f, false)).OnComplete(tweenCallback);
