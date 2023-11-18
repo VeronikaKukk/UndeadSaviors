@@ -62,16 +62,14 @@ public class Attacking : MonoBehaviour
         attackRangeVisual.localScale = new Vector3(AttackRangeSize*2+0.3f, AttackRangeSize*2 + 0.3f, AttackRangeSize * 2 + 0.3f);
         MaxUnitsAttackingAtOnce = currentUnitHealth.UnitData.MaxUnitsAttackingAtOnce;
         NextAttackTime = Time.time;
+
+        particleEffects = GetComponent<Particles>();
     }
     private void Start()
     {
         if (currentUnitHealth.UnitData.TeamName != "Plant")
         {
             direction = GetDirection();
-        }
-        if (currentUnitHealth.UnitData.UnitName == "Plant_melee2")
-        {
-            particleEffects = GetComponent<Particles>();
         }
     }
 
@@ -156,7 +154,7 @@ public class Attacking : MonoBehaviour
                         } 
                         else // for melee fighters
                         {
-                            if (currentUnitHealth.UnitData.UnitName == "Plant_melee2" && particleEffects != null) // for poison cloud plant
+                            if (particleEffects != null) // for poison cloud plant
                             {
                                 particleEffects.PlayParticles(transform.position);
                             }
