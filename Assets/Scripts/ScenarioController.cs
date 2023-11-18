@@ -22,6 +22,7 @@ public class ScenarioController : MonoBehaviour
     private bool levelPaused = false;
     public TextMeshProUGUI PauseButtonText;
     public Button pauseButton;
+    public LevelData currentLevelData;
 
     private void Awake()
     {
@@ -80,6 +81,7 @@ public class ScenarioController : MonoBehaviour
     }
 
     public void OnStartLevel(LevelData data) {
+        currentLevelData = data;
         Events.SetMoney(data.StartingMoney);
         CountdownTimer.Instance.StartTime = data.Gametime;
 
@@ -95,6 +97,39 @@ public class ScenarioController : MonoBehaviour
 
         SpawnEnemies(data.Plants);
     }
+
+    public void ResetLevel() {
+        // remove all enemies and zombies and potions and potion effects from table
+        foreach (var i in EntityController.Instance.PlantCharacters) {
+            Destroy(i.gameObject);
+        }
+        foreach (var i in EntityController.Instance.ZombieCharacters)
+        {
+            Destroy(i.gameObject);
+        }
+        foreach (var i in EntityController.Instance.Potions)
+        {
+            Destroy(i.gameObject);
+        }
+        ZombieFactory.Instance.Awake();
+        CountdownTimer.Instance.ResetTimer(currentLevelData.Gametime);
+        levelRunning = true;
+        Events.SetMoney(currentLevelData.StartingMoney);
+
+        for (int i = 0; i < ShopPanel.transform.childCount; i++)
+        {
+            Destroy(ShopPanel.transform.GetChild(i).gameObject);
+        }
+
+        foreach (var zombie in currentLevelData.Zombies)
+        {
+            Shop btn = Instantiate<Shop>(ZombieButtonPrefab, ShopPanel.transform);
+            btn.ShopData = zombie;
+        }
+
+        SpawnEnemies(currentLevelData.Plants);
+    }
+
     public void SpawnEnemies(List<UnitData> plants) {
         List<GameObject> keys = SpawnPoints;
         var rnd = new System.Random();
@@ -121,12 +156,16 @@ public class ScenarioController : MonoBehaviour
         }
     }
 
-        public void ReplayButton()
-        {
-            SceneManager.LoadScene(currentScene.name);
-        }
+    public void ReplayButton()
+    {
+            ResetLevel();
+        // hide endpanel
+        EndGamePanel.SetActive(false);
 
-        public void LevelChooserButton()
+        //SceneManager.LoadScene(currentScene.name);
+    }
+
+    public void LevelChooserButton()
         {
             SceneManager.LoadScene("StartScene");
 

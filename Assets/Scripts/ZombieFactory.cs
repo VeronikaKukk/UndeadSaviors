@@ -7,38 +7,34 @@ public class ZombieFactory : MonoBehaviour
 
     public static ZombieFactory Instance;
     public GameObject[] UnitTypes;
-    private Dictionary<string, GameObject> unitNamesAndPrefabs;
-    private Dictionary<GameObject, List<PotionData>> appliedPotionsOnUnit;
+    private Dictionary<string, List<PotionData>> appliedPotionsOnUnit;
 
     public void Awake()
     {
-        unitNamesAndPrefabs = new Dictionary<string, GameObject>();
-        appliedPotionsOnUnit = new Dictionary<GameObject, List<PotionData>>();
+        appliedPotionsOnUnit = new Dictionary<string, List<PotionData>>();
 
         foreach (var unit in UnitTypes)
         {
-            unitNamesAndPrefabs.Add(unit.name, unit);
-            appliedPotionsOnUnit.Add(unit, new List<PotionData>());
+            appliedPotionsOnUnit.Add(unit.name, new List<PotionData>());
         }
 
         Instance = this;
 
         Events.OnApplyPotion += ApplyPotion;
     }
+
     void ApplyPotion(string unitName, PotionData potionData)
     {
-        if (unitNamesAndPrefabs.ContainsKey(unitName))
+        if (appliedPotionsOnUnit.ContainsKey(unitName))
         {
-            GameObject prefab = unitNamesAndPrefabs[unitName];
-            appliedPotionsOnUnit[prefab].Add(potionData);
+            appliedPotionsOnUnit[unitName].Add(potionData);
         }
     }
-    public GameObject ApplyPotionsOnUnit(GameObject zombie, string unitName)
+    public void ApplyPotionsOnUnit(GameObject zombie, string unitName)
     {
-        if (unitNamesAndPrefabs.ContainsKey(unitName))
+        if (appliedPotionsOnUnit.ContainsKey(unitName))
         {
-            GameObject unitPrefab = unitNamesAndPrefabs[unitName];
-            List<PotionData> appliedPotions = appliedPotionsOnUnit[unitPrefab];
+            List<PotionData> appliedPotions = appliedPotionsOnUnit[unitName];
             foreach (PotionData potionData in appliedPotions)
             {
                 if (potionData.PotionName == "Damage")
@@ -65,13 +61,8 @@ public class ZombieFactory : MonoBehaviour
                     attackspeed.AttackSpeed += potionData.BuffAmount;
                 }
             }
-
-            return unitPrefab;
         }
-        return null;
-
     }
-
     public void OnDestroy()
     {
         Events.OnApplyPotion -= ApplyPotion;

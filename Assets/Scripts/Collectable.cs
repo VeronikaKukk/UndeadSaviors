@@ -27,6 +27,11 @@ public class Collectable : MonoBehaviour
 
     private GameObject potionToDestroy;
 
+    public void Awake()
+    {
+        EntityController.Instance.Potions.Add(this);
+    }
+
     private void Start()
     {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
@@ -88,6 +93,7 @@ public class Collectable : MonoBehaviour
         if (PotionData.PotionName.Equals("Health") && !images[1].enabled)
         {
             ApplyPotionAudio.Play();
+            EntityController.Instance.Potions.Remove(this);
 
             Events.ApplyPotion(zombieType, PotionData);
 
@@ -98,6 +104,7 @@ public class Collectable : MonoBehaviour
         else if (PotionData.PotionName.Equals("Speed") && !images[2].enabled)
         {
             ApplyPotionAudio.Play();
+            EntityController.Instance.Potions.Remove(this);
 
             Events.ApplyPotion(zombieType, PotionData);
 
@@ -109,6 +116,7 @@ public class Collectable : MonoBehaviour
         else if (PotionData.PotionName.Equals("Damage") && !images[3].enabled)
         {
             ApplyPotionAudio.Play();
+            EntityController.Instance.Potions.Remove(this);
 
             Events.ApplyPotion(zombieType, PotionData);
 
@@ -176,6 +184,7 @@ public class Collectable : MonoBehaviour
             if (isVisible && aliveTimeLeft <= 0)
             {
                 aliveTimeLeft = 0;
+                EntityController.Instance.Potions.Remove(this);
                 Destroy(gameObject); // if the aliveTimeLeft is 0 then remove potion from board
             }
         }

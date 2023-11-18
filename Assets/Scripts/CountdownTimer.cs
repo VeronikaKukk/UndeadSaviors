@@ -10,7 +10,7 @@ public class CountdownTimer : MonoBehaviour
     public float StartTime = 300.0f; // 5 minutes in seconds
     public float currentTime;
 
-    private bool isGameRunning;
+    public bool isGameRunning;
 
     public void Awake()
     {
@@ -23,6 +23,12 @@ public class CountdownTimer : MonoBehaviour
         UpdateTimerDisplay();
         Events.OnEndLevel += OnEndLevel;
 
+    }
+    public void ResetTimer(float gameTime) {
+        StartTime = gameTime;
+        currentTime = StartTime;
+        UpdateTimerDisplay();
+        isGameRunning = true;
     }
 
     void OnEndLevel(bool isWin) {
