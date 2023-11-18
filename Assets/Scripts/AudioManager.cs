@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioSource musicSource, sfxSource;
     [SerializeField] private AudioClip[] MusicSounds, SfxSounds;
+    [SerializeField] private Slider musicVolumeSlider, sfxVolumeSlider, masterVolumeSlider;
+    [SerializeField] private bool toggleMusic, toggleSfx; // for the mute buttons 
 
     private void Awake()
     {   
@@ -23,24 +26,43 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey("MasterVolume"))
+        {
+            audioMixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume"));
+            audioMixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume"));
+            audioMixer.SetFloat("SfxVolume", PlayerPrefs.GetFloat("SfxVolume"));
+        }
+        else {
+            SetSliders();
+        }
+
+
         musicSource.clip = MusicSounds[0];
         musicSource.Play();
     }
 
 
+    void SetSliders()
+    {
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        sfxVolumeSlider.value = PlayerPrefs.GetFloat("SfxVolume");
+        masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+    }
+
+
     public void ChangeMasterVolume(float value)
     {
-        audioMixer.SetFloat("masterVolume", Mathf.Log10(value) * 20); // converting since audiomixer uses dB
+        audioMixer.SetFloat("masterVolume", masterVolumeSlider.value);
     }
 
     public void ChangeMusicVolume(float value)
-    {
-        audioMixer.SetFloat("musicVolume", Mathf.Log10(value) * 20); // converting since audiomixer uses dB
-    }
+        {
+            audioMixer.SetFloat("musicVolume", musicVolumeSlider.value);
+        }
 
     public void ChangeSfxVolume(float value)
     {
-        audioMixer.SetFloat("sfxVolume", Mathf.Log10(value) * 20); // converting since audiomixer uses dB
+        audioMixer.SetFloat("sfxVolume", sfxVolumeSlider.value);
     }
 
 
