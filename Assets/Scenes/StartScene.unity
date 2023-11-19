@@ -1263,22 +1263,12 @@ MonoBehaviour:
   sfxSource: {fileID: 408576000}
   MusicSounds:
   - {fileID: 8300000, guid: f60e766ed24d85d4e95a2b82764c73fb, type: 3}
-  SfxSounds:
-  - {fileID: 8300000, guid: 5eb278238227e9f44b47dae1088bb01f, type: 3}
-  - {fileID: 8300000, guid: 076d8a6eb12401543a9096c73fab2ce8, type: 3}
-  - {fileID: 8300000, guid: 969d0421f1a458745a2202049408a894, type: 3}
-  - {fileID: 8300000, guid: cb065134a19f9d34587eb37f8e57d602, type: 3}
-  - {fileID: 8300000, guid: ed029888f4279ab48bb08d9c89996c85, type: 3}
-  - {fileID: 8300000, guid: c458eb23b81167f45a5a3a5e6ff7dd12, type: 3}
-  - {fileID: 8300000, guid: 87a2829a66d52f844ae66c31157f3e88, type: 3}
-  - {fileID: 8300000, guid: 7b2df37119b7c8a4488c6268fdf5bc5f, type: 3}
-  - {fileID: 8300000, guid: 4f8589952e6f746419f3548df231cc22, type: 3}
-  - {fileID: 8300000, guid: 2113d0f98a630c84b824b25a5a6b3e0b, type: 3}
   musicVolumeSlider: {fileID: 545848372}
   sfxVolumeSlider: {fileID: 1438107200}
   masterVolumeSlider: {fileID: 1043245862}
   toggleMusic: 1
   toggleSfx: 1
+  toggleMaster: 1
 --- !u!4 &292680387
 Transform:
   m_ObjectHideFlags: 0
@@ -3398,7 +3388,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 292680386}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: ToggleSfx
+        m_MethodName: ToggleMaster
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3814,8 +3804,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 74053181}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.9878049, y: 0}
-  m_AnchorMax: {x: 0.9878049, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -47.029, y: 0.0000076294}
   m_SizeDelta: {x: 117.493, y: -18.197}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4970,9 +4960,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1026044276}
   m_Direction: 0
   m_MinValue: -40
-  m_MaxValue: 1
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -6558,7 +6548,7 @@ RectTransform:
   m_Father: {fileID: 1652231510}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.9878049, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
