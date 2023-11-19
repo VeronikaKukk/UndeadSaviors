@@ -253,15 +253,20 @@ public class Attacking : MonoBehaviour
         {
             foreach (Health target in targetsInRange)
             {
-                float dist = Vector2.Distance(target.transform.position, transform.position);
-                targetsWithDist.Add((target, dist));
+                if (target != null) {
+                    float dist = Vector2.Distance(target.transform.position, transform.position);
+                    targetsWithDist.Add((target, dist));
+                }
             }
         }
         else {
             foreach (Health enemy in enemies)
             {
-                float dist = Vector2.Distance(enemy.transform.position, transform.position);
-                targetsWithDist.Add((enemy, dist));
+                if (enemy != null)
+                {
+                    float dist = Vector2.Distance(enemy.transform.position, transform.position);
+                    targetsWithDist.Add((enemy, dist));
+                }
             }
         }
         targetsWithDist.Sort((x, y) => x.Item2.CompareTo(y.Item2));
