@@ -7,6 +7,11 @@ using UnityEngine.UI;
 public class UnitInfoCard : MonoBehaviour
 {
     public TextMeshProUGUI InfoText;
+    public TextMeshProUGUI HealthText;
+    public TextMeshProUGUI AttackSpeedText;
+    public TextMeshProUGUI AttackRangeText;
+    public TextMeshProUGUI MovementSpeedText;
+
     public Image UnitImage;
     public UnitData data;
     public void SetData(UnitData data)
@@ -24,49 +29,65 @@ public class UnitInfoCard : MonoBehaviour
         
         if (data.AttackRangeSize <= 1)
         {
-            attack_range = "Attack range: melee";
+            attack_range = "melee";
         }
         else {
-            attack_range = "Attack range: ranged";
+            attack_range = "ranged";
         }
-
 
         if (data.MovementSpeed <= 1)
         {
-            movement_speed = "Movement Speed: slow";
+            movement_speed = "slow";
+            MovementSpeedText.color = Color.red;
         }
         else if (data.MovementSpeed <= 2)
         {
-            movement_speed = "Movement Speed: medium";
+            movement_speed = "medium";
+            MovementSpeedText.color = Color.yellow;
         }
         else {
-            movement_speed = "Movement Speed: fast";
+            movement_speed = "fast";
+            MovementSpeedText.color = Color.green;
         }
 
         if (data.AttackSpeed <= 0.5)
         {
-            attack_speed = "Attack speed: slow";
+            attack_speed = "slow";
+            AttackSpeedText.color = Color.red;
         }
         else if (data.AttackSpeed <= 1)
         {
-            attack_speed = "Attack speed: medium";
+            attack_speed = "medium";
+            AttackSpeedText.color = Color.yellow;
         }
         else {
-            attack_speed = "Attack speed: fast";
+            attack_speed = "fast";
+            AttackSpeedText.color = Color.green;
         }
 
         if (data.MaxHealth <= 10)
         {
-            health = "Health: few";
+            health = "few";
+            HealthText.color = Color.red;
         }
         else if (data.MaxHealth <= 20)
         {
-            health = "Health: normal";
+            health = "normal";
+            HealthText.color = Color.yellow;
         }
         else {
-            health = "Health: a lot";
+            health = "a lot";
+            HealthText.color = Color.green;
         }
 
-        InfoText.text = health+"\n"+attack_speed+"\n"+ attack_range+"\n"+ movement_speed+"\n";
+        InfoText.text = "Health: \nAttack speed: \nAttack range: \nMovement speed: \n";
+        string h = new string(' ',"Health: ".Length*2);
+        HealthText.text = h + health;
+        h = new string(' ', "Attack speed: ".Length*2);
+        AttackSpeedText.text = "\n"+h+ attack_speed;
+        h = new string(' ', "Attack range: ".Length * 2);
+        AttackRangeText.text = "\n\n"+h+ attack_range;
+        h = new string(' ', "Movement speed: ".Length*2);
+        MovementSpeedText.text = "\n\n\n"+h+ movement_speed;
     }
 }
