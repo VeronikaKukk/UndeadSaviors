@@ -8,6 +8,7 @@ TagManager:
   - ShopZombie
   - Unit
   - AttackRange
+  - SellPotion
   layers:
   - Default
   - TransparentFX

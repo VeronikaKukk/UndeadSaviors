@@ -52,25 +52,32 @@ public class Collectable : MonoBehaviour
             spriteRenderer = transform.GetComponent<SpriteRenderer>();
             spriteRenderer.enabled = false;
             isPickedUp = true;
-            GameController.Instance.SetPotionPickedUp(true);
+            Events.SetPotionPickedUp(isPickedUp);
             cursorUIObject = Instantiate(CursorUIObjectPrefab, canvas.transform);
             offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         else
         {
-            if (IsPointerOverUIButton())
+            if (IsPointerOverUIButton())// true if potion is over zombietype or when potion is over sell button
             {
-                ApplyPotionEffectsToZombies();
+                if (zombieType != null && potionBuffs != null)// over zombietype
+                {
+                    ApplyPotionEffectsToZombies();
+                }
+                else {//over sell button
+                    SellPotion();
+                }
+                
             }
             else
             {
                 spriteRenderer.enabled = true;
-                GameController.Instance.SetPotionPickedUp(false);
             }
 
             Destroy(cursorUIObject);
             isPickedUp = false;
-            
+            Events.SetPotionPickedUp(isPickedUp);
+
             if (potionToDestroy != null)
             {
                 Invoke("PutPotionDown", 0.1f);
@@ -81,7 +88,8 @@ public class Collectable : MonoBehaviour
 
     private void PutPotionDown()
     {
-        GameController.Instance.SetPotionPickedUp(false);
+        isPickedUp = false;
+        Events.SetPotionPickedUp(isPickedUp);
         Destroy(potionToDestroy);
         potionToDestroy = null;
     }
@@ -129,13 +137,21 @@ public class Collectable : MonoBehaviour
             entered = true;
             //Debug.Log("No empty slot");
             spriteRenderer.enabled = true;
-            GameController.Instance.SetPotionPickedUp(false);
+            //GameController.Instance.SetPotionPickedUp(false);
+            isPickedUp = false;
+            Events.SetPotionPickedUp(isPickedUp);
         }
 
         if (!entered)
         {
             potionToDestroy = gameObject;
         }
+    }
+
+    private void SellPotion() {
+        Events.SetMoney(Events.GetMoney() + 20);//get 20 money for selling a potion
+        EntityController.Instance.Potions.Remove(this);
+        potionToDestroy = gameObject;
     }
 
     private bool IsPointerOverUIButton()
@@ -151,6 +167,8 @@ public class Collectable : MonoBehaviour
             // Mouse is over a UI button with the specified tag
             if (result.gameObject.CompareTag("ShopZombie"))
             {
+                print("on shop zombie");
+
                 Shop zombieShop = result.gameObject.GetComponent<Shop>();
                 Transform findPanel = result.gameObject.transform.Find("Potions");
 
@@ -160,6 +178,10 @@ public class Collectable : MonoBehaviour
                     potionBuffs = findPanel;
                     return true;
                 }
+            }
+            else if (result.gameObject.CompareTag("SellPotion")) {
+                print("on sell potion");
+                return true;
             }
         }
         return false;

@@ -11,6 +11,11 @@ public class GameController : MonoBehaviour
     {
         Instance = this;
         IsPotionPickedUp = false;
+        Events.OnSetPotionPickedUp += SetPotionPickedUp;
+    }
+    private void OnDestroy()
+    {
+        Events.OnSetPotionPickedUp -= SetPotionPickedUp;
     }
 
     public void SetPotionPickedUp(bool value)

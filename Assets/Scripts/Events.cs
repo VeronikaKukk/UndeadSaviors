@@ -49,9 +49,7 @@ public static class Events
     public static event Action<LevelData> OnStartLevel;
     public static void StartLevel(LevelData data) => OnStartLevel?.Invoke(data);
 
-    /*
-    public static event Action<float, float> OnHealthChanged;
 
-    public static void SetCurrentHealth(float currentHealth, float maxHealth) => OnHealthChanged?.Invoke(currentHealth, maxHealth);
-    */
+    public static event Action<bool> OnSetPotionPickedUp;
+    public static void SetPotionPickedUp(bool isPotionPickedUp) => OnSetPotionPickedUp.Invoke(isPotionPickedUp);
 }
