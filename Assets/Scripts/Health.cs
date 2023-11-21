@@ -147,6 +147,7 @@ public class Health : MonoBehaviour
         combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
         combatText.transform.Find("HealthPos").gameObject.SetActive(true);
         TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
-        combatText.transform.DOScale(combatText.transform.localScale * 0.5f, 0.5f).OnComplete(tweenCallback);
+        combatText.transform.localScale = combatText.transform.localScale * 0.5f;
+        combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 0.7f).OnComplete(tweenCallback);
     }
 }

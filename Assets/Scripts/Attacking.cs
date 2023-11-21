@@ -66,7 +66,7 @@ public class Attacking : MonoBehaviour
         NextAttackTime = Time.time;
 
         particleEffects = GetComponent<Particles>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
     private void Start()
     {
@@ -115,7 +115,8 @@ public class Attacking : MonoBehaviour
             combatText.transform.Find("AttackDamage").gameObject.SetActive(true);
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
             TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
-            combatText.transform.DOScale(combatText.transform.localScale * 0.5f, 0.5f).OnComplete(tweenCallback);
+            combatText.transform.localScale = combatText.transform.localScale * 0.5f;
+            combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 0.7f).OnComplete(tweenCallback);
         }
     }
 
@@ -129,7 +130,8 @@ public class Attacking : MonoBehaviour
             combatText.transform.Find("Speed").gameObject.SetActive(true);
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
             TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
-            combatText.transform.DOScale(combatText.transform.localScale * 0.5f, 0.5f).OnComplete(tweenCallback);
+            combatText.transform.localScale = combatText.transform.localScale * 0.5f;
+            combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 0.7f).OnComplete(tweenCallback);
         }
     }
 

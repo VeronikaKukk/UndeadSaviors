@@ -24,6 +24,7 @@ public class ScenarioController : MonoBehaviour
     public Button pauseButton;
     public LevelData currentLevelData;
 
+    public bool StartingTheLevel = true;
     private void Awake()
     {
         currentScene = SceneManager.GetActiveScene();
@@ -46,7 +47,7 @@ public class ScenarioController : MonoBehaviour
 
     private void Update()
     {
-        if (levelRunning && CountdownTimer.Instance.currentTime < 1)
+        if (levelRunning && CountdownTimer.Instance.currentTime < 1 && !StartingTheLevel)
         {
             if (EntityController.Instance.PlantCharacters.Count >= 1)
             {
@@ -54,10 +55,11 @@ public class ScenarioController : MonoBehaviour
                 Events.EndLevel(false);
             }
         }
-        else if(levelRunning)
+        else if(levelRunning && !StartingTheLevel)
         {
             if (EntityController.Instance.PlantCharacters.Count < 1)
             {
+                print(StartingTheLevel + " " + levelRunning);
                 levelRunning = false;
                 Events.EndLevel(true);
             }
@@ -81,6 +83,8 @@ public class ScenarioController : MonoBehaviour
     }
 
     public void OnStartLevel(LevelData data) {
+        StartingTheLevel = true;
+
         currentLevelData = data;
         Events.SetMoney(data.StartingMoney);
         CountdownTimer.Instance.StartTime = data.Gametime;
@@ -99,6 +103,8 @@ public class ScenarioController : MonoBehaviour
     }
 
     public void ResetLevel() {
+        StartingTheLevel = true;
+
         // remove all enemies and zombies and potions and potion effects from table
         foreach (var i in EntityController.Instance.PlantCharacters) {
             Destroy(i.gameObject);
@@ -113,7 +119,6 @@ public class ScenarioController : MonoBehaviour
         }
         ZombieFactory.Instance.Awake();
         CountdownTimer.Instance.ResetTimer(currentLevelData.Gametime);
-        levelRunning = true;
         Events.SetMoney(currentLevelData.StartingMoney);
 
         for (int i = 0; i < ShopPanel.transform.childCount; i++)
@@ -128,6 +133,7 @@ public class ScenarioController : MonoBehaviour
         }
 
         SpawnEnemies(currentLevelData.Plants);
+        levelRunning = true;
     }
 
     public void SpawnEnemies(List<UnitData> plants) {
@@ -139,6 +145,7 @@ public class ScenarioController : MonoBehaviour
             keys.Remove(spawn);
             GameObject plant = GameObject.Instantiate(plants[i].UnitPrefab, spawn.transform.position, Quaternion.identity, spawn.transform);
         }
+        StartingTheLevel = false;
     }
     public void OnEndLevel(bool isWin)
     {
@@ -158,12 +165,8 @@ public class ScenarioController : MonoBehaviour
 
     public void ReplayButton()
     {
-            ResetLevel();
-        // hide endpanel
-        EndGamePanel.SetActive(false);
-
-        //SceneManager.LoadScene(currentScene.name);
-    }
+        ResetLevel();
+        EndGamePanel.SetActive(false);    }
 
     public void LevelChooserButton()
         {
