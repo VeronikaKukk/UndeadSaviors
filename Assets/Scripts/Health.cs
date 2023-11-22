@@ -88,10 +88,8 @@ public class Health : MonoBehaviour
         Events.OnAddMaxHealthValue += AddMaxHealth;
         lastDamaged = Time.time;
         healthRegenWaitTime = UnityEngine.Random.Range(8.0f,15.0f);
-    }
 
-    public void Start() // Add characters to EntityController
-    {
+        // Add characters to EntityController
         if (UnitData.TeamName == "Zombie")
         {
             EntityController.Instance.ZombieCharacters.Add(this);
@@ -101,7 +99,6 @@ public class Health : MonoBehaviour
             EntityController.Instance.PlantCharacters.Add(this);
         }
     }
-
     public void OnDestroy()// Remove characters from EntityController
     {
         Events.OnAddMaxHealthValue -= AddMaxHealth;

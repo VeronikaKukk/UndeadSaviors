@@ -18,4 +18,10 @@ public class EntityController : MonoBehaviour
         Potions = new List<Collectable>();
 
     }
+    public void Reset()
+    {
+        ZombieCharacters = new List<Health>();
+        PlantCharacters = new List<Health>();
+        Potions = new List<Collectable>();
+    }
 }

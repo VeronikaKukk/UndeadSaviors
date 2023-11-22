@@ -59,7 +59,6 @@ public class ScenarioController : MonoBehaviour
         {
             if (EntityController.Instance.PlantCharacters.Count < 1)
             {
-                print(StartingTheLevel + " " + levelRunning);
                 levelRunning = false;
                 Events.EndLevel(true);
             }
@@ -117,6 +116,7 @@ public class ScenarioController : MonoBehaviour
         {
             Destroy(i.gameObject);
         }
+        EntityController.Instance.Reset();
         ZombieFactory.Instance.Awake();
         CountdownTimer.Instance.ResetTimer(currentLevelData.Gametime);
         Events.SetMoney(currentLevelData.StartingMoney);
@@ -133,7 +133,6 @@ public class ScenarioController : MonoBehaviour
         }
 
         SpawnEnemies(currentLevelData.Plants);
-        levelRunning = true;
     }
 
     public void SpawnEnemies(List<UnitData> plants) {
@@ -146,6 +145,7 @@ public class ScenarioController : MonoBehaviour
             GameObject plant = GameObject.Instantiate(plants[i].UnitPrefab, spawn.transform.position, Quaternion.identity, spawn.transform);
         }
         StartingTheLevel = false;
+        levelRunning = true;
     }
     public void OnEndLevel(bool isWin)
     {
@@ -166,7 +166,8 @@ public class ScenarioController : MonoBehaviour
     public void ReplayButton()
     {
         ResetLevel();
-        EndGamePanel.SetActive(false);    }
+        EndGamePanel.SetActive(false);    
+    }
 
     public void LevelChooserButton()
         {
