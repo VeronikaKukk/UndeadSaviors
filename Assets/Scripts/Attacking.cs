@@ -140,11 +140,22 @@ public class Attacking : MonoBehaviour
         if (movement != null && !isFighting)// non-attacking zombie moves to closest enemy
         {
             movement.Move(direction);
+            if (animator != null)
+            {
+                animator.SetBool("IsWalking", true);
+            }
         }
-        else if (movement == null) 
+        else if (movement != null && isFighting) {
+            if (animator != null)
+            {
+                animator.SetBool("IsWalking", false);
+            }
+        }
+        else if (movement == null)
         {
             currentTargets = GetNClosestTargets();
         }
+
 
         if (targetsInRange.Count > 0)
         {
