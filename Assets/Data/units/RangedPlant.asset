@@ -23,6 +23,6 @@ MonoBehaviour:
   MovementSpeed: 0
   AttackDamage: 1
   AttackSpeed: 0.4
-  AttackRangeSize: 2
+  AttackRangeSize: 3
   UnitPrefab: {fileID: 5579698584588843383, guid: 237c584396a04f34583ed98054ca3893, type: 3}
   MaxUnitsAttackingAtOnce: 1
