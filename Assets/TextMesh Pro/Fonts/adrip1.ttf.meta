@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d0b64c9e9f72d6942abe344d72945cbd
+guid: 37f7c6557cb0fa14ebcec6ee5cc10df3
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Drift Wood
+  - a dripping marker
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
