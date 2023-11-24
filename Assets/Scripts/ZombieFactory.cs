@@ -49,6 +49,7 @@ public class ZombieFactory : MonoBehaviour
 
                     var health = zombie.GetComponent<Health>();
                     health.MaxHealth += potionData.BuffAmount;
+                    health.CurrentHealth += potionData.BuffAmount;
                 }
                 else if (potionData.PotionName == "Speed")
                 {

@@ -33,7 +33,6 @@ public class Attacking : MonoBehaviour
     private List<Health> currentTargets = new List<Health>();
 
     public Projectile ProjectilePrefab;
-    public static Attacking Instance;
 
     private Particles particleEffects;
 
@@ -41,7 +40,6 @@ public class Attacking : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
         Events.OnAddDamageValue += AddDamage;
         Events.OnAddAttackSpeedValue += AddAttackSpeed;
         CurrentUnitAttackRange.OnEnemyEnteredAttackRange += AddEnemyToTargets;
@@ -174,6 +172,7 @@ public class Attacking : MonoBehaviour
                             projectile.transform.position = firePoint;
                             projectile.Target = target;
                             AttackSound.Play();
+                            CombatDamageTexts(target);
                         } 
                         else // for melee fighters
                         {

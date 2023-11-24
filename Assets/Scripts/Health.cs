@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
     private float lastDamaged;
     private float healthRegenWaitTime;
 
-    private float currentHealth;
+    public float currentHealth;
     [HideInInspector]
     public float CurrentHealth {
         get 
@@ -60,17 +60,14 @@ public class Health : MonoBehaviour
                     if (rnd2 < 0.3)
                     {
                         collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[0], transform.position, Quaternion.identity, null);
-                        
                     }
                     else if (rnd2 < 0.6) {
                         collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[1], transform.position, Quaternion.identity, null);
-
                     }
                     else
                     {
                         collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[2], transform.position, Quaternion.identity, null);
                     }
-                    //DOTween.Sequence().Append(collectable.transform.DOMoveY(2f, 1f));
                     collectable.transform.DOMove(spawnPosition, 1f);
                 }
                 // spawn DeathParticle
@@ -150,8 +147,26 @@ public class Health : MonoBehaviour
         // Get a random point within the collider's bounds
         float randomX = UnityEngine.Random.Range(collider.bounds.min.x, collider.bounds.max.x);
         float randomY = UnityEngine.Random.Range(collider.bounds.min.y, collider.bounds.max.y);
-        return new Vector2(randomX, randomY);
+        Vector2 position = new Vector2(randomX, randomY);
+
+        Vector3 viewportPosition = Camera.main.WorldToViewportPoint(position);
+
+        viewportPosition.x = Mathf.Clamp(viewportPosition.x - 10f / Screen.width, 0f, 1f);
+
+        bool nearBorderX = Mathf.Abs(viewportPosition.x) < 10f / Screen.width;
+        bool nearBorderY = Mathf.Abs(viewportPosition.y - 0.5f) < 5f / Screen.height;
+
+        if (nearBorderX || nearBorderY)
+        {
+            // Bring the position closer to the right
+            viewportPosition.x += 0.05f;
+            viewportPosition.y = Mathf.Clamp01(viewportPosition.y);
+        }
+
+        // Convert the clamped position back to world space
+        return Camera.main.ViewportToWorldPoint(viewportPosition);
     }
+
 
     void AddMaxHealth(string unitName, float health)
     {

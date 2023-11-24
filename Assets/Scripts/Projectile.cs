@@ -38,9 +38,8 @@ public class Projectile : MonoBehaviour
             if ((shooter.name.Contains("Plant") && triggerTarget.UnitData.TeamName == "Zombie") ||
                 (shooter.name.Contains("Zombie") && triggerTarget.UnitData.TeamName == "Plant"))
             {
-                Debug.Log("shooting scucceed for " + shooter.name);
+                Debug.Log("shooting succeed for " + shooter.name);
                 triggerTarget.CurrentHealth -= attackDamage;
-                Attacking.Instance.CombatDamageTexts(triggerTarget);
                 GameObject.Destroy(gameObject);
             }
         }
