@@ -16,6 +16,7 @@ public class Shop : MonoBehaviour
     private void Awake()
     {
         Events.OnSetMoney += SetMoney;
+        Events.OnSetPotionPickedUp += SetPotionPickedUp;
     }
 
     private void Start()
@@ -37,6 +38,39 @@ public class Shop : MonoBehaviour
         button = GetComponent<Button>();
         button.interactable = ShopData.Price <= value;
     }
+    void SetPotionPickedUp(bool value, Collectable potion) {
+        if (value)
+        {
+            bool show = false;
+            Transform potionPanel = transform.Find("Potions");
+            if (potion != null) {
+                if (potion.PotionData.PotionName.Equals("Health") && potionPanel.Find("HealthPotion").GetComponent<Image>().enabled == false)
+                {
+                    show = true;
+                }
+                else if (potion.PotionData.PotionName.Equals("Speed") && potionPanel.Find("SpeedPotion").GetComponent<Image>().enabled == false)
+                {
+                    show = true;
+                }
+                else if (potion.PotionData.PotionName.Equals("Damage") && potionPanel.Find("DamagePotion").GetComponent<Image>().enabled == false) {
+                    show = true;
+                }
+            }
+
+            GameObject highlight = transform.Find("HighlightImage").gameObject;
+            if (show && highlight != null)
+            {
+                highlight.GetComponent<Image>().enabled = true;
+            }
+        }
+        else {
+            GameObject highlight = transform.Find("HighlightImage").gameObject;
+            if (highlight != null)
+            {
+                highlight.GetComponent<Image>().enabled = false;
+            }
+        }
+    }
 
     public void Pressed()
     {
@@ -49,6 +83,6 @@ public class Shop : MonoBehaviour
     public void OnDestroy()
     {
         Events.OnSetMoney -= SetMoney;
-
+        Events.OnSetPotionPickedUp -= SetPotionPickedUp;
     }
 }

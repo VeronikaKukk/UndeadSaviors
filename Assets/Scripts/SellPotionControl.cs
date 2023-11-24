@@ -21,10 +21,10 @@ public class SellPotionControl : MonoBehaviour
     }
     void Start()
     {
-       sellPotionImage = GetComponentInChildren<Image>();
+       sellPotionImage = transform.Find("Image").GetComponentInChildren<Image>();
        sellPotionImage.sprite = sellPotionRegularSprite;
     }
-    void SetPotionPickedUp(bool value) {
+    void SetPotionPickedUp(bool value, Collectable potion) {
         if (value)
         {
             sellPotionImage.sprite = sellPotionSpecialSprite;

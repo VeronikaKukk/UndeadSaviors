@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
         Events.OnSetPotionPickedUp -= SetPotionPickedUp;
     }
 
-    public void SetPotionPickedUp(bool value)
+    public void SetPotionPickedUp(bool value, Collectable p)
     {
         IsPotionPickedUp = value;
     }

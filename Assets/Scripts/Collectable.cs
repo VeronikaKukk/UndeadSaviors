@@ -52,7 +52,7 @@ public class Collectable : MonoBehaviour
             spriteRenderer = transform.GetComponent<SpriteRenderer>();
             spriteRenderer.enabled = false;
             isPickedUp = true;
-            Events.SetPotionPickedUp(isPickedUp);
+            Events.SetPotionPickedUp(isPickedUp, this);
             cursorUIObject = Instantiate(CursorUIObjectPrefab, canvas.transform);
             offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
@@ -76,7 +76,7 @@ public class Collectable : MonoBehaviour
 
             Destroy(cursorUIObject);
             isPickedUp = false;
-            Events.SetPotionPickedUp(isPickedUp);
+            Events.SetPotionPickedUp(isPickedUp, null);
 
             if (potionToDestroy != null)
             {
@@ -89,7 +89,7 @@ public class Collectable : MonoBehaviour
     private void PutPotionDown()
     {
         isPickedUp = false;
-        Events.SetPotionPickedUp(isPickedUp);
+        Events.SetPotionPickedUp(isPickedUp,null);
         Destroy(potionToDestroy);
         potionToDestroy = null;
     }
@@ -139,7 +139,7 @@ public class Collectable : MonoBehaviour
             spriteRenderer.enabled = true;
             //GameController.Instance.SetPotionPickedUp(false);
             isPickedUp = false;
-            Events.SetPotionPickedUp(isPickedUp);
+            Events.SetPotionPickedUp(isPickedUp, null);
         }
 
         if (!entered)

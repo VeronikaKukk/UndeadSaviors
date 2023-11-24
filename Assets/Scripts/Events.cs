@@ -50,6 +50,6 @@ public static class Events
     public static void StartLevel(LevelData data) => OnStartLevel?.Invoke(data);
 
 
-    public static event Action<bool> OnSetPotionPickedUp;
-    public static void SetPotionPickedUp(bool isPotionPickedUp) => OnSetPotionPickedUp.Invoke(isPotionPickedUp);
+    public static event Action<bool, Collectable> OnSetPotionPickedUp;
+    public static void SetPotionPickedUp(bool isPotionPickedUp, Collectable potion) => OnSetPotionPickedUp?.Invoke(isPotionPickedUp, potion);
 }
