@@ -5301,7 +5301,7 @@ GameObject:
   - component: {fileID: 1572679124}
   - component: {fileID: 1572679123}
   - component: {fileID: 1572679122}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: StartArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}

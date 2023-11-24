@@ -14,15 +14,18 @@ public class ZombieBuilder : MonoBehaviour
 
     public GameObject SpawnParticlePrefab;
 
-    private List<BoxCollider2D> startAreas = new List<BoxCollider2D>();
+    public List<BoxCollider2D> startAreas = new List<BoxCollider2D>();
 
     private ShopData currentZombieData;
-    private bool decreased;
+
+    public static ZombieBuilder Instance;
 
     private void Awake()
     {
         Events.OnZombieSelected += ZombieSelected;
         gameObject.SetActive(false);
+
+        Instance = this;
     }
 
     private void Start()

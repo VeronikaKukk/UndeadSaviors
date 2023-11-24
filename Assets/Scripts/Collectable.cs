@@ -72,17 +72,18 @@ public class Collectable : MonoBehaviour
             else
             {
                 spriteRenderer.enabled = true;
-            }
-
-            Destroy(cursorUIObject);
-            isPickedUp = false;
-            Events.SetPotionPickedUp(isPickedUp, null);
+            }            
 
             if (potionToDestroy != null)
             {
-                Invoke("PutPotionDown", 0.1f);
+                Invoke("PutPotionDown", 0.15f);
+            } else
+            {
+                isPickedUp = false;
+                Events.SetPotionPickedUp(isPickedUp, null);
+                
             }
-            
+            Destroy(cursorUIObject);
         }
     }
 
@@ -189,7 +190,7 @@ public class Collectable : MonoBehaviour
 
     public void Update()
     {
-        if (isPickedUp)
+        if (isPickedUp && cursorUIObject != null)
         {
             Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
             transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);

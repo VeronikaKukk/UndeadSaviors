@@ -49,13 +49,18 @@ public class Health : MonoBehaviour
                 float rnd = UnityEngine.Random.Range(0f, 1f);
                 float rnd2 = UnityEngine.Random.Range(0f, 1f);
 
-                if (rnd > 0.4) 
+
+                if (rnd > 0.01) 
                 {
+                    List<BoxCollider2D> startAreas = ZombieBuilder.Instance.startAreas;
+                    BoxCollider2D closestStartArea = GetClosestStartArea(startAreas);
+                    Vector2 spawnPosition = GetRandomPointInCollider(closestStartArea);
+
                     GameObject collectable = null;
                     if (rnd2 < 0.3)
                     {
                         collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[0], transform.position, Quaternion.identity, null);
-
+                        
                     }
                     else if (rnd2 < 0.6) {
                         collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[1], transform.position, Quaternion.identity, null);
@@ -65,6 +70,8 @@ public class Health : MonoBehaviour
                     {
                         collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[2], transform.position, Quaternion.identity, null);
                     }
+                    //DOTween.Sequence().Append(collectable.transform.DOMoveY(2f, 1f));
+                    collectable.transform.DOMove(spawnPosition, 1f);
                 }
                 // spawn DeathParticle
                 DeathSound.Play();
@@ -78,6 +85,9 @@ public class Health : MonoBehaviour
             lastDamaged = Time.time;
         }
     }
+
+
+
     public void Awake()
     {
         // replace health data with unidata info
@@ -111,6 +121,36 @@ public class Health : MonoBehaviour
         {
             EntityController.Instance.PlantCharacters.Remove(this);
         }
+    }
+
+    private BoxCollider2D GetClosestStartArea(List<BoxCollider2D> startAreas)
+    {
+        if (startAreas.Count > 0)
+        {
+            float minDistance = float.MaxValue;
+            BoxCollider2D closestStartArea = null;
+
+            foreach (BoxCollider2D startArea in startAreas)
+            {
+                float distance = Vector2.Distance(transform.position, startArea.bounds.center);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    closestStartArea = startArea;
+                }
+            }
+            return closestStartArea;
+        }
+
+        return null;
+    }
+
+    private Vector2 GetRandomPointInCollider(BoxCollider2D collider)
+    {
+        // Get a random point within the collider's bounds
+        float randomX = UnityEngine.Random.Range(collider.bounds.min.x, collider.bounds.max.x);
+        float randomY = UnityEngine.Random.Range(collider.bounds.min.y, collider.bounds.max.y);
+        return new Vector2(randomX, randomY);
     }
 
     void AddMaxHealth(string unitName, float health)

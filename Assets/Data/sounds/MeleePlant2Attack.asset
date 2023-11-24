@@ -18,4 +18,4 @@ MonoBehaviour:
   PicthMax: 1.1
   Cooldown: 0.15
   AudioClips:
-  - {fileID: 8300000, guid: 4f8589952e6f746419f3548df231cc22, type: 3}
+  - {fileID: 8300000, guid: 9939d76a970e12a4ab3494c5542d2c49, type: 3}
