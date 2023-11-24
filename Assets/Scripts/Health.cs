@@ -50,7 +50,7 @@ public class Health : MonoBehaviour
                 float rnd2 = UnityEngine.Random.Range(0f, 1f);
 
 
-                if (rnd > 0.01) 
+                if (rnd > 0.4) 
                 {
                     List<BoxCollider2D> startAreas = ZombieBuilder.Instance.startAreas;
                     BoxCollider2D closestStartArea = GetClosestStartArea(startAreas);
