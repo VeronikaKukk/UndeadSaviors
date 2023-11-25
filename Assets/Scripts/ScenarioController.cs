@@ -24,6 +24,7 @@ public class ScenarioController : MonoBehaviour
     private bool levelPaused = false;
     public TextMeshProUGUI PauseButtonText;
     public Button pauseButton;
+    public Button unitInfoButton;
     public LevelData currentLevelData;
 
     public bool StartingTheLevel = true;
@@ -76,6 +77,7 @@ public class ScenarioController : MonoBehaviour
             HideGamePanel.SetActive(false);
             PauseMenuPanel.SetActive(false);
             pauseButton.gameObject.SetActive(true);
+            unitInfoButton.gameObject.SetActive(true);
             Time.timeScale = 1;
             PauseButtonText.text = "II";
             levelPaused = false;
@@ -86,6 +88,7 @@ public class ScenarioController : MonoBehaviour
             PauseMenuPanel.SetActive(true);
             Time.timeScale = 0;
             pauseButton.gameObject.SetActive(false);
+            unitInfoButton.gameObject.SetActive(false);
             levelPaused = true;
         }
     }
@@ -114,6 +117,7 @@ public class ScenarioController : MonoBehaviour
         StartingTheLevel = true;
         Time.timeScale = 1;
         pauseButton.gameObject.SetActive(true);
+        unitInfoButton.gameObject.SetActive(true);
 
         // remove all enemies and zombies and potions and potion effects from table
         foreach (var i in EntityController.Instance.PlantCharacters) {
