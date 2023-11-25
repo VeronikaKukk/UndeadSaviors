@@ -86,7 +86,6 @@ public class ScenarioController : MonoBehaviour
             PauseMenuPanel.SetActive(true);
             Time.timeScale = 0;
             pauseButton.gameObject.SetActive(false);
-            PauseButtonText.text = "►";
             levelPaused = true;
         }
     }
@@ -113,6 +112,8 @@ public class ScenarioController : MonoBehaviour
 
     public void ResetLevel() {
         StartingTheLevel = true;
+        Time.timeScale = 1;
+        pauseButton.gameObject.SetActive(true);
 
         // remove all enemies and zombies and potions and potion effects from table
         foreach (var i in EntityController.Instance.PlantCharacters) {
@@ -186,6 +187,7 @@ public class ScenarioController : MonoBehaviour
 
     public void LevelChooserButton()
         {
+        Time.timeScale = 1;
             SceneManager.LoadScene("StartScene");
 
         }

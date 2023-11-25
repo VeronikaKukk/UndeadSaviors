@@ -25,7 +25,6 @@ public class PauseMenu : MonoBehaviour
     public void RestartLevel()
     {
         scenarioController.ReplayButton();
-        ResumeGame();
     }
 
     public void MainMenu()
