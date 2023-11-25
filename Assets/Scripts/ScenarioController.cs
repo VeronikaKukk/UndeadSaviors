@@ -9,6 +9,8 @@ using System;
 
 public class ScenarioController : MonoBehaviour
 {
+    public GameObject HideGamePanel;
+    public GameObject PauseMenuPanel;
     public GameObject EndGamePanel;
     public TextMeshProUGUI EndGameText;
     public Scene currentScene;
@@ -35,6 +37,8 @@ public class ScenarioController : MonoBehaviour
 
     private void Start()
     {
+        HideGamePanel.SetActive(false);
+        PauseMenuPanel.SetActive(false);
         EndGamePanel.SetActive(false);
     }
 
@@ -69,13 +73,19 @@ public class ScenarioController : MonoBehaviour
     {
         if (levelPaused)
         {
+            HideGamePanel.SetActive(false);
+            PauseMenuPanel.SetActive(false);
+            pauseButton.gameObject.SetActive(true);
             Time.timeScale = 1;
             PauseButtonText.text = "II";
             levelPaused = false;
         }
         else
         {
+            HideGamePanel.SetActive(true);
+            PauseMenuPanel.SetActive(true);
             Time.timeScale = 0;
+            pauseButton.gameObject.SetActive(false);
             PauseButtonText.text = "►";
             levelPaused = true;
         }
@@ -152,7 +162,9 @@ public class ScenarioController : MonoBehaviour
         //if (!levelRunning) return;
 
         //levelRunning = false;
+        HideGamePanel.SetActive(true);
         EndGamePanel.SetActive(true);
+        pauseButton.gameObject.SetActive(false);
         if (isWin)
         {
             EndGameText.text = "Victory!";
@@ -165,8 +177,11 @@ public class ScenarioController : MonoBehaviour
 
     public void ReplayButton()
     {
+        HideGamePanel.SetActive(false);
+        EndGamePanel.SetActive(false);
+        PauseMenuPanel.SetActive(false);
         ResetLevel();
-        EndGamePanel.SetActive(false);    
+
     }
 
     public void LevelChooserButton()
