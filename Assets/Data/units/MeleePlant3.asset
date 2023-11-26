@@ -18,11 +18,11 @@ MonoBehaviour:
   - {fileID: 7214415345411477701, guid: 323682bcd55257042b6d989072175ab1, type: 3}
   - {fileID: 2701146648586863391, guid: 522eb865058250145ae088feff7a02ed, type: 3}
   UnitName: Plant_melee2
-  CurrencyAmountOnDeath: 25
+  CurrencyAmountOnDeath: 20
   MaxHealth: 50
   MovementSpeed: 0
   AttackDamage: 1
-  AttackSpeed: 0.5
+  AttackSpeed: 0.9
   AttackRangeSize: 1.1
   UnitPrefab: {fileID: 5253223352883583992, guid: cefd12ac454be274ab14fdbb11e1beb3, type: 3}
-  MaxUnitsAttackingAtOnce: 5
+  MaxUnitsAttackingAtOnce: 8
