@@ -16,9 +16,9 @@ MonoBehaviour:
   DroppablePotions: []
   UnitName: Zombie_Buffed
   CurrencyAmountOnDeath: 0
-  MaxHealth: 15
+  MaxHealth: 45
   MovementSpeed: 2.5
-  AttackDamage: 2
+  AttackDamage: 5
   AttackSpeed: 0.6
   AttackRangeSize: 1
   UnitPrefab: {fileID: 5654820010355793823, guid: 5f9bef6ea6ec9e844b4b541be3c3bf93, type: 3}

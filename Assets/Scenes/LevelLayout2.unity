@@ -1438,7 +1438,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 156139168}
         m_TargetAssemblyTypeName: ScenarioController, Assembly-CSharp
         m_MethodName: LevelChooserButton
         m_Mode: 1
@@ -2688,7 +2688,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 156139168}
         m_TargetAssemblyTypeName: ScenarioController, Assembly-CSharp
         m_MethodName: ReplayButton
         m_Mode: 1

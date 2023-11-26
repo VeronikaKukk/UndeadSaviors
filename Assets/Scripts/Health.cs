@@ -185,10 +185,10 @@ public class Health : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x + 0.05f, transform.localScale.y + 0.05f, transform.localScale.z + 0.05f);
             
             lastDamaged = Time.time;
-            MaxHealth += 2;
-            CurrentHealth += 2;
+            MaxHealth += 5;
+            CurrentHealth += 5;
             CurrencyAmountOnDeath += 2;
-            ShowHealthText(2);
+            ShowHealthText(5);
             healthRegenWaitTime = UnityEngine.Random.Range(8.0f, 15.0f);
         }
     }

@@ -16,9 +16,9 @@ MonoBehaviour:
   DroppablePotions: []
   UnitName: Zombie_fast
   CurrencyAmountOnDeath: 0
-  MaxHealth: 5
+  MaxHealth: 15
   MovementSpeed: 5
-  AttackDamage: 1
+  AttackDamage: 2
   AttackSpeed: 1.8
   AttackRangeSize: 1
   UnitPrefab: {fileID: 5306727626661189657, guid: 8445cb556eb45be4fab1be480cbc08f8, type: 3}

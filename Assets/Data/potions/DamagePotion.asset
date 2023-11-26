@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DamagePotion
   m_EditorClassIdentifier: 
   PotionName: Damage
-  BuffAmount: 0.5
+  BuffAmount: 1
   AliveTime: 10
