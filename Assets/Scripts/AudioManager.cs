@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Slider musicVolumeSlider, sfxVolumeSlider, masterVolumeSlider;
     [SerializeField] private bool toggleMusic, toggleSfx, toggleMaster; // for the mute buttons  
     [SerializeField] private Sprite volumeNormal, volumeMuted;
-    
+   
     //public float masterVolume, musicVolume, sfxVolume;
 
 
@@ -32,9 +32,9 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        musicVolumeSlider.value = -15;
-        sfxVolumeSlider.value = -10;
-        masterVolumeSlider.value = -10;
+        musicVolumeSlider.value = 0.5f;
+        sfxVolumeSlider.value = 0.5f;
+        masterVolumeSlider.value = 0.5f;
 
         SetVolume();
 
@@ -53,15 +53,15 @@ public class AudioManager : MonoBehaviour
         float mVS;
         if (audioMixer.GetFloat("musicVolume", out mVS))
         {
-            musicVolumeSlider.value = mVS;
+            musicVolumeSlider.value = Mathf.Pow(10, mVS / 20f);
         }
         if (audioMixer.GetFloat("masterVolume", out mVS))
         {
-            masterVolumeSlider.value = mVS;
+            masterVolumeSlider.value = Mathf.Pow(10, mVS / 20f) ;
         }
         if (audioMixer.GetFloat("sfxVolume", out mVS))
         {
-            sfxVolumeSlider.value = mVS;
+            sfxVolumeSlider.value = Mathf.Pow(10, mVS / 20f) ;
         }
     }
 
@@ -89,20 +89,20 @@ public class AudioManager : MonoBehaviour
     }
     public void ChangeMasterVolume(float value)
     {
-        audioMixer.SetFloat("masterVolume", masterVolumeSlider.value);
-        Debug.Log("masterVolume " + masterVolumeSlider.value);
+        audioMixer.SetFloat("masterVolume", Mathf.Log10(value)*20);
+        Debug.Log("masterVolume " + value);
     }
 
     public void ChangeMusicVolume(float value)
     {
-        audioMixer.SetFloat("musicVolume", musicVolumeSlider.value);
-        Debug.Log("musicVolume " + musicVolumeSlider.value);
+        audioMixer.SetFloat("musicVolume", Mathf.Log10(value)*20);
+        Debug.Log("musicVolume " + value);
     }
 
     public void ChangeSfxVolume(float value)
     {
-        audioMixer.SetFloat("sfxVolume", sfxVolumeSlider.value);
-        Debug.Log("sfxVolume " + sfxVolumeSlider.value);
+        audioMixer.SetFloat("sfxVolume", Mathf.Log10(value)*20);
+        Debug.Log("sfxVolume " + value);
     }
 
 
@@ -127,7 +127,6 @@ public class AudioManager : MonoBehaviour
     public void ToggleMaster() // muting and unmuting music&sfx
     {
         musicSource.mute = !musicSource.mute;
-        sfxSource.mute = !sfxSource.mute;
         sfxSource.mute = !sfxSource.mute;
 
         Image currentIcon = GameObject.Find("MuteButtonMaster").GetComponent<Image>();

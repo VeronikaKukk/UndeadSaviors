@@ -22,6 +22,7 @@ public class OptionsMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        print("enabeling");
         AudioManager.Instance.SetMasterSlider(MasterVolumeSlider);
         AudioManager.Instance.SetMusicSlider(MusicVolumeSlider);
         AudioManager.Instance.SetSfxSlider(SfxVolumeSlider);
@@ -29,6 +30,7 @@ public class OptionsMenu : MonoBehaviour
     }
     private void OnDisable()
     {
+        print("disableing");
         AudioManager.Instance.RemoveSliderListeners();
     }
 
