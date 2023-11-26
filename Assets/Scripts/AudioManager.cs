@@ -31,7 +31,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        musicVolumeSlider.value = -10;
+        musicVolumeSlider.value = -15;
         sfxVolumeSlider.value = -10;
         masterVolumeSlider.value = -10;
 
