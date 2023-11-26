@@ -35,7 +35,9 @@ public class AudioManager : MonoBehaviour
         musicVolumeSlider.value = 0.5f;
         sfxVolumeSlider.value = 0.5f;
         masterVolumeSlider.value = 0.5f;
-
+        ChangeMasterVolume(0.5f);
+        ChangeMusicVolume(0.5f);
+        ChangeSfxVolume(0.5f);
         SetVolume();
 
         musicSource.clip = MusicSounds[0];
@@ -53,15 +55,15 @@ public class AudioManager : MonoBehaviour
         float mVS;
         if (audioMixer.GetFloat("musicVolume", out mVS))
         {
-            musicVolumeSlider.value = Mathf.Pow(10, mVS / 20f);
+            musicVolumeSlider.value = (float)Mathf.Pow(10, mVS / 20f);
         }
         if (audioMixer.GetFloat("masterVolume", out mVS))
         {
-            masterVolumeSlider.value = Mathf.Pow(10, mVS / 20f) ;
+            masterVolumeSlider.value = (float)Mathf.Pow(10, mVS / 20f) ;
         }
         if (audioMixer.GetFloat("sfxVolume", out mVS))
         {
-            sfxVolumeSlider.value = Mathf.Pow(10, mVS / 20f) ;
+            sfxVolumeSlider.value = (float)Mathf.Pow(10, mVS / 20f) ;
         }
     }
 

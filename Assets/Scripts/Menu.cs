@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     public LevelCard LevelCardPrefab;
     public GameObject OptionsMenuObject;
     public GameObject InstructionsMenuObject;
+    public GameObject CreditsMenuObject;
 
     public List<LevelData> Levels;
     public LevelData selectedLevel;
@@ -62,12 +63,18 @@ public class MainMenu : MonoBehaviour
         MainMenuObject.SetActive(false);
         InstructionsMenuObject.SetActive(true);
     }
+    public void CreditsMenuButtonPressed()
+    {
+        MainMenuObject.SetActive(false);
+        CreditsMenuObject.SetActive(true);
+    }
 
     public void BackToMainMenuButtonPressed()
     {
         OptionsMenuObject.SetActive(false);
         LevelChooserObject.SetActive(false);
         InstructionsMenuObject.SetActive(false);
+        CreditsMenuObject.SetActive(false);
         MainMenuObject.SetActive(true);
     }
 
