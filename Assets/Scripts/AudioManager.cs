@@ -13,7 +13,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource musicSource, sfxSource;
     [SerializeField] private AudioClip[] MusicSounds;
     [SerializeField] private Slider musicVolumeSlider, sfxVolumeSlider, masterVolumeSlider;
-    [SerializeField] private bool toggleMusic, toggleSfx, toggleMaster; // for the mute buttons 
+    [SerializeField] private bool toggleMusic, toggleSfx, toggleMaster; // for the mute buttons  
+    [SerializeField] private Sprite volumeNormal, volumeMuted;
 
     private void Awake()
     {   
@@ -69,17 +70,41 @@ public class AudioManager : MonoBehaviour
     public void ToggleMusic() // muting and un-muting music
     {
         musicSource.mute = !musicSource.mute;
+
+        Image currentIcon = GameObject.Find("MuteButtonMusic").GetComponent<Image>();
+        ChangeIcon(currentIcon);
     }
 
     public void ToggleSfx() // muting and un-muting sfx
     {
-        sfxSource.mute = !sfxSource.mute; 
+        sfxSource.mute = !sfxSource.mute;
+
+        Image currentIcon = GameObject.Find("MuteButtonSfx").GetComponent<Image>();
+        ChangeIcon(currentIcon);
     }
+    
+
 
     public void ToggleMaster() // muting and unmuting music&sfx
     {
         musicSource.mute = !musicSource.mute;
         sfxSource.mute = !sfxSource.mute;
+        sfxSource.mute = !sfxSource.mute;
+
+        Image currentIcon = GameObject.Find("MuteButtonMaster").GetComponent<Image>();
+        ChangeIcon(currentIcon);
     }
 
+    public void ChangeIcon(Image currentIcon)
+    {
+
+        if (currentIcon.sprite == volumeNormal)
+        {
+            currentIcon.sprite = volumeMuted;
+        }
+        else
+        {
+            currentIcon.sprite = volumeNormal;
+        }
+    }
 }
