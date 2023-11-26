@@ -27,28 +27,26 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("MasterVolume"))
-        {
-            audioMixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume"));
-            audioMixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume"));
-            audioMixer.SetFloat("SfxVolume", PlayerPrefs.GetFloat("SfxVolume")); 
-        }
-        else {
-            SetSliders();
-        }
-
+        SetSliders();
+        SetVolume();
 
         musicSource.clip = MusicSounds[0];
         musicSource.Play();
     }
 
 
-    void SetSliders()
+    void SetVolume()
     {
-        masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
-        musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-        sfxVolumeSlider.value = PlayerPrefs.GetFloat("SfxVolume");
-       
+        audioMixer.SetFloat("masterVolume", masterVolumeSlider.value);
+        audioMixer.SetFloat("musicVolume", musicVolumeSlider.value);
+        audioMixer.SetFloat("sfxVolume", sfxVolumeSlider.value);
+    }
+
+    public void SetSliders()
+    {
+        musicVolumeSlider.value = -10;
+        sfxVolumeSlider.value = -10;
+        masterVolumeSlider.value = -10;
     }
 
 

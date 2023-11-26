@@ -10,7 +10,7 @@ public class SellPotionControl : MonoBehaviour
     public Sprite sellPotionRegularSprite;
     public Sprite sellPotionSpecialSprite;
     public TextMeshProUGUI sellPotionText;
-    // Start is called before the first frame update
+
     private void Awake()
     {
         Events.OnSetPotionPickedUp += SetPotionPickedUp;
