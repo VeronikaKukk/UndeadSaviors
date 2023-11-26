@@ -15,6 +15,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Slider musicVolumeSlider, sfxVolumeSlider, masterVolumeSlider;
     [SerializeField] private bool toggleMusic, toggleSfx, toggleMaster; // for the mute buttons  
     [SerializeField] private Sprite volumeNormal, volumeMuted;
+    
+    public float masterVolume, musicVolume, sfxVolume;
 
 
     private void Awake()
@@ -29,7 +31,10 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        SetSliders();
+        musicVolumeSlider.value = -10;
+        sfxVolumeSlider.value = -10;
+        masterVolumeSlider.value = -10;
+
         SetVolume();
 
         musicSource.clip = MusicSounds[0];
@@ -44,27 +49,35 @@ public class AudioManager : MonoBehaviour
         audioMixer.SetFloat("sfxVolume", sfxVolumeSlider.value);
     }
 
-    public void SetSliders() // default settings
+    public void SetSliders()
     {
-        musicVolumeSlider.value = -10;
-        sfxVolumeSlider.value = -10;
-        masterVolumeSlider.value = -10;
+        Debug.Log("volume: "+ musicVolume + " " + sfxVolume + " " + masterVolume);
+        musicVolumeSlider.value = musicVolume;
+        sfxVolumeSlider.value = sfxVolume;
+        masterVolumeSlider.value = masterVolume;
+        // gets terrible error if invoked; TODO
     }
 
 
     public void ChangeMasterVolume(float value)
     {
         audioMixer.SetFloat("masterVolume", masterVolumeSlider.value);
+        masterVolume = masterVolumeSlider.value;
+        Debug.Log("masterVolume " + masterVolume);
     }
 
     public void ChangeMusicVolume(float value)
-        {
-            audioMixer.SetFloat("musicVolume", musicVolumeSlider.value);
-        }
+    {
+        audioMixer.SetFloat("musicVolume", musicVolumeSlider.value);
+        musicVolume = musicVolumeSlider.value;
+        Debug.Log("musicVolume " + musicVolume);
+    }
 
     public void ChangeSfxVolume(float value)
     {
         audioMixer.SetFloat("sfxVolume", sfxVolumeSlider.value);
+        sfxVolume = sfxVolumeSlider.value;
+        Debug.Log("sfxVolume " + sfxVolume);
     }
 
 

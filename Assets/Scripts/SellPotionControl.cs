@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SellPotionControl : MonoBehaviour
 {
     private Image sellPotionImage;
-    public Sprite sellPotionRegularSprite;
+    public Sprite sellPotionRegularSprite; // temp in inspector; TODO
     public Sprite sellPotionSpecialSprite;
     public TextMeshProUGUI sellPotionText;
 
@@ -23,6 +23,7 @@ public class SellPotionControl : MonoBehaviour
     {
        sellPotionImage = transform.Find("Image").GetComponentInChildren<Image>();
        sellPotionImage.sprite = sellPotionRegularSprite;
+       sellPotionText.text = "closed"; // temp in inspector; TODO
     }
     void SetPotionPickedUp(bool value, Collectable potion) {
         if (value)
@@ -33,7 +34,8 @@ public class SellPotionControl : MonoBehaviour
         }
         else {
             sellPotionImage.sprite = sellPotionRegularSprite;
-            sellPotionText.text = "";
+            sellPotionText.text = "closed"; // temp in inspector; TODO
+            sellPotionText.color = Color.black;
         }
     }
 }

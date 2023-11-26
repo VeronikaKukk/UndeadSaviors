@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce510e2498cf7d42b07d9b396bd2b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sellPotionRegularSprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  sellPotionRegularSprite: {fileID: 21300000, guid: 1215606c86c465b4dad39ec6f7970b53, type: 3}
   sellPotionSpecialSprite: {fileID: -442968031, guid: 77f8aa0a0b4176e48897d51696a22539, type: 3}
   sellPotionText: {fileID: 8117752765488464308}
 --- !u!1 &3000836389760840352
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.40052772, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.53333336, g: 0.7803922, b: 0.427451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

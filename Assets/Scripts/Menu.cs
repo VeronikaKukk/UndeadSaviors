@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
     public GameObject LevelChooserObject;
     public GameObject MainMenuObject;
     public GameObject LevelPanel;
@@ -56,6 +55,7 @@ public class MainMenu : MonoBehaviour
     {
         MainMenuObject.SetActive(false);
         OptionsMenuObject.SetActive(true);
+
     }
     public void InstructionsMenuButtonPressed()
     {
