@@ -2382,7 +2382,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "* Click on a zombie icon to buy a zombie\n* Drop the zombie somewhere 
     in the starting area. \n* Click to pick up potions.\n* Drop potion onto a zombie
-    icon to puff its type.\n* Sell unusable potions to get courage."
+    icon to buff its type.\n* Sell unusable potions to get more courage."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 46d181ad62e523e468685b7985eb4c47, type: 2}
   m_sharedMaterial: {fileID: -3950436852057396325, guid: 46d181ad62e523e468685b7985eb4c47, type: 2}
