@@ -114,7 +114,7 @@ public class ScenarioController : MonoBehaviour
 
     public void ResetLevel() {
         StartingTheLevel = true;
-        Time.timeScale = 1;
+        // Time.timeScale = 1;
         pauseButton.gameObject.SetActive(true);
 
         // remove all enemies and zombies and potions and potion effects from table
@@ -189,7 +189,7 @@ public class ScenarioController : MonoBehaviour
 
     public void LevelChooserButton()
         {
-        Time.timeScale = 1;
+            Time.timeScale = 1;
             SceneManager.LoadScene("StartScene");
 
         }

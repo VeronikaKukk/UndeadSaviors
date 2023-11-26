@@ -15,7 +15,6 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        Time.timeScale = 1;
         scenarioController.PauseLevel();
     }
     public void QuitGame()
@@ -26,11 +25,11 @@ public class PauseMenu : MonoBehaviour
     public void RestartLevel()
     {
         scenarioController.ReplayButton();
+        ResumeGame();
     }
 
     public void MainMenu()
     {
-        Time.timeScale = 1;
         scenarioController.LevelChooserButton();
     }
 
