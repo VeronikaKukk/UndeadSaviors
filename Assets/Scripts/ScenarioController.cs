@@ -176,10 +176,12 @@ public class ScenarioController : MonoBehaviour
         {
             EndGameText.text = "Defeat!";
         }
+        Time.timeScale = 0;
     }
 
     public void ReplayButton()
     {
+        Time.timeScale = 1;
         HideGamePanel.SetActive(false);
         EndGamePanel.SetActive(false);
         PauseMenuPanel.SetActive(false);
@@ -188,9 +190,9 @@ public class ScenarioController : MonoBehaviour
     }
 
     public void LevelChooserButton()
-        {
+    {
             Time.timeScale = 1;
             SceneManager.LoadScene("StartScene");
 
-        }
+    }
 }
