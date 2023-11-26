@@ -19,7 +19,7 @@ MonoBehaviour:
   - {fileID: 2701146648586863391, guid: 522eb865058250145ae088feff7a02ed, type: 3}
   UnitName: Plant_melee
   CurrencyAmountOnDeath: 25
-  MaxHealth: 400
+  MaxHealth: 360
   MovementSpeed: 0
   AttackDamage: 10
   AttackSpeed: 0.6

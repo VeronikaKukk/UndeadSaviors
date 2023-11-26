@@ -123,8 +123,6 @@ public class ZombieBuilder : MonoBehaviour
             return;
         }
 
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
 
         Events.SetMoney(Events.GetMoney() - currentZombieData.Price);
         GameObject zombie = GameObject.Instantiate(currentZombieData.ZombiePrefab, transform.position, Quaternion.identity, null);
