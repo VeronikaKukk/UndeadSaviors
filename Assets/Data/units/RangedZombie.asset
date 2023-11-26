@@ -16,10 +16,10 @@ MonoBehaviour:
   DroppablePotions: []
   UnitName: Zombie_laser_eyes
   CurrencyAmountOnDeath: 0
-  MaxHealth: 15
-  MovementSpeed: 2.5
+  MaxHealth: 10
+  MovementSpeed: 2
   AttackDamage: 1
-  AttackSpeed: 0.4
+  AttackSpeed: 0.8
   AttackRangeSize: 2
   UnitPrefab: {fileID: 2140568854778588184, guid: c22be686da960de4a8c316ed9a83798e, type: 3}
   MaxUnitsAttackingAtOnce: 1

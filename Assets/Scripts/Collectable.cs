@@ -76,7 +76,7 @@ public class Collectable : MonoBehaviour
 
             if (potionToDestroy != null)
             {
-                Invoke("PutPotionDown", 0.15f);
+                Invoke("PutPotionDown", 0.25f);
             } else
             {
                 isPickedUp = false;
