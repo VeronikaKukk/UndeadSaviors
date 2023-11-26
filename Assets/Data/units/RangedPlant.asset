@@ -18,11 +18,11 @@ MonoBehaviour:
   - {fileID: 7214415345411477701, guid: 323682bcd55257042b6d989072175ab1, type: 3}
   - {fileID: 2701146648586863391, guid: 522eb865058250145ae088feff7a02ed, type: 3}
   UnitName: Plant_ranged
-  CurrencyAmountOnDeath: 10
+  CurrencyAmountOnDeath: 15
   MaxHealth: 60
   MovementSpeed: 0
-  AttackDamage: 1
-  AttackSpeed: 0.4
-  AttackRangeSize: 3
+  AttackDamage: 2
+  AttackSpeed: 0.6
+  AttackRangeSize: 2.5
   UnitPrefab: {fileID: 5579698584588843383, guid: 237c584396a04f34583ed98054ca3893, type: 3}
   MaxUnitsAttackingAtOnce: 1
