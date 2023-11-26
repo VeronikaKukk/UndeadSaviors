@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private bool toggleMusic, toggleSfx, toggleMaster; // for the mute buttons  
     [SerializeField] private Sprite volumeNormal, volumeMuted;
 
+
     private void Awake()
     {   
         if (Instance == null)
@@ -43,7 +44,7 @@ public class AudioManager : MonoBehaviour
         audioMixer.SetFloat("sfxVolume", sfxVolumeSlider.value);
     }
 
-    public void SetSliders()
+    public void SetSliders() // default settings
     {
         musicVolumeSlider.value = -10;
         sfxVolumeSlider.value = -10;
