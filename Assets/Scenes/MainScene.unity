@@ -8432,15 +8432,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1640834368681876534, guid: fd41a23bb1b7d424097a92efd4b5413b, type: 3}
       propertyPath: m_Color.b
-      value: 0.427451
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1640834368681876534, guid: fd41a23bb1b7d424097a92efd4b5413b, type: 3}
       propertyPath: m_Color.g
-      value: 0.7803922
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1640834368681876534, guid: fd41a23bb1b7d424097a92efd4b5413b, type: 3}
       propertyPath: m_Color.r
-      value: 0.53333336
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2765253828040178274, guid: fd41a23bb1b7d424097a92efd4b5413b, type: 3}
       propertyPath: m_Name

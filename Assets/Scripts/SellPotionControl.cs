@@ -23,18 +23,18 @@ public class SellPotionControl : MonoBehaviour
     {
        sellPotionImage = transform.Find("Image").GetComponentInChildren<Image>();
        sellPotionImage.sprite = sellPotionRegularSprite;
-       sellPotionText.text = "closed"; // temp in inspector; TODO
+        sellPotionText.text = "";
     }
     void SetPotionPickedUp(bool value, Collectable potion) {
         if (value)
         {
             sellPotionImage.sprite = sellPotionSpecialSprite;
-            sellPotionText.text = "+20";
+            sellPotionText.text = "sell\n+20";
             sellPotionText.color = Color.green;
         }
         else {
             sellPotionImage.sprite = sellPotionRegularSprite;
-            sellPotionText.text = "closed"; // temp in inspector; TODO
+            sellPotionText.text = "";
             sellPotionText.color = Color.black;
         }
     }
