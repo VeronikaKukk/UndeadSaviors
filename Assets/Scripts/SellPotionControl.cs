@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -23,7 +24,7 @@ public class SellPotionControl : MonoBehaviour
     {
        sellPotionImage = transform.Find("Image").GetComponentInChildren<Image>();
        sellPotionImage.sprite = sellPotionRegularSprite;
-        sellPotionText.text = "";
+       sellPotionText.text = "";
     }
     void SetPotionPickedUp(bool value, Collectable potion) {
         if (value)

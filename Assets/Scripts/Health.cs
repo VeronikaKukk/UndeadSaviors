@@ -4,10 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 using static UnityEngine.GraphicsBuffer;
 
 public class Health : MonoBehaviour
 {
+    public GameObject CourageEffectPrefab;
     public UnitData UnitData;
 
     public float MaxHealth;
@@ -45,7 +47,15 @@ public class Health : MonoBehaviour
             {
                 Debug.Log(gameObject.name +" died");
                 Events.SetMoney(Events.GetMoney() + (int)(CurrencyAmountOnDeath * CountdownTimer.Instance.currentTime/60));
-                
+
+                // show courage particle
+                GameObject courageParticle = GameObject.Instantiate(CourageEffectPrefab, transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+                courageParticle.GetComponent<ParticleSystem>().Play();
+                GameObject courage = GameObject.FindGameObjectWithTag("Courage").gameObject;
+                var pos = Camera.main.ScreenToWorldPoint(courage.transform.position);
+                TweenCallback tweenCallback = () => { Destroy(courageParticle.gameObject); };
+                courageParticle.transform.DOMove(new Vector3(pos.x, pos.y, -10), 1.5f).OnComplete(tweenCallback);
+
                 float rnd = UnityEngine.Random.Range(0f, 1f);
                 float rnd2 = UnityEngine.Random.Range(0f, 1f);
 

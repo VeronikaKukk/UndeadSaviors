@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class Collectable : MonoBehaviour
 
     public AudioClipGroup ClickOnPotionAudio;
     public AudioClipGroup ApplyPotionAudio;
+    public GameObject CourageEffectPrefab;
 
 
     private GameObject cursorUIObject;
@@ -153,8 +155,14 @@ public class Collectable : MonoBehaviour
         Events.SetMoney(Events.GetMoney() + 20);//get 20 money for selling a potion
         EntityController.Instance.Potions.Remove(this);
         potionToDestroy = gameObject;
+        // sell potion effect
+        GameObject courageParticle = GameObject.Instantiate(CourageEffectPrefab, transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+        courageParticle.GetComponent<ParticleSystem>().Play();
+        GameObject courage = GameObject.FindGameObjectWithTag("Courage").gameObject;
+        var pos = Camera.main.ScreenToWorldPoint(courage.transform.position);
+        TweenCallback tweenCallback = () => { Destroy(courageParticle.gameObject); };
+        courageParticle.transform.DOMove(new Vector3(pos.x, pos.y, 10), 1.5f).OnComplete(tweenCallback);
     }
-
     private bool IsPointerOverUIButton()
     {
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);

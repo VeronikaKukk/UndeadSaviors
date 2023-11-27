@@ -9,6 +9,7 @@ TagManager:
   - Unit
   - AttackRange
   - SellPotion
+  - Courage
   layers:
   - Default
   - TransparentFX
