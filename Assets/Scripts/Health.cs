@@ -210,6 +210,6 @@ public class Health : MonoBehaviour
         combatText.transform.Find("HealthPos").gameObject.SetActive(true);
         TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
         combatText.transform.localScale = combatText.transform.localScale * 0.5f;
-        combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 0.7f).OnComplete(tweenCallback);
+        combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 1f).OnComplete(tweenCallback);
     }
 }

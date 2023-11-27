@@ -114,7 +114,7 @@ public class Attacking : MonoBehaviour
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
             TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
             combatText.transform.localScale = combatText.transform.localScale * 0.5f;
-            combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 0.7f).OnComplete(tweenCallback);
+            combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 1f).OnComplete(tweenCallback);
         }
     }
 
@@ -129,7 +129,7 @@ public class Attacking : MonoBehaviour
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
             TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
             combatText.transform.localScale = combatText.transform.localScale * 0.5f;
-            combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 0.7f).OnComplete(tweenCallback);
+            combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 1f).OnComplete(tweenCallback);
         }
     }
 

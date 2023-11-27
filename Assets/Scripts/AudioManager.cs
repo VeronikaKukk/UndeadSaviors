@@ -55,15 +55,15 @@ public class AudioManager : MonoBehaviour
         float mVS;
         if (audioMixer.GetFloat("musicVolume", out mVS))
         {
-            musicVolumeSlider.value = (float)Mathf.Pow(10, mVS / 20f);
+            musicVolumeSlider.value = mVS;
         }
         if (audioMixer.GetFloat("masterVolume", out mVS))
         {
-            masterVolumeSlider.value = (float)Mathf.Pow(10, mVS / 20f) ;
+            masterVolumeSlider.value = mVS;
         }
         if (audioMixer.GetFloat("sfxVolume", out mVS))
         {
-            sfxVolumeSlider.value = (float)Mathf.Pow(10, mVS / 20f) ;
+            sfxVolumeSlider.value = mVS;
         }
     }
 

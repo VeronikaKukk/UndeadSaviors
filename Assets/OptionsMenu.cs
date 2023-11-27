@@ -31,16 +31,4 @@ public class OptionsMenu : MonoBehaviour
     {
         AudioManager.Instance.RemoveSliderListeners();
     }
-
-    /*
-    public void ReloadOptions() // doesn't work yet
-    {
-        if (optionsNeedsAttention)
-        {
-            optionsNeedsAttention = false;
-            AudioManager.Instance.SetSliders();
-        }
-    }
-    */
-
 }
