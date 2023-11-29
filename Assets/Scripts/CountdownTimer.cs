@@ -8,6 +8,7 @@ public class CountdownTimer : MonoBehaviour
     public static CountdownTimer Instance;
     public TextMeshProUGUI TimerText;
     public float StartTime = 300.0f; // 5 minutes in seconds
+    [Range(0, 300)]
     public float currentTime;
 
     public bool isGameRunning;

@@ -9,66 +9,70 @@ using TMPro;
 
 public class Attacking : MonoBehaviour
 {
+    [Header("Everything related to attacking")]
+    [Space]
     public float AttackDamage;
     public float AttackSpeed;
+    [Tooltip("Attack range radius (it is a circle)")]
     public float AttackRangeSize;
+    public AudioClipGroup AttackSound;
 
+    [Header("Other")]
+    [Space]
+    public GameObject CombatTextPrefab;
+    [Tooltip("Leave empty if unit has no projectile")]
+    public Projectile ProjectilePrefab;
+    [Tooltip("Minimum size for plant prefab")]
     public Vector3 minSize = new Vector3(0.2f,0.2f,0.2f);
 
     private Movement movement;
-    private Health currentUnitHealth;
-
     private Vector2 direction;
+    
+    private Health currentUnitHealthComponent;
+    
+    private AttackRange CurrentUnitAttackRange;
     private bool isFighting;
+    private float nextAttackTime;
 
-    private float NextAttackTime;
-
-    private int MaxUnitsAttackingAtOnce;
-
-    public AttackRange CurrentUnitAttackRange;
-    public GameObject CombatTextPrefab;
-    public AudioClipGroup AttackSound;
-
+    private int maxUnitsAttackingAtOnce;
     private List<Health> targetsInRange = new List<Health>();
     private List<Health> currentTargets = new List<Health>();
 
-    public Projectile ProjectilePrefab;
-
     private Particles particleEffects;
-
     private Animator animator;
 
     private void Awake()
     {
         Events.OnAddDamageValue += AddDamage;
         Events.OnAddAttackSpeedValue += AddAttackSpeed;
+        CurrentUnitAttackRange = transform.Find("AttackRange").GetComponent<AttackRange>();
         CurrentUnitAttackRange.OnEnemyEnteredAttackRange += AddEnemyToTargets;
         CurrentUnitAttackRange.OnEnemyExitedAttackRange += RemoveEnemyFromTargets;
 
         // this was in start before
-        currentUnitHealth = GetComponent<Health>();
-        if (currentUnitHealth.UnitData.TeamName != "Plant")
+        currentUnitHealthComponent = GetComponent<Health>();
+        if (currentUnitHealthComponent.UnitData.TeamName != "Plant")
         {
             movement = GetComponent<Movement>();
         }
 
-        AttackDamage = currentUnitHealth.UnitData.AttackDamage;
-        AttackRangeSize = currentUnitHealth.UnitData.AttackRangeSize;
-        AttackSpeed = currentUnitHealth.UnitData.AttackSpeed;
+        AttackDamage = currentUnitHealthComponent.UnitData.AttackDamage;
+        AttackRangeSize = currentUnitHealthComponent.UnitData.AttackRangeSize;
+        AttackSpeed = currentUnitHealthComponent.UnitData.AttackSpeed;
 
         CurrentUnitAttackRange.GetComponent<CircleCollider2D>().radius = AttackRangeSize;
         var attackRangeVisual = CurrentUnitAttackRange.transform.Find("AttackRangeVisual");
         // shown a little bigger because then it is more logical to player (they cant see pixels)
         attackRangeVisual.localScale = new Vector3(AttackRangeSize*2+0.3f, AttackRangeSize*2 + 0.3f, AttackRangeSize * 2 + 0.3f);
-        MaxUnitsAttackingAtOnce = currentUnitHealth.UnitData.MaxUnitsAttackingAtOnce;
-        NextAttackTime = Time.time;
+        maxUnitsAttackingAtOnce = currentUnitHealthComponent.UnitData.MaxUnitsAttackingAtOnce;
+        nextAttackTime = Time.time;
 
-        particleEffects = GetComponent<Particles>();
+        particleEffects = GetComponent<Particles>();// for poison cloud
         animator = GetComponentInChildren<Animator>();
     }
     private void Start()
     {
-        if (currentUnitHealth.UnitData.TeamName != "Plant")
+        if (currentUnitHealthComponent.UnitData.TeamName != "Plant")
         {
             direction = GetDirection();
         }
@@ -90,14 +94,14 @@ public class Attacking : MonoBehaviour
     }
 
     void RemoveEnemyFromTargets(Health enemy) {
-        if (enemy.UnitData.TeamName != currentUnitHealth.UnitData.TeamName)
+        if (enemy.UnitData.TeamName != currentUnitHealthComponent.UnitData.TeamName)
         {
             targetsInRange.Remove(enemy);
         }
     }
     void AddEnemyToTargets(Health enemy)
     {
-        if (enemy.UnitData.TeamName != currentUnitHealth.UnitData.TeamName)
+        if (enemy.UnitData.TeamName != currentUnitHealthComponent.UnitData.TeamName)
         {
             targetsInRange.Add(enemy);
         }
@@ -159,7 +163,7 @@ public class Attacking : MonoBehaviour
         {
             currentTargets = GetNClosestTargets();
             isFighting = true;
-            if (NextAttackTime <= Time.time)
+            if (nextAttackTime <= Time.time)
             {
                 foreach (var target in currentTargets) {
                     if (target != null)
@@ -193,12 +197,12 @@ public class Attacking : MonoBehaviour
                         }
                     }
                 }               
-                NextAttackTime = Time.time + 1/AttackSpeed; // the bigger the attackspeed the faster it hits
+                nextAttackTime = Time.time + 1/AttackSpeed; // the bigger the attackspeed the faster it hits
             }
         }
         else {
             isFighting = false;
-            if (currentUnitHealth.UnitData.TeamName != "Plant")
+            if (currentUnitHealthComponent.UnitData.TeamName != "Plant")
             {
                 direction = GetDirection();
             }
@@ -252,11 +256,11 @@ public class Attacking : MonoBehaviour
         List<(Health,float)> targetsWithDist = new List<(Health,float)>();
 
         List<Health> enemies = null;
-        if (currentUnitHealth.UnitData.TeamName == "Zombie")
+        if (currentUnitHealthComponent.UnitData.TeamName == "Zombie")
         {
             enemies = EntityController.Instance.PlantCharacters;
         }
-        else if (currentUnitHealth.UnitData.TeamName == "Plant")
+        else if (currentUnitHealthComponent.UnitData.TeamName == "Plant")
         {
             enemies = EntityController.Instance.ZombieCharacters;
         }
@@ -282,7 +286,7 @@ public class Attacking : MonoBehaviour
             }
         }
         targetsWithDist.Sort((x, y) => x.Item2.CompareTo(y.Item2));
-        for (int i = 0; i < Math.Min(targetsWithDist.Count, MaxUnitsAttackingAtOnce); i++) {
+        for (int i = 0; i < Math.Min(targetsWithDist.Count, maxUnitsAttackingAtOnce); i++) {
             nClosestTargets.Add(targetsWithDist[i].Item1);
         }
         return nClosestTargets;

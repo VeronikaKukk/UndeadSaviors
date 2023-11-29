@@ -7,26 +7,32 @@ using UnityEngine.UI;
 
 public class Collectable : MonoBehaviour
 {
+    
     public PotionData PotionData;
-
-    public bool isVisible = false;
-    private float aliveTimeLeft; // how long the potion stays on the field
-    private bool isPickedUp = false;
-    private Vector3 offset;
-
+    [Header("Prefabs")]
+    [Space]
+    [Tooltip("Needed for showing the potion on UI layer")]
     public GameObject CursorUIObjectPrefab;
-
-    public AudioClipGroup ClickOnPotionAudio;
-    public AudioClipGroup ApplyPotionAudio;
     public GameObject CourageEffectPrefab;
 
+    [Header("Sounds")]
+    [Space]
+    public AudioClipGroup ClickOnPotionAudio;
+    public AudioClipGroup ApplyPotionAudio;
 
+    [Header("Other")]
+    [Space]
+    public bool isVisible = false;
+
+    private float aliveTimeLeft; // how long the potion stays on the field
+    private bool isPickedUp = false;
+
+    private Vector3 offset;
     private GameObject cursorUIObject;
     private SpriteRenderer spriteRenderer;
     private Canvas canvas;
     private Transform potionBuffs;
     private string zombieType;
-
     private GameObject potionToDestroy;
 
     public void Awake()

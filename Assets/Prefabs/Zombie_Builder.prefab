@@ -143,9 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b06432f2548c66641b58830c005f2d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllowColor: {r: 0, g: 1, b: 0.3054874, a: 1}
+  AllowColor: {r: 0, g: 1, b: 0.30588245, a: 1}
   DenyColor: {r: 1, g: 0, b: 0, a: 1}
   ZombiePrefab: {fileID: 5654820010355793823, guid: 5f9bef6ea6ec9e844b4b541be3c3bf93, type: 3}
+  SpawnParticlePrefab: {fileID: 876529997799051276, guid: 829e00fb610f1494b82b27ff91fe8953, type: 3}
   ClickOnShopButtonActiveAudio: {fileID: 11400000, guid: 6311c0c751ceaa5428fdd9690a8ba495, type: 2}
   ClickOnShopButtonInactiveAudio: {fileID: 11400000, guid: a7de42a23216ed64992102ef27317bce, type: 2}
-  SpawnParticlePrefab: {fileID: 876529997799051276, guid: 829e00fb610f1494b82b27ff91fe8953, type: 3}
+  startAreas: []

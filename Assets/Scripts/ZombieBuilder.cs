@@ -5,14 +5,20 @@ using UnityEngine.EventSystems;
 
 public class ZombieBuilder : MonoBehaviour
 {
+    [ColorUsage(showAlpha: false)]
     public Color AllowColor;
+    [ColorUsage(showAlpha: false)]
     public Color DenyColor;
-    public GameObject ZombiePrefab;
 
+    [Header("Prefabs")]
+    [Space]
+    public GameObject ZombiePrefab;
+    public GameObject SpawnParticlePrefab;
+
+    [Header("Sounds")]
+    [Space]
     public AudioClipGroup ClickOnShopButtonActiveAudio;
     public AudioClipGroup ClickOnShopButtonInactiveAudio;
-
-    public GameObject SpawnParticlePrefab;
 
     public List<BoxCollider2D> startAreas = new List<BoxCollider2D>();
 
