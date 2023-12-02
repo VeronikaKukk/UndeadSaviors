@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
 {
     public GameObject CourageEffectPrefab;
     public UnitData UnitData;
+    public static Health Instance;
 
     public float MaxHealth;
     private int CurrencyAmountOnDeath;
@@ -96,6 +97,7 @@ public class Health : MonoBehaviour
 
     public void Awake()
     {
+        Instance = this;
         // replace health data with unidata info
         MaxHealth = UnitData.MaxHealth;
         CurrencyAmountOnDeath = UnitData.CurrencyAmountOnDeath;
@@ -174,6 +176,22 @@ public class Health : MonoBehaviour
 
         // Convert the clamped position back to world space
         return Camera.main.ViewportToWorldPoint(viewportPosition);
+    }
+
+    public void ManualPotionSpawn(int potionIndex)
+    {
+        if (potionIndex == 0)
+        {
+            GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[potionIndex], new Vector2(-8, 2), Quaternion.identity, null);
+        }
+        if (potionIndex == 1)
+        {
+            GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[potionIndex], new Vector2(-8, 0), Quaternion.identity, null);
+        }
+        if (potionIndex == 2)
+        {
+            GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[potionIndex], new Vector2(-8, -2), Quaternion.identity, null);
+        }
     }
 
 
