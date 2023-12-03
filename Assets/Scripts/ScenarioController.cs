@@ -28,13 +28,8 @@ public class ScenarioController : MonoBehaviour
     public LevelData currentLevelData;
 
     public bool StartingTheLevel = true;
-
-    public static ScenarioController Instance;
-    public List<LevelData> Levels;
-
     private void Awake()
     {
-        Instance = this;
         currentScene = SceneManager.GetActiveScene();
         Events.OnEndLevel += OnEndLevel;
         Events.OnStartLevel += OnStartLevel;
@@ -165,7 +160,6 @@ public class ScenarioController : MonoBehaviour
         StartingTheLevel = false;
         levelRunning = true;
     }
-
     public void OnEndLevel(bool isWin)
     {
         //if (!levelRunning) return;
