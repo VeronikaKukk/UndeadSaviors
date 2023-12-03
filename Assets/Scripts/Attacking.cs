@@ -139,7 +139,7 @@ public class Attacking : MonoBehaviour
 
     public void Update()
     {
-        if (movement != null && !isFighting)// non-attacking zombie moves to closest enemy
+        if (movement != null && !isFighting || movement != null && targetsInRange.Count == 0)// non-attacking zombie moves to closest enemy
         {
             movement.Move(direction);
             if (animator != null && direction != Vector2.zero)
@@ -157,7 +157,6 @@ public class Attacking : MonoBehaviour
         {
             currentTargets = GetNClosestTargets();
         }
-
 
         if (targetsInRange.Count > 0)
         {
@@ -177,7 +176,7 @@ public class Attacking : MonoBehaviour
                             projectile.Target = target;
                             AttackSound.Play();
                             CombatDamageTexts(target);
-                        } 
+                        }
                         else // for melee fighters
                         {
                             if (particleEffects != null) // for poison cloud plant
@@ -193,7 +192,7 @@ public class Attacking : MonoBehaviour
                             target.transform.localScale = new Vector3(target.transform.localScale.x - 0.0015f * AttackDamage, target.transform.localScale.y - 0.0015f * AttackDamage, target.transform.localScale.z - 0.0015f * AttackDamage);
                             var targetAttackRange = target.transform.Find("AttackRange");
                             targetAttackRange.localScale = new Vector3(targetAttackRange.localScale.x + 0.0015f * AttackDamage, targetAttackRange.localScale.y + 0.0015f * AttackDamage, targetAttackRange.localScale.z + 0.0015f * AttackDamage);
-                        
+
                         }
                     }
                 }               
