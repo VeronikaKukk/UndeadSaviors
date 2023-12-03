@@ -8010,6 +8010,7 @@ MonoBehaviour:
   unitInfoButton: {fileID: 634097906}
   currentLevelData: {fileID: 0}
   StartingTheLevel: 1
+  Levels: []
 --- !u!114 &1919925725
 MonoBehaviour:
   m_ObjectHideFlags: 0

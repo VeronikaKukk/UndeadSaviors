@@ -28,8 +28,13 @@ public class ScenarioController : MonoBehaviour
     public LevelData currentLevelData;
 
     public bool StartingTheLevel = true;
+
+    public static ScenarioController Instance;
+    public List<LevelData> Levels;
+
     private void Awake()
     {
+        Instance = this;
         currentScene = SceneManager.GetActiveScene();
         Events.OnEndLevel += OnEndLevel;
         Events.OnStartLevel += OnStartLevel;
@@ -61,7 +66,7 @@ public class ScenarioController : MonoBehaviour
                 Events.EndLevel(false);
             }
         }
-        else if(levelRunning && !StartingTheLevel)
+        else if (levelRunning && !StartingTheLevel)
         {
             if (EntityController.Instance.PlantCharacters.Count < 1)
             {
@@ -92,19 +97,21 @@ public class ScenarioController : MonoBehaviour
         }
     }
 
-    public void OnStartLevel(LevelData data) {
+    public void OnStartLevel(LevelData data)
+    {
         StartingTheLevel = true;
 
         currentLevelData = data;
         Events.SetMoney(data.StartingMoney);
         CountdownTimer.Instance.StartTime = data.Gametime;
 
-        for (int i = 0; i< ShopPanel.transform.childCount; i++)
+        for (int i = 0; i < ShopPanel.transform.childCount; i++)
         {
             Destroy(ShopPanel.transform.GetChild(i).gameObject);
         }
 
-        foreach (var zombie in data.Zombies) {
+        foreach (var zombie in data.Zombies)
+        {
             Shop btn = Instantiate<Shop>(ZombieButtonPrefab, ShopPanel.transform);
             btn.ShopData = zombie;
         }
@@ -112,13 +119,15 @@ public class ScenarioController : MonoBehaviour
         SpawnEnemies(data.Plants);
     }
 
-    public void ResetLevel() {
+    public void ResetLevel()
+    {
         StartingTheLevel = true;
         Time.timeScale = 1;
         pauseButton.gameObject.SetActive(true);
 
         // remove all enemies and zombies and potions and potion effects from table
-        foreach (var i in EntityController.Instance.PlantCharacters) {
+        foreach (var i in EntityController.Instance.PlantCharacters)
+        {
             Destroy(i.gameObject);
         }
         foreach (var i in EntityController.Instance.ZombieCharacters)
@@ -148,11 +157,13 @@ public class ScenarioController : MonoBehaviour
         SpawnEnemies(currentLevelData.Plants);
     }
 
-    public void SpawnEnemies(List<UnitData> plants) {
+    public void SpawnEnemies(List<UnitData> plants)
+    {
         List<GameObject> keys = SpawnPoints;
         var rnd = new System.Random();
         keys = keys.OrderBy(x => rnd.Next()).ToList();
-        for (int i = 0; i < plants.Count; i++) {
+        for (int i = 0; i < plants.Count; i++)
+        {
             GameObject spawn = keys[0];
             keys.Remove(spawn);
             GameObject plant = GameObject.Instantiate(plants[i].UnitPrefab, spawn.transform.position, Quaternion.identity, spawn.transform);
@@ -160,6 +171,7 @@ public class ScenarioController : MonoBehaviour
         StartingTheLevel = false;
         levelRunning = true;
     }
+
     public void OnEndLevel(bool isWin)
     {
         //if (!levelRunning) return;
@@ -191,8 +203,8 @@ public class ScenarioController : MonoBehaviour
 
     public void LevelChooserButton()
     {
-            Time.timeScale = 1;
-            SceneManager.LoadScene("StartScene");
+        Time.timeScale = 1;
+        SceneManager.LoadScene("StartScene");
 
     }
 }
