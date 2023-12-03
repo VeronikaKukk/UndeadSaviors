@@ -8,46 +8,46 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Health : MonoBehaviour
 {
-    [Header("Prefabs")]
-    [Space]
     public GameObject CourageEffectPrefab;
-<<<<<<< HEAD
-=======
     public UnitData UnitData;
+    public static Health Instance;
 
     public float MaxHealth;
     private int CurrencyAmountOnDeath;
     public event Action<float, float> OnHealthChanged;
->>>>>>> 36ad89778c9130cda7613021c8ee63b57cd85527
     public GameObject CombatTextPrefab;
+
     public GameObject DeathParticlePrefab;
+    public AudioClipGroup DeathSound;
+
+    public Vector3 maxSize = new Vector3(2f, 2f, 2f);
 
     private float lastDamaged;
     private float healthRegenWaitTime;
-    private int CurrencyAmountOnDeath;
-    public event Action<float, float> OnHealthChanged;
-    [Header("Health")]
-    [Space]
-    public float MaxHealth;
-    public float currentHealth;
 
+    public float currentHealth;
     [HideInInspector]
-    public float CurrentHealth {
-        get 
+    public float CurrentHealth
+    {
+        get
         {
-            return currentHealth; 
+            return currentHealth;
         }
-        set 
+        set
         {
             currentHealth = Mathf.Clamp(value, 0, MaxHealth);
             if (currentHealth <= 0 && UnitData.TeamName == "Zombie") // if zombie dies, just remove it from board
             {
-                Death();
+                // spawn DeathParticle
+                DeathSound.Play();
+                GameObject deathParticle = GameObject.Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity, null);
+                deathParticle.GetComponent<ParticleSystem>().Play();
+                Destroy(gameObject);
             }
             else if (currentHealth <= 0 && UnitData.TeamName == "Plant") // if plant dies, give money and potion and remove it from board
             {
-                Debug.Log(gameObject.name +" died");
-                Events.SetMoney(Events.GetMoney() + (int)(CurrencyAmountOnDeath * CountdownTimer.Instance.currentTime/60));
+                Debug.Log(gameObject.name + " died");
+                Events.SetMoney(Events.GetMoney() + (int)(CurrencyAmountOnDeath * CountdownTimer.Instance.currentTime / 60));
 
                 // show courage particle
                 GameObject courageParticle = GameObject.Instantiate(CourageEffectPrefab, transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
@@ -61,7 +61,7 @@ public class Health : MonoBehaviour
                 float rnd2 = UnityEngine.Random.Range(0f, 1f);
 
 
-                if (rnd > 0.6) 
+                if (rnd > 0.6)
                 {
                     List<BoxCollider2D> startAreas = ZombieBuilder.Instance.startAreas;
                     BoxCollider2D closestStartArea = GetClosestStartArea(startAreas);
@@ -72,7 +72,8 @@ public class Health : MonoBehaviour
                     {
                         collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[0], transform.position, Quaternion.identity, null);
                     }
-                    else if (rnd2 < 0.6) {
+                    else if (rnd2 < 0.6)
+                    {
                         collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[1], transform.position, Quaternion.identity, null);
                     }
                     else
@@ -82,7 +83,10 @@ public class Health : MonoBehaviour
                     collectable.transform.DOMove(spawnPosition, 1f);
                 }
                 // spawn DeathParticle
-                Death();
+                DeathSound.Play();
+                GameObject deathParticle = GameObject.Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity, null);
+                deathParticle.GetComponent<ParticleSystem>().Play();
+                Destroy(gameObject);
 
             }
             OnHealthChanged?.Invoke(currentHealth, MaxHealth);
@@ -91,15 +95,11 @@ public class Health : MonoBehaviour
         }
     }
 
-    [Header("Other")]
-    [Space]
-    public UnitData UnitData;
-    public AudioClipGroup DeathSound;
-    [Tooltip("Maximum size for plant prefab")]
-    public Vector3 maxSize = new Vector3(2f, 2f, 2f);
+
 
     public void Awake()
     {
+        Instance = this;
         // replace health data with unidata info
         MaxHealth = UnitData.MaxHealth;
         CurrencyAmountOnDeath = UnitData.CurrencyAmountOnDeath;
@@ -107,7 +107,7 @@ public class Health : MonoBehaviour
         currentHealth = MaxHealth;
         Events.OnAddMaxHealthValue += AddMaxHealth;
         lastDamaged = Time.time;
-        healthRegenWaitTime = UnityEngine.Random.Range(8.0f,15.0f);
+        healthRegenWaitTime = UnityEngine.Random.Range(8.0f, 15.0f);
 
         // Add characters to EntityController
         if (UnitData.TeamName == "Zombie")
@@ -180,6 +180,22 @@ public class Health : MonoBehaviour
         return Camera.main.ViewportToWorldPoint(viewportPosition);
     }
 
+    public void ManualPotionSpawn(int potionIndex)
+    {
+        if (potionIndex == 0)
+        {
+            GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[potionIndex], new Vector2(-8, 2), Quaternion.identity, null);
+        }
+        if (potionIndex == 1)
+        {
+            GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[potionIndex], new Vector2(-8, 0), Quaternion.identity, null);
+        }
+        if (potionIndex == 2)
+        {
+            GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[potionIndex], new Vector2(-8, -2), Quaternion.identity, null);
+        }
+    }
+
 
     void AddMaxHealth(string unitName, float health)
     {
@@ -196,7 +212,7 @@ public class Health : MonoBehaviour
         if (UnitData.TeamName == "Plant" && lastDamaged + healthRegenWaitTime < Time.time && transform.localScale.magnitude < maxSize.magnitude)
         {
             transform.localScale = new Vector3(transform.localScale.x + 0.05f, transform.localScale.y + 0.05f, transform.localScale.z + 0.05f);
-            
+
             lastDamaged = Time.time;
             MaxHealth += 5;
             CurrentHealth += 5;
@@ -206,7 +222,8 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void ShowHealthText(float health) {
+    private void ShowHealthText(float health)
+    {
         GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.y + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.z), Quaternion.identity);
         combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + health;
         combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
@@ -214,11 +231,5 @@ public class Health : MonoBehaviour
         TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
         combatText.transform.localScale = combatText.transform.localScale * 0.5f;
         combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 1f).OnComplete(tweenCallback);
-    }
-    private void Death() {
-        DeathSound.Play();
-        GameObject deathParticle = GameObject.Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity, null);
-        deathParticle.GetComponent<ParticleSystem>().Play();
-        Destroy(gameObject);
     }
 }
