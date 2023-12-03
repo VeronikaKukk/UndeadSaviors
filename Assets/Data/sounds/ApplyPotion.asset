@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdbdbedf50e6cab4bbcac2d1f5653141, type: 3}
   m_Name: ApplyPotion
   m_EditorClassIdentifier: 
-  VolumeMin: 0.1
-  VolumeMax: 0.1
+  VolumeMin: 1
+  VolumeMax: 1
   PitchMin: 0.8
   PicthMax: 1.1
   Cooldown: 0.2

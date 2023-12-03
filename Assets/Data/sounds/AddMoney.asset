@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdbdbedf50e6cab4bbcac2d1f5653141, type: 3}
-  m_Name: ClickOnPotion
+  m_Name: AddMoney
   m_EditorClassIdentifier: 
-  VolumeMin: 1
-  VolumeMax: 1
+  VolumeMin: 1.2
+  VolumeMax: 1.2
   PitchMin: 0.9
   PicthMax: 1.1
-  Cooldown: 0.1
+  Cooldown: 0.01
   AudioClips:
-  - {fileID: 8300000, guid: cb065134a19f9d34587eb37f8e57d602, type: 3}
-  - {fileID: 8300000, guid: ed029888f4279ab48bb08d9c89996c85, type: 3}
+  - {fileID: 8300000, guid: 4c250181bab798f4795da97affa8db5b, type: 3}
+  - {fileID: 8300000, guid: 589962aad2bc46341bcd1f637f0d6546, type: 3}
+  - {fileID: 8300000, guid: 7a5bdc45dd6eb8846899f77b04704a9e, type: 3}
+  - {fileID: 8300000, guid: 6d48fd276747500439e21ee36a45bcad, type: 3}

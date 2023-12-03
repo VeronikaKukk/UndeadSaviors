@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdbdbedf50e6cab4bbcac2d1f5653141, type: 3}
-  m_Name: MeleePlant3Attack
+  m_Name: BerryPlant
   m_EditorClassIdentifier: 
   VolumeMin: 1
   VolumeMax: 1
@@ -18,4 +18,4 @@ MonoBehaviour:
   PicthMax: 1.1
   Cooldown: 0.05
   AudioClips:
-  - {fileID: 8300000, guid: 4f8589952e6f746419f3548df231cc22, type: 3}
+  - {fileID: 8300000, guid: 7cfba4435ef66004288a37775eeba158, type: 3}

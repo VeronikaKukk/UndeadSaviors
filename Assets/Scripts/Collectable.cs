@@ -19,6 +19,7 @@ public class Collectable : MonoBehaviour
     [Space]
     public AudioClipGroup ClickOnPotionAudio;
     public AudioClipGroup ApplyPotionAudio;
+    public AudioClipGroup MoneySound;
 
     [Header("Other")]
     [Space]
@@ -168,6 +169,7 @@ public class Collectable : MonoBehaviour
         var pos = Camera.main.ScreenToWorldPoint(courage.transform.position);
         TweenCallback tweenCallback = () => { Destroy(courageParticle.gameObject); };
         courageParticle.transform.DOMove(new Vector3(pos.x, pos.y, 10), 1.5f).OnComplete(tweenCallback);
+        MoneySound.Play();
     }
     private bool IsPointerOverUIButton()
     {

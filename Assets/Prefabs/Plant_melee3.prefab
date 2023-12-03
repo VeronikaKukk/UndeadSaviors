@@ -269,11 +269,10 @@ MonoBehaviour:
   AttackDamage: 0
   AttackSpeed: 0
   AttackRangeSize: 0
-  minSize: {x: 0.2, y: 0.2, z: 0.2}
-  CurrentUnitAttackRange: {fileID: 472739353929581078}
-  CombatTextPrefab: {fileID: 8832612426596585339, guid: f5e229f8616d01e47883d9d3e4fe8ef0, type: 3}
   AttackSound: {fileID: 11400000, guid: 06614e611cb80f841b6afdf8706626ea, type: 2}
+  CombatTextPrefab: {fileID: 8832612426596585339, guid: f5e229f8616d01e47883d9d3e4fe8ef0, type: 3}
   ProjectilePrefab: {fileID: 2120347906506951909, guid: c2540b7a543551b45b06faec77910169, type: 3}
+  minSize: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!114 &4750084068771559614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,13 +286,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CourageEffectPrefab: {fileID: 956536691623899641, guid: 6fe3e85a65e495b47986dc6117d4bc79, type: 3}
-  UnitData: {fileID: 11400000, guid: 0738b46096efb4c4e9edf78d6abd1b59, type: 2}
-  MaxHealth: 0
   CombatTextPrefab: {fileID: 8832612426596585339, guid: f5e229f8616d01e47883d9d3e4fe8ef0, type: 3}
   DeathParticlePrefab: {fileID: 2885851884092767682, guid: a0e88f65babf21b4c82de2ad240b1a99, type: 3}
-  DeathSound: {fileID: 11400000, guid: 58366efcc91258542bf9ffd1f4460b4b, type: 2}
-  maxSize: {x: 2, y: 2, z: 2}
+  MaxHealth: 0
   currentHealth: 0
+  UnitData: {fileID: 11400000, guid: 0738b46096efb4c4e9edf78d6abd1b59, type: 2}
+  DeathSound: {fileID: 11400000, guid: 58366efcc91258542bf9ffd1f4460b4b, type: 2}
+  MoneySound: {fileID: 11400000, guid: a7646924ab84b994daadc9ef58cc7a2b, type: 2}
+  maxSize: {x: 2, y: 2, z: 2}
 --- !u!50 &7922323941763600875
 Rigidbody2D:
   serializedVersion: 4

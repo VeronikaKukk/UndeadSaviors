@@ -41,6 +41,7 @@ public class Health : MonoBehaviour
             {
                 Debug.Log(gameObject.name + " died");
                 Events.SetMoney(Events.GetMoney() + (int)(CurrencyAmountOnDeath * CountdownTimer.Instance.currentTime / 60));
+                MoneySound.Play();
 
                 // show courage particle
                 GameObject courageParticle = GameObject.Instantiate(CourageEffectPrefab, transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
@@ -49,7 +50,7 @@ public class Health : MonoBehaviour
                 var pos = Camera.main.ScreenToWorldPoint(courage.transform.position);
                 TweenCallback tweenCallback = () => { Destroy(courageParticle.gameObject); };
                 courageParticle.transform.DOMove(new Vector3(pos.x, pos.y, -10), 1.5f).OnComplete(tweenCallback);
-
+                
                 float rnd = UnityEngine.Random.Range(0f, 1f);
                 float rnd2 = UnityEngine.Random.Range(0f, 1f);
 
@@ -89,6 +90,7 @@ public class Health : MonoBehaviour
     [Space]
     public UnitData UnitData;
     public AudioClipGroup DeathSound;
+    public AudioClipGroup MoneySound;
     [Tooltip("Maximum size for plant prefab")]
     public Vector3 maxSize = new Vector3(2f, 2f, 2f);
 
