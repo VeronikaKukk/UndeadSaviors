@@ -27,7 +27,7 @@ public class DebugWindow : EditorWindow
         {
             ScenarioController.Instance.ResetLevel();
         }
-
+        /*
         GUILayout.Label("Spawn Potions", EditorStyles.boldLabel);
 
         if (GUILayout.Button("Spawn Attack Potion"))
@@ -42,6 +42,7 @@ public class DebugWindow : EditorWindow
         {
             Health.Instance.ManualPotionSpawn(2);
         }
+        */
     }
 
 }
