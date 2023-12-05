@@ -145,12 +145,19 @@ public class Attacking : MonoBehaviour
             if (animator != null && direction != Vector2.zero)
             {
                 animator.SetBool("IsWalking", true);
+                if (currentUnitHealthComponent.UnitData.TeamName == "Zombie")
+                {
+                    animator.SetBool("IsAttacking", false);
+                }
             }
         }
         else if (movement != null && isFighting) {
             if (animator != null)
             {
                 animator.SetBool("IsWalking", false);
+                if (currentUnitHealthComponent.UnitData.TeamName == "Zombie") {
+                    animator.SetBool("IsAttacking", true);
+                }
             }
         }
         else if (movement == null)
