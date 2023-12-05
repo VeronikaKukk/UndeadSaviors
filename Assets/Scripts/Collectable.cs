@@ -36,6 +36,7 @@ public class Collectable : MonoBehaviour
     private string zombieType;
     private GameObject potionToDestroy;
 
+    private Vector3 startPos;
     public void Awake()
     {
         EntityController.Instance.Potions.Add(this);
@@ -57,6 +58,8 @@ public class Collectable : MonoBehaviour
         if (!isPickedUp)
         {
             ClickOnPotionAudio.Play();
+
+            startPos = transform.position;
 
             spriteRenderer = transform.GetComponent<SpriteRenderer>();
             spriteRenderer.enabled = false;
@@ -146,6 +149,7 @@ public class Collectable : MonoBehaviour
         {
             entered = true;
             //Debug.Log("No empty slot");
+            transform.DOMove(startPos, 0.5f);
             spriteRenderer.enabled = true;
             //GameController.Instance.SetPotionPickedUp(false);
             isPickedUp = false;

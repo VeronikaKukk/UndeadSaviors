@@ -170,7 +170,7 @@ public class Attacking : MonoBehaviour
                         if (ProjectilePrefab != null) // for ranged fighters
                         {
                             Projectile projectile = Instantiate<Projectile>(ProjectilePrefab);
-                            projectile.SetShooter(gameObject, AttackDamage, target);
+                            projectile.SetShooter(currentUnitHealthComponent.UnitData.TeamName, AttackDamage, target);
                             Vector3 firePoint = new Vector3((float)(gameObject.transform.position.x + 0.05), (float)(gameObject.transform.position.y + 0.244), 0);
                             projectile.transform.position = firePoint;
                             projectile.Target = target;

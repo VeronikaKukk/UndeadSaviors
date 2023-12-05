@@ -7,11 +7,11 @@ public class Projectile : MonoBehaviour
     public float ProjectileSpeed = 20f;
     public Health Target;
 
-    private GameObject shooter;
+    private string shooter;
     private float attackDamage;
     private Health triggerTarget;
 
-    public void SetShooter(GameObject shooter, float attackDamage, Health target)
+    public void SetShooter(string shooter, float attackDamage, Health target)
     {
         this.shooter = shooter;
         this.attackDamage = attackDamage;
@@ -35,10 +35,10 @@ public class Projectile : MonoBehaviour
         triggerTarget = collision.GetComponent<Health>();
         if (shooter != null && triggerTarget != null)
         {
-            if ((shooter.name.Contains("Plant") && triggerTarget.UnitData.TeamName == "Zombie") ||
-                (shooter.name.Contains("Zombie") && triggerTarget.UnitData.TeamName == "Plant"))
+            if ((shooter.Contains("Plant") && triggerTarget.UnitData.TeamName == "Zombie") ||
+                (shooter.Contains("Zombie") && triggerTarget.UnitData.TeamName == "Plant"))
             {
-                Debug.Log("shooting succeed for " + shooter.name);
+                Debug.Log("shooting succeed for " + shooter);
                 triggerTarget.CurrentHealth -= attackDamage;
                 GameObject.Destroy(gameObject);
             }
