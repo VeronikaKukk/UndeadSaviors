@@ -54,6 +54,13 @@ public class CountdownTimer : MonoBehaviour
         int minutes = Mathf.FloorToInt(currentTime / 60);
         int seconds = Mathf.FloorToInt(currentTime % 60);
         TimerText.text = string.Format("{0}:{1:00}", minutes, seconds);
+        if (currentTime < 30)
+        {
+            TimerText.color = Color.red;
+        }
+        else {
+            TimerText.color = Color.black;
+        }
     }
 
     public void OnDestroy()
