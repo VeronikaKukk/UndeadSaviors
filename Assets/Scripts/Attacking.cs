@@ -75,6 +75,14 @@ public class Attacking : MonoBehaviour
         if (currentUnitHealthComponent.UnitData.TeamName != "Plant")
         {
             direction = GetDirection();
+            if (direction.x > 0)
+            {
+               transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (direction.x < 0)
+            {
+               transform.localScale = new Vector3(-1, 1, 1);
+            }
         }
         
         if(animator != null)
@@ -139,7 +147,7 @@ public class Attacking : MonoBehaviour
 
     public void Update()
     {
-        if (movement != null && !isFighting || movement != null && targetsInRange.Count == 0)// non-attacking zombie moves to closest enemy
+        if ((movement != null && !isFighting) || (movement != null && targetsInRange.Count == 0))// non-attacking zombie moves to closest enemy
         {
             movement.Move(direction);
             if (animator != null && direction != Vector2.zero)
@@ -211,6 +219,11 @@ public class Attacking : MonoBehaviour
             if (currentUnitHealthComponent.UnitData.TeamName != "Plant")
             {
                 direction = GetDirection();
+                if (direction.x > 0) {
+                    transform.localScale = new Vector3(1, 1, 1);
+                }else if (direction.x < 0) {
+                    transform.localScale = new Vector3(-1, 1, 1);
+                }
             }
         }
 
@@ -253,7 +266,7 @@ public class Attacking : MonoBehaviour
             {
                 return (enemy.transform.position - transform.position).normalized;
             }
-        }        
+        }
         return Vector2.zero;
     }
 
@@ -291,7 +304,10 @@ public class Attacking : MonoBehaviour
                 }
             }
         }
+
+
         targetsWithDist.Sort((x, y) => x.Item2.CompareTo(y.Item2));
+
         for (int i = 0; i < Math.Min(targetsWithDist.Count, maxUnitsAttackingAtOnce); i++) {
             nClosestTargets.Add(targetsWithDist[i].Item1);
         }

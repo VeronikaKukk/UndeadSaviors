@@ -23,6 +23,14 @@ public class Projectile : MonoBehaviour
         if (Target != null)
         {
             transform.position = Vector2.MoveTowards(transform.position, Target.transform.position, Time.deltaTime * ProjectileSpeed);
+            if (Target.transform.position.x - transform.position.x > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (Target.transform.position.x - transform.position.x < 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
         }
         else
         {
