@@ -51,10 +51,9 @@ public class Health : MonoBehaviour
                 TweenCallback tweenCallback = () => { Destroy(courageParticle.gameObject); };
                 courageParticle.transform.DOMove(new Vector3(pos.x, pos.y, -10), 1.5f).OnComplete(tweenCallback);
                 
-                float rnd = UnityEngine.Random.Range(0f, 1f);
+                float rnd = UnityEngine.Random.Range(0f, 1f) + (CountdownTimer.Instance.currentTime/300);
                 float rnd2 = UnityEngine.Random.Range(0f, 1f);
-
-
+                print(rnd+" "+ (CountdownTimer.Instance.currentTime / 300));
                 if (rnd > 0.6)
                 {
                     List<BoxCollider2D> startAreas = ZombieBuilder.Instance.startAreas;
