@@ -32,6 +32,7 @@ public class ScenarioController : MonoBehaviour
     public static ScenarioController Instance;
     public List<LevelData> Levels;
 
+    public GameObject DeathTrapPrefab;
     private void Awake()
     {
         Instance = this;
@@ -138,6 +139,10 @@ public class ScenarioController : MonoBehaviour
         {
             Destroy(i.gameObject);
         }
+        foreach (var i in EntityController.Instance.Other)
+        {
+            Destroy(i.gameObject);
+        }
         EntityController.Instance.Reset();
         ZombieFactory.Instance.Awake();
         CountdownTimer.Instance.ResetTimer(currentLevelData.Gametime);
@@ -159,7 +164,13 @@ public class ScenarioController : MonoBehaviour
 
     public void SpawnEnemies(List<UnitData> plants)
     {
-        List<GameObject> keys = SpawnPoints;
+        List<GameObject> keys = new List<GameObject>();
+        keys.AddRange(SpawnPoints);
+        // spawn one random deathtrap
+        var x = UnityEngine.Random.Range(10,15);
+        GameObject deathtrap = GameObject.Instantiate(DeathTrapPrefab, keys[x].transform.position, Quaternion.identity, keys[x].transform);
+        EntityController.Instance.Other.Add(deathtrap);
+        keys.Remove(keys[x]);
         var rnd = new System.Random();
         keys = keys.OrderBy(x => rnd.Next()).ToList();
         for (int i = 0; i < plants.Count; i++)

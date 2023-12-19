@@ -40,7 +40,7 @@ public class Attacking : MonoBehaviour
 
     private Particles particleEffects;
     private Animator animator;
-
+    private SpriteRenderer spriteRenderer;
     private void Awake()
     {
         Events.OnAddDamageValue += AddDamage;
@@ -71,6 +71,7 @@ public class Attacking : MonoBehaviour
 
         particleEffects = GetComponent<Particles>();// for poison cloud
         animator = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
     private void Start()
     {
@@ -171,6 +172,9 @@ public class Attacking : MonoBehaviour
 
     public void Update()
     {
+        int sortingOrder = 21-Mathf.RoundToInt(transform.position.y)+10;
+        spriteRenderer.sortingOrder = sortingOrder;
+
         if ((movement != null && !isFighting) || (movement != null && targetsInRange.Count == 0))// non-attacking zombie moves to closest enemy
         {
             movement.Move(direction);

@@ -9,13 +9,14 @@ public class EntityController : MonoBehaviour
     public List<Health> ZombieCharacters;
     public List<Health> PlantCharacters;
     public List<Collectable> Potions;
-
+    public List<GameObject> Other;
     private void Awake()
     {
         Instance = this;
         ZombieCharacters = new List<Health>();
         PlantCharacters = new List<Health>();
         Potions = new List<Collectable>();
+        Other = new List<GameObject>();
 
     }
     public void Reset()
@@ -23,5 +24,6 @@ public class EntityController : MonoBehaviour
         ZombieCharacters = new List<Health>();
         PlantCharacters = new List<Health>();
         Potions = new List<Collectable>();
+        Other = new List<GameObject>();
     }
 }
