@@ -437,6 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b15a1cc9a10334fa6e343a9f438385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CombatTextPrefab: {fileID: 8832612426596585339, guid: f5e229f8616d01e47883d9d3e4fe8ef0, type: 3}
   MovementSpeed: 0
 --- !u!114 &5155459111252918465
 MonoBehaviour:

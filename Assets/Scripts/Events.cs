@@ -35,6 +35,9 @@ public static class Events
     public static event Action<string, float> OnAddMovementSpeedValue;
     public static void AddMovementSpeedValue(string unitName, float value) => OnAddMovementSpeedValue?.Invoke(unitName, value);
 
+    
+    public static event Action<string, float> OnAddAttackRangeValue;
+    public static void AddAttackRangeValue(string unitName, float value) => OnAddAttackRangeValue?.Invoke(unitName, value);
 
 
     public static event Action<string, float> OnAddMaxHealthValue;

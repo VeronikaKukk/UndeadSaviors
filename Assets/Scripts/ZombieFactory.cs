@@ -51,15 +51,23 @@ public class ZombieFactory : MonoBehaviour
                     health.MaxHealth += potionData.BuffAmount;
                     health.CurrentHealth += potionData.BuffAmount;
                 }
-                else if (potionData.PotionName == "Speed")
+                else if (potionData.PotionName == "MovementSpeed")
                 {
-                    //Debug.Log("new zombie " + unitName + "got speed potion");
-
+                    //Debug.Log("new zombie " + unitName + "got movement speed potion");
                     var movespeed = zombie.GetComponent<Movement>();
-                    var attackspeed = zombie.GetComponent<Attacking>();
-
                     movespeed.MovementSpeed += potionData.BuffAmount;
+                }else if (potionData.PotionName == "AttackSpeed")
+                {
+                    //Debug.Log("new zombie " + unitName + "got attack speed potion");
+                    var attackspeed = zombie.GetComponent<Attacking>();
                     attackspeed.AttackSpeed += potionData.BuffAmount;
+                }
+                else if (potionData.PotionName == "AttackRange")
+                {
+                    //Debug.Log("new zombie " + unitName + "got attack speed potion");
+                    var attackrange = zombie.GetComponent<Attacking>();
+                    attackrange.AttackRangeSize += potionData.BuffAmount;
+                    attackrange.ChangeAttackRange();
                 }
             }
         }

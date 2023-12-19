@@ -122,7 +122,7 @@ public class Collectable : MonoBehaviour
             Events.AddMaxHealthValue(zombieType, PotionData.BuffAmount);
             //Debug.Log("HealthPotion applied");
         }
-        else if (PotionData.PotionName.Equals("Speed") && !images[2].enabled)
+        else if (PotionData.PotionName.Equals("MovementSpeed") && !images[2].enabled)
         {
             ApplyPotionAudio.Play();
             EntityController.Instance.Potions.Remove(this);
@@ -130,7 +130,7 @@ public class Collectable : MonoBehaviour
             Events.ApplyPotion(zombieType, PotionData);
 
             images[2].enabled = true;
-            Events.AddAttackSpeedValue(zombieType, PotionData.BuffAmount);
+            //Events.AddAttackSpeedValue(zombieType, PotionData.BuffAmount);
             Events.AddMovementSpeedValue(zombieType, PotionData.BuffAmount);
             //Debug.Log("SpeedPotion applied");
         }
@@ -144,6 +144,26 @@ public class Collectable : MonoBehaviour
             images[3].enabled = true;
             Events.AddDamageValue(zombieType, PotionData.BuffAmount);
             //Debug.Log("DamagePotion applied");
+        }
+        else if (PotionData.PotionName.Equals("AttackSpeed") && !images[4].enabled)
+        {
+            ApplyPotionAudio.Play();
+            EntityController.Instance.Potions.Remove(this);
+
+            Events.ApplyPotion(zombieType, PotionData);
+
+            images[4].enabled = true;
+            Events.AddAttackSpeedValue(zombieType, PotionData.BuffAmount);
+        }
+        else if (PotionData.PotionName.Equals("AttackRange") && !images[5].enabled)
+        {
+            ApplyPotionAudio.Play();
+            EntityController.Instance.Potions.Remove(this);
+
+            Events.ApplyPotion(zombieType, PotionData);
+
+            images[5].enabled = true;
+            Events.AddAttackRangeValue(zombieType, PotionData.BuffAmount);
         }
         else
         {

@@ -45,6 +45,8 @@ public class Attacking : MonoBehaviour
     {
         Events.OnAddDamageValue += AddDamage;
         Events.OnAddAttackSpeedValue += AddAttackSpeed;
+        Events.OnAddAttackRangeValue += AddAttackRange;
+
         CurrentUnitAttackRange = transform.Find("AttackRange").GetComponent<AttackRange>();
         CurrentUnitAttackRange.OnEnemyEnteredAttackRange += AddEnemyToTargets;
         CurrentUnitAttackRange.OnEnemyExitedAttackRange += RemoveEnemyFromTargets;
@@ -97,6 +99,7 @@ public class Attacking : MonoBehaviour
     {
         Events.OnAddDamageValue -= AddDamage;
         Events.OnAddAttackSpeedValue -= AddAttackSpeed;
+        Events.OnAddAttackRangeValue -= AddAttackRange;
         CurrentUnitAttackRange.OnEnemyEnteredAttackRange -= AddEnemyToTargets;
         CurrentUnitAttackRange.OnEnemyExitedAttackRange -= RemoveEnemyFromTargets;
     }
@@ -130,6 +133,27 @@ public class Attacking : MonoBehaviour
         }
     }
 
+    void AddAttackRange(string unitName, float rangesize) {
+        if (gameObject.name.StartsWith(unitName))
+        {
+            AttackRangeSize += rangesize;
+            ChangeAttackRange();
+            GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.y + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.z), Quaternion.identity);
+            combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + rangesize;
+            combatText.transform.Find("AttackRange").gameObject.SetActive(true);
+            combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
+            TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
+            combatText.transform.localScale = combatText.transform.localScale * 0.5f;
+            combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 1f).OnComplete(tweenCallback);
+        }
+    }
+    public void ChangeAttackRange() {
+        CurrentUnitAttackRange.GetComponent<CircleCollider2D>().radius = AttackRangeSize;
+        var attackRangeVisual = CurrentUnitAttackRange.transform.Find("AttackRangeVisual");
+        // shown a little bigger because then it is more logical to player (they cant see pixels)
+        attackRangeVisual.localScale = new Vector3(AttackRangeSize * 2 + 0.3f, AttackRangeSize * 2 + 0.3f, AttackRangeSize * 2 + 0.3f);
+    }
+
     void AddAttackSpeed(string unitName, float attackSpeed)
     {
         if (gameObject.name.StartsWith(unitName))
@@ -137,7 +161,7 @@ public class Attacking : MonoBehaviour
             AttackSpeed += attackSpeed;
             GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.y + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.z), Quaternion.identity);
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + attackSpeed;
-            combatText.transform.Find("Speed").gameObject.SetActive(true);
+            combatText.transform.Find("AttackSpeed").gameObject.SetActive(true);
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
             TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
             combatText.transform.localScale = combatText.transform.localScale * 0.5f;

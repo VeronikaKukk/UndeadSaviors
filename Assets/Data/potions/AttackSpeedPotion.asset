@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4582f9ddfaaeb7946a8523546847f235, type: 3}
-  m_Name: SpeedPotion
+  m_Name: AttackSpeedPotion
   m_EditorClassIdentifier: 
-  PotionName: Speed
+  PotionName: AttackSpeed
   BuffAmount: 0.3
   AliveTime: 10
