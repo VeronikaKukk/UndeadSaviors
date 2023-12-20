@@ -19,6 +19,7 @@ public class AudioSourcePool : MonoBehaviour
         {
             if (!source.isPlaying)
             {
+                print(source.name);
                 return source;
             }
         }

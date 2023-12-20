@@ -19,7 +19,7 @@ public class ZombieBuilder : MonoBehaviour
     [Space]
     public AudioClipGroup ClickOnShopButtonActiveAudio;
     public AudioClipGroup ClickOnShopButtonInactiveAudio;
-
+    public AudioClipGroup SpawnZombieAudio;
     public List<BoxCollider2D> startAreas = new List<BoxCollider2D>();
 
     private ShopData currentZombieData;
@@ -135,7 +135,7 @@ public class ZombieBuilder : MonoBehaviour
         // spawnparticles
         GameObject spawnParticle = GameObject.Instantiate(SpawnParticlePrefab, transform.position, Quaternion.identity, null);
         spawnParticle.GetComponent<ParticleSystem>().Play();
-
+        SpawnZombieAudio.Play();
         ZombieFactory.Instance.ApplyPotionsOnUnit(zombie, currentZombieData.Name);
         gameObject.SetActive(false);
     }

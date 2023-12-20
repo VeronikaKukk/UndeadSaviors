@@ -33,6 +33,9 @@ public class ScenarioController : MonoBehaviour
     public List<LevelData> Levels;
 
     public GameObject DeathTrapPrefab;
+
+    public AudioClipGroup LevelWinAudio;
+    public AudioClipGroup LevelLoseAudio;
     private void Awake()
     {
         Instance = this;
@@ -194,10 +197,15 @@ public class ScenarioController : MonoBehaviour
         if (isWin)
         {
             EndGameText.text = "Victory!";
+            LevelWinAudio.Play();
+            print("levelwin playing");
         }
         else
         {
             EndGameText.text = "Defeat!";
+            LevelLoseAudio.Play();
+            print("levellose playing");
+
         }
         Time.timeScale = 0;
     }

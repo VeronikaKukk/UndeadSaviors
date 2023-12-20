@@ -4211,6 +4211,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5786252918751838820, guid: 4c84c3e5bec80f7459cd56ea6cdb4868, type: 3}
+      propertyPath: SpawnZombieAudio
+      value: 
+      objectReference: {fileID: 11400000, guid: fba3e6f4ce0cce44681cb30fc7ca98b6, type: 2}
     - target: {fileID: 7653016197398541468, guid: 4c84c3e5bec80f7459cd56ea6cdb4868, type: 3}
       propertyPath: m_Name
       value: Zombie_Builder
@@ -8097,6 +8101,8 @@ MonoBehaviour:
   StartingTheLevel: 1
   Levels: []
   DeathTrapPrefab: {fileID: 7308135662956620339, guid: b8d9cdcf9c523ad4fa79716271c1d05f, type: 3}
+  LevelWinAudio: {fileID: 11400000, guid: 092ea11bfd5506249a11890892bb6ca1, type: 2}
+  LevelLoseAudio: {fileID: 11400000, guid: d5a91c333b8b2bc40a028df55fcdfb3a, type: 2}
 --- !u!114 &1919925725
 MonoBehaviour:
   m_ObjectHideFlags: 0
