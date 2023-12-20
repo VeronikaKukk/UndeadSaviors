@@ -15,6 +15,7 @@ public class DeathTrap : MonoBehaviour
     void KillUnit(Health enemy)
     {
         enemy.CurrentHealth -= 1000;
+        Destroy(gameObject); // trap destroies itself after activateing
     }
     private void OnDestroy()
     {
