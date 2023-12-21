@@ -221,6 +221,8 @@ public class Collectable : MonoBehaviour
                 }
             }
             else if (result.gameObject.CompareTag("SellPotion")) {
+                zombieType = null;
+                potionBuffs = null;
                 print("on sell potion");
                 return true;
             }

@@ -35,8 +35,8 @@ public class Attacking : MonoBehaviour
     private float nextAttackTime;
 
     private int maxUnitsAttackingAtOnce;
-    private List<Health> targetsInRange = new List<Health>();
-    private List<Health> currentTargets = new List<Health>();
+    public List<Health> targetsInRange = new List<Health>();
+    public List<Health> currentTargets = new List<Health>();
 
     private Particles particleEffects;
     private Animator animator;
@@ -311,14 +311,18 @@ public class Attacking : MonoBehaviour
         {
             enemies = EntityController.Instance.ZombieCharacters;
         }
-
+        
         if (targetsInRange.Count > 0)
         {
             foreach (Health target in targetsInRange)
             {
-                if (target != null) {
+                if (target != null)
+                {
                     float dist = Vector2.Distance(target.transform.position, transform.position);
                     targetsWithDist.Add((target, dist));
+                }
+                else {
+                    targetsInRange.Remove(target);
                 }
             }
         }
