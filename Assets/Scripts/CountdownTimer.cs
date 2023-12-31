@@ -56,7 +56,13 @@ public class CountdownTimer : MonoBehaviour
         TimerText.text = string.Format("{0}:{1:00}", minutes, seconds);
         if (currentTime < 30)
         {
-            TimerText.color = Color.red;
+            if (Mathf.RoundToInt(currentTime) % 2 == 0)
+            {
+                TimerText.color = Color.red;
+            }
+            else {
+                TimerText.color = Color.black;
+            }
         }
         else {
             TimerText.color = Color.black;
