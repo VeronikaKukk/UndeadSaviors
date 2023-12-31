@@ -12,12 +12,16 @@ public class UnitInfoCard : MonoBehaviour
     public TextMeshProUGUI AttackRangeText;
     public TextMeshProUGUI MovementSpeedText;
 
+    public Color RedColor;
+    public Color GreenColor;
+    public Color YellowColor;
+
     public Image UnitImage;
     public UnitData data;
     public void SetData(UnitData data)
     {
-        this.data = data;
-        //UnitImage.sprite = data.UnitPrefab.GetComponent<SpriteRenderer>().sprite;
+        this.data = data;        
+        UnitImage.sprite = data.UnitPrefab.GetComponentsInChildren<SpriteRenderer>()[0].sprite;
         SetInfo();
     }
 
@@ -38,46 +42,46 @@ public class UnitInfoCard : MonoBehaviour
         if (data.MovementSpeed <= 1)
         {
             movement_speed = "slow";
-            MovementSpeedText.color = Color.red;
+            MovementSpeedText.color = RedColor;
         }
         else if (data.MovementSpeed <= 2)
         {
             movement_speed = "medium";
-            MovementSpeedText.color = Color.yellow;
+            MovementSpeedText.color = YellowColor;
         }
         else {
             movement_speed = "fast";
-            MovementSpeedText.color = Color.green;
+            MovementSpeedText.color = GreenColor;
         }
 
         if (data.AttackSpeed <= 0.5)
         {
             attack_speed = "slow";
-            AttackSpeedText.color = Color.red;
+            AttackSpeedText.color = RedColor;
         }
         else if (data.AttackSpeed <= 1)
         {
             attack_speed = "medium";
-            AttackSpeedText.color = Color.yellow;
+            AttackSpeedText.color = YellowColor;
         }
         else {
             attack_speed = "fast";
-            AttackSpeedText.color = Color.green;
+            AttackSpeedText.color = GreenColor;
         }
 
         if (data.MaxHealth <= 10)
         {
             health = "few";
-            HealthText.color = Color.red;
+            HealthText.color = RedColor;
         }
         else if (data.MaxHealth <= 20)
         {
             health = "normal";
-            HealthText.color = Color.yellow;
+            HealthText.color = YellowColor;
         }
         else {
             health = "a lot";
-            HealthText.color = Color.green;
+            HealthText.color = GreenColor;
         }
 
         InfoText.text = "Health: \nAttack speed: \nAttack range: \nMovement speed: \n";

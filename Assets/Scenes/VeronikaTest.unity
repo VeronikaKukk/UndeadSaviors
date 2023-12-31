@@ -238,13 +238,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b952d9e78b9e74aa96ea375c8b1aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  units:
+  PlantUnits:
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
   - {fileID: 11400000, guid: f0c02b834579d6344a316f0d127a272e, type: 2}
   - {fileID: 11400000, guid: 0738b46096efb4c4e9edf78d6abd1b59, type: 2}
+  - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
+  - {fileID: 11400000, guid: a2bea8fa936db7245bd6d8814d7dd691, type: 2}
+  ZombieUnits:
+  - {fileID: 11400000, guid: 4e7f745f25aa1684fb6a90da7ac07e95, type: 2}
   - {fileID: 11400000, guid: 7b8f8a836d9d531419babd408d1ff529, type: 2}
   - {fileID: 11400000, guid: d48e9ea15875fb245a6406cf8336b398, type: 2}
-  - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
+  - {fileID: 11400000, guid: 3f401c0d09705c64ca7b6688b522c8e4, type: 2}
   - {fileID: 11400000, guid: b3af78f1fe9cd70428f00e2f7ea72a65, type: 2}
   UnitInfoCardPrefab: {fileID: 7278863330149572244, guid: 9471bb42742cb954e9c7f623ecb2dc2e, type: 3}
   InfoPanel: {fileID: 1354388765}
@@ -412,8 +416,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 150, y: 150}
-  m_Spacing: {x: 10, y: 10}
+  m_CellSize: {x: 150, y: 80}
+  m_Spacing: {x: 5, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &1672367927
