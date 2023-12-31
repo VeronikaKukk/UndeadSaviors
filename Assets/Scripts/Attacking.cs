@@ -31,6 +31,7 @@ public class Attacking : MonoBehaviour
     private Health currentUnitHealthComponent;
     
     private AttackRange CurrentUnitAttackRange;
+    private GameObject currentUnitSpecialRangeObject;
     private bool isFighting;
     private float nextAttackTime;
 
@@ -68,6 +69,13 @@ public class Attacking : MonoBehaviour
         attackRangeVisual.localScale = new Vector3(AttackRangeSize*2+0.3f, AttackRangeSize*2 + 0.3f, AttackRangeSize * 2 + 0.3f);
         maxUnitsAttackingAtOnce = currentUnitHealthComponent.UnitData.MaxUnitsAttackingAtOnce;
         nextAttackTime = Time.time;
+
+        var currentUnitSpecialRange = transform.Find("SpecialRange");
+        if (currentUnitSpecialRange != null)
+        {
+            currentUnitSpecialRangeObject = currentUnitSpecialRange.gameObject;
+            currentUnitSpecialRangeObject.GetComponent<CircleCollider2D>().radius = AttackRangeSize;
+        }
 
         particleEffects = GetComponent<Particles>();// for poison cloud
         animator = GetComponentInChildren<Animator>();
@@ -153,6 +161,10 @@ public class Attacking : MonoBehaviour
         var attackRangeVisual = CurrentUnitAttackRange.transform.Find("AttackRangeVisual");
         // shown a little bigger because then it is more logical to player (they cant see pixels)
         attackRangeVisual.localScale = new Vector3(AttackRangeSize * 2 + 0.3f, AttackRangeSize * 2 + 0.3f, AttackRangeSize * 2 + 0.3f);
+        if (currentUnitSpecialRangeObject != null)
+        {
+            currentUnitSpecialRangeObject.GetComponent<CircleCollider2D>().radius = AttackRangeSize;
+        }
     }
 
     void AddAttackSpeed(string unitName, float attackSpeed)

@@ -216,7 +216,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void ShowHealthText(float health)
+    public void ShowHealthText(float health)
     {
         GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.y + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.z), Quaternion.identity);
         EntityController.Instance.Other.Add(combatText);
