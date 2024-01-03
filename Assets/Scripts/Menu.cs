@@ -27,6 +27,9 @@ public class MainMenu : MonoBehaviour
         if (!PlayerPrefs.HasKey("levelsUnlocked")) {
             PlayerPrefs.SetInt("levelsUnlocked", 1);
         }
+        // uncomment for reseting levels
+        //PlayerPrefs.SetInt("levelsUnlocked", 1);
+
         unlockedLevelNumber = PlayerPrefs.GetInt("levelsUnlocked");
     }
 
