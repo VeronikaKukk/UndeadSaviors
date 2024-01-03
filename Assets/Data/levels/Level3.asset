@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: 
   LevelName: Level 3
+  LevelNumber: 3
   SceneName: MainScene
   Gametime: 121
   StartingMoney: 100

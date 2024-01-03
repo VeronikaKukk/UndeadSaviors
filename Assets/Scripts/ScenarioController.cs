@@ -30,7 +30,6 @@ public class ScenarioController : MonoBehaviour
     public bool StartingTheLevel = true;
 
     public static ScenarioController Instance;
-    public List<LevelData> Levels;
 
     public GameObject DeathTrapPrefab;
 
@@ -199,6 +198,10 @@ public class ScenarioController : MonoBehaviour
             EndGameText.text = "Victory!";
             LevelWinAudio.Play();
             print("levelwin playing");
+            if (currentLevelData.LevelNumber >= PlayerPrefs.GetInt("levelsUnlocked")) {
+                PlayerPrefs.SetInt("levelsUnlocked", currentLevelData.LevelNumber+1);
+                print("Unlocked level" + PlayerPrefs.GetInt("levelsUnlocked"));
+            }
         }
         else
         {

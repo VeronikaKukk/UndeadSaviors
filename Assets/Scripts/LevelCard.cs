@@ -10,15 +10,19 @@ public class LevelCard : MonoBehaviour
     public TextMeshProUGUI NameText;
     public LevelData data;
     public event Action<LevelData> OnClicked;
+    private Button button;
     private void Awake()
     {
-        Button button = GetComponent<Button>();
+        button = GetComponent<Button>();
         button.onClick.AddListener(clicked);
     }
 
-    public void SetData(LevelData data) {
+    public void SetData(LevelData data, bool isUnlocked) {
         this.data = data;
         NameText.text = data.LevelName;
+        if (!isUnlocked) {
+            GetComponent<Button>().interactable = false;
+        }    
     }
 
     private void clicked() {

@@ -7,6 +7,7 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
     public string LevelName;
+    public int LevelNumber;
     public string SceneName;
     public float Gametime;
     public int StartingMoney;

@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     public List<LevelData> Levels;
     public LevelData selectedLevel;
 
+    private int unlockedLevelNumber;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -23,12 +24,12 @@ public class MainMenu : MonoBehaviour
             Destroy(LevelPanel.transform.GetChild(i).gameObject);
         }
 
-        foreach (var level in Levels) {
-            LevelCard card = Instantiate<LevelCard>(LevelCardPrefab, LevelPanel.transform);
-            card.SetData(level);
-            card.OnClicked += PlayLevel;
+        if (!PlayerPrefs.HasKey("levelsUnlocked")) {
+            PlayerPrefs.SetInt("levelsUnlocked", 1);
         }
+        unlockedLevelNumber = PlayerPrefs.GetInt("levelsUnlocked");
     }
+
 
     public void PlayLevel(LevelData level)
     {
@@ -47,10 +48,25 @@ public class MainMenu : MonoBehaviour
     }
 
     public void StartGameButton() {
+        for (int i = 0; i < LevelPanel.transform.childCount; i++)
+        {
+            Destroy(LevelPanel.transform.GetChild(i).gameObject);
+        }
+
+        foreach (var level in Levels)
+        {
+            LevelCard card = Instantiate<LevelCard>(LevelCardPrefab, LevelPanel.transform);
+            var isUnlocked = false;
+            if (level.LevelNumber <= unlockedLevelNumber)
+            {
+                isUnlocked = true;
+            }
+            card.SetData(level, isUnlocked);
+            card.OnClicked += PlayLevel;
+        }
         MainMenuObject.SetActive(false);
         LevelChooserObject.SetActive(true);
     }
-
 
     public void OptionsMenuButtonPressed()
     {
