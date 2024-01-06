@@ -12,6 +12,7 @@ public class ScenarioController : MonoBehaviour
     public GameObject HideGamePanel;
     public GameObject PauseMenuPanel;
     public GameObject EndGamePanel;
+    public GameObject UnitInfoPanel;
     public TextMeshProUGUI EndGameText;
     public Scene currentScene;
     private bool levelRunning = true;
@@ -98,6 +99,11 @@ public class ScenarioController : MonoBehaviour
             pauseButton.gameObject.SetActive(false);
             levelPaused = true;
         }
+    }
+
+    public void ToggleUnitInfoPanel() {//change this freely
+        PauseLevel();
+        UnitInfoPanel.SetActive(!UnitInfoPanel.activeSelf);
     }
 
     public void OnStartLevel(LevelData data)
