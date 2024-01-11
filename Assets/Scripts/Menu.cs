@@ -96,5 +96,4 @@ public class MainMenu : MonoBehaviour
         CreditsMenuObject.SetActive(false);
         MainMenuObject.SetActive(true);
     }
-
 }
