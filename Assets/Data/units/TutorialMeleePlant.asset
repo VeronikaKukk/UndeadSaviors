@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: TutorialMeleePlant
   m_EditorClassIdentifier: 
   TeamName: Plant
-  DroppablePotions:
-  - {fileID: 3425769060701832718, guid: fec5c041fd37c024485b192d3cf7f473, type: 3}
+  DroppablePotions: []
   UnitName: Plant_melee
   CurrencyAmountOnDeath: 25
-  MaxHealth: 40
+  MaxHealth: 20
   MovementSpeed: 0
-  AttackDamage: 10
+  AttackDamage: 5
   AttackSpeed: 0.6
   AttackRangeSize: 1
-  UnitPrefab: {fileID: 4958010571189545127, guid: 2b62e1ee1264cba43b3cac7ea9eed193, type: 3}
+  UnitPrefab: {fileID: 4958010571189545127, guid: 2e1a9da55c2009e4795964166cfc4460, type: 3}
   MaxUnitsAttackingAtOnce: 1

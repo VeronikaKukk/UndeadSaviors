@@ -54,26 +54,29 @@ public class Health : MonoBehaviour
                 float rnd = UnityEngine.Random.Range(0f, 1f) + (CountdownTimer.Instance.currentTime/300);
                 float rnd2 = UnityEngine.Random.Range(0f, 1f);
                 //print(rnd+" "+ (CountdownTimer.Instance.currentTime / 300));
-                if (rnd > 0.6)
+                if (ScenarioController.Instance.currentScene.name != "TutorialScene")
                 {
-                    List<BoxCollider2D> startAreas = ZombieBuilder.Instance.startAreas;
-                    BoxCollider2D closestStartArea = GetClosestStartArea(startAreas);
-                    Vector2 spawnPosition = GetRandomPointInCollider(closestStartArea);
+                    if (rnd > 0.6)
+                    {
+                        List<BoxCollider2D> startAreas = ZombieBuilder.Instance.startAreas;
+                        BoxCollider2D closestStartArea = GetClosestStartArea(startAreas);
+                        Vector2 spawnPosition = GetRandomPointInCollider(closestStartArea);
 
-                    GameObject collectable = null;
-                    if (rnd2 < 0.3)
-                    {
-                        collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[0], transform.position, Quaternion.identity, null);
+                        GameObject collectable = null;
+                        if (rnd2 < 0.3)
+                        {
+                            collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[0], transform.position, Quaternion.identity, null);
+                        }
+                        else if (rnd2 < 0.6)
+                        {
+                            collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[1], transform.position, Quaternion.identity, null);
+                        }
+                        else
+                        {
+                            collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[2], transform.position, Quaternion.identity, null);
+                        }
+                        collectable.transform.DOMove(spawnPosition, 1f);
                     }
-                    else if (rnd2 < 0.6)
-                    {
-                        collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[1], transform.position, Quaternion.identity, null);
-                    }
-                    else
-                    {
-                        collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[2], transform.position, Quaternion.identity, null);
-                    }
-                    collectable.transform.DOMove(spawnPosition, 1f);
                 }
                 // spawn DeathParticle
                 Death();
@@ -174,6 +177,7 @@ public class Health : MonoBehaviour
         // Convert the clamped position back to world space
         return Camera.main.ViewportToWorldPoint(viewportPosition);
     }
+
     /*
     public void ManualPotionSpawn(int potionIndex)
     {
