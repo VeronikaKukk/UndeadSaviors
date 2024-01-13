@@ -160,6 +160,7 @@ public class ScenarioController : MonoBehaviour
         StartingTheLevel = true;
         Time.timeScale = 1;
         pauseButton.gameObject.SetActive(true);
+        unitInfoButton.gameObject.SetActive(true);
 
         // remove all enemies and zombies and potions and potion effects from table
         foreach (var i in EntityController.Instance.PlantCharacters)
@@ -229,6 +230,7 @@ public class ScenarioController : MonoBehaviour
         HideGamePanel.SetActive(true);
         EndGamePanel.SetActive(true);
         pauseButton.gameObject.SetActive(false);
+        unitInfoButton.gameObject.SetActive(false);
         if (isWin)
         {
             EndGameText.text = "Victory!";
@@ -255,6 +257,7 @@ public class ScenarioController : MonoBehaviour
         HideGamePanel.SetActive(false);
         EndGamePanel.SetActive(false);
         PauseMenuPanel.SetActive(false);
+
         ResetLevel();
 
     }
