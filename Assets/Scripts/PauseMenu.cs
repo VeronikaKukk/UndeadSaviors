@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        scenarioController.PauseLevel();
+        scenarioController.PauseLevel(true);
     }
     public void QuitGame()
     {

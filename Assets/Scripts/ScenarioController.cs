@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 using System;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class ScenarioController : MonoBehaviour
 {
@@ -85,23 +86,25 @@ public class ScenarioController : MonoBehaviour
 
 
 
-    public void PauseLevel()
+    public void PauseLevel(bool isRegularPause)
     {
-        if (levelPaused)
+        if (levelPaused && isRegularPause)
         {
             HideGamePanel.SetActive(false);
             PauseMenuPanel.SetActive(false);
             pauseButton.gameObject.SetActive(true);
+            unitInfoButton.gameObject.SetActive(true);
             Time.timeScale = 1;
             PauseButtonText.text = "II";
             levelPaused = false;
         }
-        else
+        else if (!levelPaused && isRegularPause)
         {
             HideGamePanel.SetActive(true);
             PauseMenuPanel.SetActive(true);
             Time.timeScale = 0;
             pauseButton.gameObject.SetActive(false);
+            unitInfoButton.gameObject.SetActive(false);
             levelPaused = true;
 
             if (currentScene.name == "TutorialScene")
@@ -109,11 +112,26 @@ public class ScenarioController : MonoBehaviour
                 TutorialScenario.Instance.PauseLogic();
             }
         }
+        else if (!isRegularPause && levelPaused)
+        {
+            UnitInfoPanel.SetActive(false);
+            pauseButton.gameObject.SetActive(true);
+            unitInfoButton.GetComponentInChildren<TMP_Text>().text = "?";
+            Time.timeScale = 1;
+            PauseButtonText.text = "II";
+            levelPaused = false;
+        }
+        else {
+            UnitInfoPanel.SetActive(true);
+            Time.timeScale = 0;
+            unitInfoButton.GetComponentInChildren<TMP_Text>().text = "X";
+            pauseButton.gameObject.SetActive(false);
+            levelPaused = true;
+        }
     }
 
     public void ToggleUnitInfoPanel() {//change this freely
-        PauseLevel();
-        UnitInfoPanel.SetActive(!UnitInfoPanel.activeSelf);
+        PauseLevel(false);
     }
 
     public void OnStartLevel(LevelData data)
