@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LoadInfo : MonoBehaviour
 {
+
+    public static LoadInfo Instance;
+
     public List<UnitData> PlantUnits;
     public List<UnitData> ZombieUnits;
 

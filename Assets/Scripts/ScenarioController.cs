@@ -52,7 +52,6 @@ public class ScenarioController : MonoBehaviour
         HideGamePanel.SetActive(false);
         PauseMenuPanel.SetActive(false);
         EndGamePanel.SetActive(false);
-        unitInfoButton.gameObject.SetActive(false);
     }
 
     private void OnDestroy()

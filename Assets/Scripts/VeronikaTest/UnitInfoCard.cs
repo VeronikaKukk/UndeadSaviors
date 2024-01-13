@@ -54,6 +54,10 @@ public class UnitInfoCard : MonoBehaviour
             MovementSpeedText.color = GreenColor;
         }
 
+        if (data.TeamName == "Plant") {
+            movement_speed = "none";
+        }
+
         if (data.AttackSpeed <= 0.5)
         {
             attack_speed = "slow";
