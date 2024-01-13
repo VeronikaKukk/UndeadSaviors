@@ -110,7 +110,7 @@ public class Collectable : MonoBehaviour
     private void ApplyPotionEffectsToZombies()
     {
         bool entered = false;
-        Image[] images = potionBuffs.GetComponentsInChildren<Image>();
+        Image[] images = potionBuffs.GetComponentsInChildren<Image>();// first image is the potions background
         if (PotionData.PotionName.Equals("Health") && !images[1].enabled)
         {
             ApplyPotionAudio.Play();
@@ -220,14 +220,29 @@ public class Collectable : MonoBehaviour
                     return true;
                 }
             }
-            else if (result.gameObject.CompareTag("SellPotion")) {
+            else if (result.gameObject.CompareTag("SellPotion"))
+            {
                 zombieType = null;
                 potionBuffs = null;
                 print("on sell potion");
                 return true;
             }
+            else if (result.gameObject.CompareTag("ShopZombiePotions"))
+            {
+                print("on shop zombie potions");
+
+                Shop zombieShop = result.gameObject.transform.parent.GetComponent<Shop>();
+                Transform findPanel = result.gameObject.transform.parent.Find("Potions");
+
+                if (findPanel != null && zombieShop != null)
+                {
+                    zombieType = zombieShop.ShopData.ZombiePrefab.name;
+                    potionBuffs = findPanel;
+                    return true;
+                }
+            }
         }
-        return false;
+            return false;
     }
 
     public void Update()

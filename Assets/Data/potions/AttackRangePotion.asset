@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4582f9ddfaaeb7946a8523546847f235, type: 3}
   m_Name: AttackRangePotion
   m_EditorClassIdentifier: 
-  PotionName: MovementSpeed
-  BuffAmount: 0.3
+  PotionName: AttackRange
+  BuffAmount: 0.5
   AliveTime: 10

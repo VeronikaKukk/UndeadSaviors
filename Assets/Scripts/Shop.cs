@@ -49,11 +49,19 @@ public class Shop : MonoBehaviour
                 {
                     show = true;
                 }
-                else if (potion.PotionData.PotionName.Equals("Speed") && potionPanel.Find("SpeedPotion").GetComponent<Image>().enabled == false)
+                else if (potion.PotionData.PotionName.Equals("MovementSpeed") && potionPanel.Find("SpeedPotion").GetComponent<Image>().enabled == false)
                 {
                     show = true;
                 }
                 else if (potion.PotionData.PotionName.Equals("Damage") && potionPanel.Find("DamagePotion").GetComponent<Image>().enabled == false) {
+                    show = true;
+                }
+                else if (potion.PotionData.PotionName.Equals("AttackSpeed") && potionPanel.Find("AttackSpeedPotion").GetComponent<Image>().enabled == false)
+                {
+                    show = true;
+                }
+                else if (potion.PotionData.PotionName.Equals("AttackRange") && potionPanel.Find("AttackRangePotion").GetComponent<Image>().enabled == false)
+                {
                     show = true;
                 }
             }
