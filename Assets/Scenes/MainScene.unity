@@ -342,7 +342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &131861376
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5014,7 +5014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20784315, g: 0.28235295, b: 0.37647063, a: 1}
+  m_Color: {r: 0.92549026, g: 0.9294118, b: 0.80392164, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5070,6 +5070,22 @@ PrefabInstance:
     - target: {fileID: 1694662017466413627, guid: 78a1b2d0139aecc4fb72fd91bfde6dfa, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990378448524989653, guid: 78a1b2d0139aecc4fb72fd91bfde6dfa, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990378448524989653, guid: 78a1b2d0139aecc4fb72fd91bfde6dfa, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990378448524989653, guid: 78a1b2d0139aecc4fb72fd91bfde6dfa, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990378448524989653, guid: 78a1b2d0139aecc4fb72fd91bfde6dfa, type: 3}
+      propertyPath: m_Color.r
+      value: 0.34509805
       objectReference: {fileID: 0}
     - target: {fileID: 2366891219956683614, guid: 78a1b2d0139aecc4fb72fd91bfde6dfa, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5688,6 +5704,8 @@ GameObject:
   - component: {fileID: 634097908}
   - component: {fileID: 634097907}
   - component: {fileID: 634097906}
+  - component: {fileID: 634097910}
+  - component: {fileID: 634097909}
   m_Layer: 5
   m_Name: UnitInfoButton
   m_TagString: Untagged
@@ -5734,7 +5752,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 0.92549026, g: 0.9294118, b: 0.80392164, a: 1}
     m_HighlightedColor: {r: 0.9294118, g: 0.91372555, b: 0.6156863, a: 0.39215687}
@@ -5809,6 +5827,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634097904}
   m_CullTransparentMesh: 1
+--- !u!114 &634097909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634097904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 634097910}
+          m_TargetAssemblyTypeName: ButtonHovering, Assembly-CSharp
+          m_MethodName: PointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 634097910}
+          m_TargetAssemblyTypeName: ButtonHovering, Assembly-CSharp
+          m_MethodName: PointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &634097910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634097904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &637132633
 GameObject:
   m_ObjectHideFlags: 0
@@ -6205,7 +6280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.22352943, g: 0.34901962, b: 0.48235297, a: 0.7647059}
+  m_Color: {r: 0.5764706, g: 0.76470596, b: 0.6627451, a: 0.7882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8005,6 +8080,8 @@ GameObject:
   - component: {fileID: 1723649391}
   - component: {fileID: 1723649390}
   - component: {fileID: 1723649389}
+  - component: {fileID: 1723649393}
+  - component: {fileID: 1723649392}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -8051,12 +8128,12 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 0.92549026, g: 0.9294118, b: 0.80392164, a: 1}
-    m_HighlightedColor: {r: 0.9294118, g: 0.91372555, b: 0.6156863, a: 0.39215687}
+    m_HighlightedColor: {r: 0.92549026, g: 0.9294118, b: 0.80392164, a: 0.39215687}
     m_PressedColor: {r: 0.92549026, g: 0.9294118, b: 0.80392164, a: 1}
-    m_SelectedColor: {r: 0.9294118, g: 0.91372555, b: 0.6156863, a: 0.39215687}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.39215687}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -8138,6 +8215,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723649387}
   m_CullTransparentMesh: 1
+--- !u!114 &1723649392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723649387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1723649393}
+          m_TargetAssemblyTypeName: ButtonHovering, Assembly-CSharp
+          m_MethodName: PointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1723649393}
+          m_TargetAssemblyTypeName: ButtonHovering, Assembly-CSharp
+          m_MethodName: PointerExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1723649393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723649387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1737322318
 GameObject:
   m_ObjectHideFlags: 0

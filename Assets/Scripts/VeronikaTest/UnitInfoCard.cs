@@ -33,10 +33,10 @@ public class UnitInfoCard : MonoBehaviour
         
         if (data.AttackRangeSize <= 1)
         {
-            attack_range = "melee";
+            attack_range = "    melee";
         }
         else {
-            attack_range = "ranged";
+            attack_range = "    ranged";
         }
 
         if (data.MovementSpeed <= 1)
@@ -60,31 +60,31 @@ public class UnitInfoCard : MonoBehaviour
 
         if (data.AttackSpeed <= 0.5)
         {
-            attack_speed = "slow";
+            attack_speed = "    slow";
             AttackSpeedText.color = RedColor;
         }
         else if (data.AttackSpeed <= 1)
         {
-            attack_speed = "medium";
+            attack_speed = "    medium";
             AttackSpeedText.color = YellowColor;
         }
         else {
-            attack_speed = "fast";
+            attack_speed = "    fast";
             AttackSpeedText.color = GreenColor;
         }
 
         if (data.MaxHealth <= 10)
         {
-            health = "few";
+            health = "                few";
             HealthText.color = RedColor;
         }
         else if (data.MaxHealth <= 20)
         {
-            health = "normal";
+            health = "                normal";
             HealthText.color = YellowColor;
         }
         else {
-            health = "a lot";
+            health = "                a lot";
             HealthText.color = GreenColor;
         }
 

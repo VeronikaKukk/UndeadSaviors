@@ -121,6 +121,7 @@ public class ScenarioController : MonoBehaviour
             levelPaused = false;
         }
         else {
+            HideGamePanel.SetActive(true);
             UnitInfoPanel.SetActive(true);
             Time.timeScale = 0;
             unitInfoButton.GetComponentInChildren<TMP_Text>().text = "X";
@@ -130,6 +131,7 @@ public class ScenarioController : MonoBehaviour
     }
 
     public void ToggleUnitInfoPanel() {//change this freely
+        HideGamePanel.SetActive(false);
         PauseLevel(false);
     }
 
