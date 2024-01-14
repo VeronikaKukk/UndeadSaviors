@@ -10,6 +10,7 @@ public class TutorialScenario : MonoBehaviour
 {
     public GameObject ShopPanel;
     public Button pauseButton;
+    public Button unitInfoButton;
     public AudioClipGroup BookPageTurnAudio;
 
     // FOR TUTORIAL
@@ -38,6 +39,7 @@ public class TutorialScenario : MonoBehaviour
             index = 0;
             indexArrow = -1;
             pauseButton.interactable = false;
+            unitInfoButton.interactable = false;
             shopButton = ShopPanel.GetComponentInChildren<Button>();
             shopButton.interactable = false;
             SellPotion.SetActive(false);
