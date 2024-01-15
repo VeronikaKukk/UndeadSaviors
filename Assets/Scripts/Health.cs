@@ -52,30 +52,18 @@ public class Health : MonoBehaviour
                 TweenCallback tweenCallback = () => { EntityController.Instance.Other.Remove(courageParticle); Destroy(courageParticle.gameObject); };
                 courageParticle.transform.DOMove(new Vector3(pos.x, pos.y, -10), 1.5f).OnComplete(tweenCallback);
                 
-                float rnd = UnityEngine.Random.Range(0f, 1f) + (CountdownTimer.Instance.currentTime/300);
-                float rnd2 = UnityEngine.Random.Range(0f, 1f);
+                float rnd = UnityEngine.Random.Range(0f, 1f) + (CountdownTimer.Instance.currentTime/310);
+                int rnd2 = UnityEngine.Random.Range(0, UnitData.DroppablePotions.Count);
                 //print(rnd+" "+ (CountdownTimer.Instance.currentTime / 300));
                 if (ScenarioController.Instance.currentScene.name != "TutorialScene")
                 {
-                    if (rnd > 0.6)
+                    print(rnd);
+                    if (rnd > 0.8)
                     {
                         List<BoxCollider2D> startAreas = ZombieBuilder.Instance.startAreas;
                         BoxCollider2D closestStartArea = GetClosestStartArea(startAreas);
                         Vector2 spawnPosition = GetRandomPointInCollider(closestStartArea);
-
-                        GameObject collectable = null;
-                        if (rnd2 < 0.3)
-                        {
-                            collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[0], transform.position, Quaternion.identity, null);
-                        }
-                        else if (rnd2 < 0.6)
-                        {
-                            collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[1], transform.position, Quaternion.identity, null);
-                        }
-                        else
-                        {
-                            collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[2], transform.position, Quaternion.identity, null);
-                        }
+                        GameObject collectable = collectable = GameObject.Instantiate<GameObject>(UnitData.DroppablePotions[rnd2], transform.position, Quaternion.identity, null);
                         collectable.transform.DOMove(spawnPosition, 1f);
                     }
                 }

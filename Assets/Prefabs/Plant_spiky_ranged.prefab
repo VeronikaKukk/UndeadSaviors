@@ -161,7 +161,9 @@ MonoBehaviour:
   AttackSound: {fileID: 11400000, guid: 0fea4f54196227c4c96171cfc7c531e1, type: 2}
   CombatTextPrefab: {fileID: 8832612426596585339, guid: f5e229f8616d01e47883d9d3e4fe8ef0, type: 3}
   ProjectilePrefab: {fileID: 2120347906506951909, guid: 2ae55d5c09587004987eebce6ec41e33, type: 3}
-  minSize: {x: 0.2, y: 0.2, z: 0.2}
+  minSize: {x: 0.1, y: 0.1, z: 0.1}
+  targetsInRange: []
+  currentTargets: []
 --- !u!114 &9009429959965017324
 MonoBehaviour:
   m_ObjectHideFlags: 0
