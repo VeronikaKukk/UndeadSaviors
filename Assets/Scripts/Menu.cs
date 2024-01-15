@@ -17,6 +17,10 @@ public class MainMenu : MonoBehaviour
     public LevelData selectedLevel;
 
     private int unlockedLevelNumber;
+
+    public bool OpenSubMenu = false; // for triggering menu panel animations
+
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -81,6 +85,7 @@ public class MainMenu : MonoBehaviour
     {
         MainMenuObject.SetActive(false);
         InstructionsMenuObject.SetActive(true);
+
     }
     public void CreditsMenuButtonPressed()
     {

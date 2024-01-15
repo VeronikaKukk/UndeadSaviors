@@ -829,6 +829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!1 &250614385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,6 +1517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!114 &479463606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1753,6 +1755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!1 &514071488
 GameObject:
   m_ObjectHideFlags: 0
@@ -3051,7 +3054,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4292212726
+    rgba: 3449678317
   m_fontColor: {r: 0.9294118, g: 0.91372555, b: 0.6156863, a: 0.8039216}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3291,7 +3294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 2.6, y: 42}
+  m_AnchoredPosition: {x: 243.9, y: 41.95}
   m_SizeDelta: {x: 150, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &907814745
@@ -3400,6 +3403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!114 &907814749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3887,7 +3891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1007571027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4059,6 +4063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!1 &1017502209
 GameObject:
   m_ObjectHideFlags: 0
@@ -4505,6 +4510,8 @@ GameObject:
   - component: {fileID: 1152738348}
   - component: {fileID: 1152738350}
   - component: {fileID: 1152738349}
+  - component: {fileID: 1152738353}
+  - component: {fileID: 1152738352}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -4570,6 +4577,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152738347}
   m_CullTransparentMesh: 1
+--- !u!114 &1152738352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152738347}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7587d4dd23b48c243a527a3180bd668f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.94352305
+      value: 1.0432965
+      inSlope: 0.124474525
+      outSlope: 0.124474525
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Speed: 3
+  StartScale: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
+  AnimationFinishedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1152738353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152738347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a8e30ef8f3a8e4983e0df233da75c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OpenAnimation: {fileID: 1152738352}
 --- !u!1 &1221586687
 GameObject:
   m_ObjectHideFlags: 0
@@ -5131,6 +5202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!1 &1378142406
 GameObject:
   m_ObjectHideFlags: 0
@@ -5278,6 +5350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!114 &1378142413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5459,6 +5532,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fb0bf88b709ecb34796e20b3e49e4ab3, type: 2}
   - {fileID: 11400000, guid: f67c25677ec29184c8c1297bde74e49c, type: 2}
   selectedLevel: {fileID: 0}
+  OpenSubMenu: 0
 --- !u!114 &1395200347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5689,6 +5763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!1 &1438107198
 GameObject:
   m_ObjectHideFlags: 0
@@ -6277,6 +6352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!1 &1622195092
 GameObject:
   m_ObjectHideFlags: 0
@@ -7056,7 +7132,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 128
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7298,6 +7374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!1 &1955471738
 GameObject:
   m_ObjectHideFlags: 0
@@ -7705,7 +7782,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 3
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 0.96470594, g: 0.9686275, b: 0.8352942, a: 0}
     m_HighlightedColor: {r: 0.5764706, g: 0.76470596, b: 0.6627451, a: 1}
@@ -7792,6 +7869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
 --- !u!114 &2088102818
 MonoBehaviour:
   m_ObjectHideFlags: 0

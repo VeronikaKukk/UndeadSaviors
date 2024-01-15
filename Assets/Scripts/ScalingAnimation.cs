@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class ScalingAnimation : MonoBehaviour
 // doesn't work right now but also doesn't break anything
-// attached to pause menu panel
+// attached to some menu panel panels
 {
     public AnimationCurve Curve;
     public float Speed;
