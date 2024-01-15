@@ -150,7 +150,7 @@ public class TutorialScenario : MonoBehaviour
             }
         }
 
-        else if (isPlantDead && index >= 11 && index <= 21) // sõnumid, mis tulevad alles siis kui Plant on surma saanud ja eelnevad messaged ära näidatud
+        else if (isPlantDead && index >= 11 && index <= 22) // sõnumid, mis tulevad alles siis kui Plant on surma saanud ja eelnevad messaged ära näidatud
         {
             Image potionSlot = shopButton.GetComponentsInChildren<Image>()[4];
             AllTexts[index - 1].gameObject.SetActive(false); // loogika lihtsuse jaoks, esmakordsel sisenemisel on tarvis
@@ -189,7 +189,7 @@ public class TutorialScenario : MonoBehaviour
             AllTexts[index - 1].gameObject.SetActive(false);
             AllTexts[index].gameObject.SetActive(true);
 
-            if (index == 14 || index == 15 || index == 16 || index == 19 || index == 22)
+            if (index == 14 || index == 15 || index == 16 || index == 19 || index == 20 || index == 23)
             {
                 indexArrow += 1;
                 if (AllArrows.Length - 1 < indexArrow)
@@ -202,13 +202,13 @@ public class TutorialScenario : MonoBehaviour
             {
                 AllArrows[indexArrow].gameObject.SetActive(false);
             }
-            if (index != 22)
+            if (index != 23)
             {
                 AllArrows[indexArrow - 1].gameObject.SetActive(false);
             }
         }
         /*
-        else if (index == 22) // viimase sõnumi kustutamine
+        else if (index == 23) // viimase sõnumi kustutamine
         {
             AllTexts[index].gameObject.SetActive(false);
             AllArrows[indexArrow].gameObject.SetActive(false);
@@ -221,9 +221,9 @@ public class TutorialScenario : MonoBehaviour
         if (index != 11 && allowAudioPlay)
         {
             index -= 1;
-            Debug.Log(index);
-            Debug.Log("arrow" + indexArrow);
-            if (index == 13 || index == 15 || index == 18)
+            //Debug.Log(index);
+            //Debug.Log("arrow" + indexArrow);
+            if (index == 13 || index == 15 || index == 18 || index == 19)
             {
                 indexArrow -= 1;
                 AllArrows[indexArrow].gameObject.SetActive(false);
@@ -232,12 +232,7 @@ public class TutorialScenario : MonoBehaviour
         }
         else if (index == 15 && !allowAudioPlay)
         {
-            Debug.Log("enter");
             BookPageTurnAudio.Play();
-        }
-        else
-        {
-            Debug.Log(index);
         }
     }
 
