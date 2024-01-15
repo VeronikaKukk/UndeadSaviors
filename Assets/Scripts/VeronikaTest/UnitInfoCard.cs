@@ -11,6 +11,8 @@ public class UnitInfoCard : MonoBehaviour
     public TextMeshProUGUI AttackSpeedText;
     public TextMeshProUGUI AttackRangeText;
     public TextMeshProUGUI MovementSpeedText;
+    public TextMeshProUGUI AttackDamageText;
+
 
     public Color RedColor;
     public Color GreenColor;
@@ -30,8 +32,8 @@ public class UnitInfoCard : MonoBehaviour
         string attack_range = "";
         string movement_speed = "";
         string health = "";
-        
-        if (data.AttackRangeSize <= 1)
+        string attack_damage = "";
+        if (data.AttackRangeSize <= 1.2)
         {
             attack_range = "    melee";
         }
@@ -39,7 +41,7 @@ public class UnitInfoCard : MonoBehaviour
             attack_range = "    ranged";
         }
 
-        if (data.MovementSpeed <= 1)
+        if (data.MovementSpeed <= 1.5)
         {
             movement_speed = "slow";
             MovementSpeedText.color = RedColor;
@@ -58,12 +60,12 @@ public class UnitInfoCard : MonoBehaviour
             movement_speed = "none";
         }
 
-        if (data.AttackSpeed <= 0.5)
+        if (data.AttackSpeed <= 0.6)
         {
             attack_speed = "    slow";
             AttackSpeedText.color = RedColor;
         }
-        else if (data.AttackSpeed <= 1)
+        else if (data.AttackSpeed <= 1.1)
         {
             attack_speed = "    medium";
             AttackSpeedText.color = YellowColor;
@@ -88,7 +90,23 @@ public class UnitInfoCard : MonoBehaviour
             HealthText.color = GreenColor;
         }
 
-        InfoText.text = "Health: \nAttack speed: \nAttack range: \nMovement speed: \n";
+        if (data.AttackDamage <= 1)
+        {
+            attack_damage = "  few";
+            AttackDamageText.color = RedColor;
+        }
+        else if (data.AttackDamage <= 3)
+        {
+            attack_damage = "  normal";
+            AttackDamageText.color = YellowColor;
+        }
+        else
+        {
+            attack_damage = "  a lot";
+            AttackDamageText.color = GreenColor;
+        }
+
+        InfoText.text = "Health: \nAttack speed: \nAttack range: \nMovement speed: \nAttack damage: \n";
         string h = new string(' ',"Health: ".Length*2);
         HealthText.text = h + health;
         h = new string(' ', "Attack speed: ".Length*2);
@@ -97,5 +115,7 @@ public class UnitInfoCard : MonoBehaviour
         AttackRangeText.text = "\n\n"+h+ attack_range;
         h = new string(' ', "Movement speed: ".Length*2);
         MovementSpeedText.text = "\n\n\n"+h+ movement_speed;
+        h = new string(' ', "Attack damage: ".Length * 2);
+        AttackDamageText.text = "\n\n\n\n" + h + attack_damage;
     }
 }

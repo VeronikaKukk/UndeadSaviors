@@ -432,7 +432,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OpenAnimation: {fileID: 131861381}
-  CloseAnimation: {fileID: 131861381}
 --- !u!114 &131861381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4950,8 +4949,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.1069336, y: -16.323975}
-  m_SizeDelta: {x: -177.814, y: -40.157}
+  m_AnchoredPosition: {x: 0, y: -16.324005}
+  m_SizeDelta: {x: -90.5918, y: -40.157}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &382117827
 MonoBehaviour:
@@ -4992,17 +4991,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
-    m_Right: 20
-    m_Top: 20
-    m_Bottom: 20
-  m_ChildAlignment: 0
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 3
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 150, y: 80}
+  m_CellSize: {x: 200, y: 90}
   m_Spacing: {x: 5, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 3
 --- !u!114 &382117829
 MonoBehaviour:
   m_ObjectHideFlags: 0
