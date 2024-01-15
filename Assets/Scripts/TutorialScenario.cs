@@ -26,6 +26,7 @@ public class TutorialScenario : MonoBehaviour
     private bool allowAudioPlay = true;
 
     private GameObject collectable;
+    private bool allowClicking = true;
     //
 
     public static TutorialScenario Instance;
@@ -78,6 +79,7 @@ public class TutorialScenario : MonoBehaviour
         AllArrows[4].gameObject.SetActive(false);
         TutorialPotionDrop();
         BookPageTurnAudio.Play();
+        allowClicking = true;
     }
 
     public void TutorialStuff()
@@ -96,115 +98,119 @@ public class TutorialScenario : MonoBehaviour
     // Selle loogikaga tegeles Andre. Kui midagi on katki siis öelge mulle, sellest aru saamine on peavalu kui pole ise teinud :D
     private void TutorialClicking()
     {
-        if (index <= 10)
+        if (allowClicking)
         {
-            if (index <= 4 || index >= 6)
+            if (index <= 10)
             {
-                BookPageTurnAudio.Play();
-                index += 1;
-                if (index == 3 || index == 4 || index == 5 || index == 11)
+                if (index <= 4 || index >= 6)
                 {
-                    indexArrow += 1;
+                    BookPageTurnAudio.Play();
+                    index += 1;
+                    if (index == 3 || index == 4 || index == 5 || index == 11)
+                    {
+                        indexArrow += 1;
+                    }
+                    //Debug.Log(index);
                 }
-                //Debug.Log(index);
-            }
-            else if (index >= 5 && EntityController.Instance.ZombieCharacters.Count > 0)
-            {
-                BookPageTurnAudio.Play();
-                index += 1;
-                if (index == 6)
+                else if (index >= 5 && EntityController.Instance.ZombieCharacters.Count > 0)
                 {
-                    indexArrow += 1;
+                    BookPageTurnAudio.Play();
+                    index += 1;
+                    if (index == 6)
+                    {
+                        indexArrow += 1;
+                    }
+                    //Debug.Log(index);
                 }
-                //Debug.Log(index);
+
+                if (index != 0)
+                {
+                    AllTexts[index - 1].gameObject.SetActive(false);
+                }
+                if (indexArrow > 0)
+                {
+                    AllArrows[indexArrow - 1].gameObject.SetActive(false);
+                }
+
+                if (index == 4) // poest ostmise tutorial message
+                {
+                    activateShopButton = true;
+                }
+
+                if (index == 10) // siin on pausi nupu tutorial message
+                {
+                    pauseButton.interactable = true;
+                }
+
+                if (index == 11)
+                {
+                    unitInfoButton.interactable = true;
+                    allowClicking = false;
+                }
+
+                AllTexts[index].gameObject.SetActive(true);
+                if (index == 3 || index == 4 || index == 5 || index == 10 || index == 11)
+                {
+                    AllArrows[indexArrow].gameObject.SetActive(true);
+                }
             }
 
-            if (index != 0)
+            else if (isPlantDead && index >= 11 && index <= 22) // sõnumid, mis tulevad alles siis kui Plant on surma saanud ja eelnevad messaged ära näidatud
             {
+                Image potionSlot = shopButton.GetComponentsInChildren<Image>()[4];
+                AllTexts[index - 1].gameObject.SetActive(false); // loogika lihtsuse jaoks, esmakordsel sisenemisel on tarvis
+                AllArrows[indexArrow - 1].gameObject.SetActive(false);
+                allowAudioPlay = true;
+
+                if (index == 13)
+                {
+                    collectable.GetComponent<BoxCollider2D>().enabled = true;
+                }
+
+                if (index == 14 && !GameController.Instance.IsPotionPickedUp) // potion pickup loogika
+                {
+                    index -= 1;
+                    indexArrow -= 1;
+                    allowAudioPlay = false;
+                }
+                else if (index == 15 && !potionSlot.enabled) // kontroll et potion on ikka peale pandud
+                {
+                    index -= 1;
+                    indexArrow -= 1;
+                    allowAudioPlay = false;
+                }
+                else if (index == 18)
+                {
+                    SellPotion.SetActive(true);
+                }
+
+                if (allowAudioPlay)
+                {
+                    BookPageTurnAudio.Play();
+                }
+
+                index += 1;
+                //Debug.Log(index);
                 AllTexts[index - 1].gameObject.SetActive(false);
-            }
-            if (indexArrow > 0)
-            {
-                AllArrows[indexArrow - 1].gameObject.SetActive(false);
-            }
+                AllTexts[index].gameObject.SetActive(true);
 
-            if (index == 4) // poest ostmise tutorial message
-            {
-                activateShopButton = true;
-            }
-
-            if (index == 10) // siin on pausi nupu tutorial message
-            {
-                pauseButton.interactable = true;
-            }
-
-            if (index == 11)
-            {
-                unitInfoButton.interactable = true;
-            }
-
-            AllTexts[index].gameObject.SetActive(true);
-            if (index == 3 || index == 4 || index == 5 || index == 10 || index == 11)
-            {
-                AllArrows[indexArrow].gameObject.SetActive(true);
-            }
-        }
-
-        else if (isPlantDead && index >= 11 && index <= 22) // sõnumid, mis tulevad alles siis kui Plant on surma saanud ja eelnevad messaged ära näidatud
-        {
-            Image potionSlot = shopButton.GetComponentsInChildren<Image>()[4];
-            AllTexts[index - 1].gameObject.SetActive(false); // loogika lihtsuse jaoks, esmakordsel sisenemisel on tarvis
-            AllArrows[indexArrow - 1].gameObject.SetActive(false);
-            allowAudioPlay = true;
-
-            if (index == 13)
-            {
-                collectable.GetComponent<BoxCollider2D>().enabled = true;
-            }
-
-            if (index == 14 && !GameController.Instance.IsPotionPickedUp) // potion pickup loogika
-            {
-                index -= 1;
-                indexArrow -= 1;
-                allowAudioPlay = false;
-            }
-            else if (index == 15 && !potionSlot.enabled) // kontroll et potion on ikka peale pandud
-            {
-                index -= 1;
-                indexArrow -= 1;
-                allowAudioPlay = false;
-            }
-            else if (index == 18)
-            {
-                SellPotion.SetActive(true);
-            }
-
-            if (allowAudioPlay)
-            {
-                BookPageTurnAudio.Play();
-            }
-
-            index += 1;
-            //Debug.Log(index);
-            AllTexts[index - 1].gameObject.SetActive(false);
-            AllTexts[index].gameObject.SetActive(true);
-
-            if (index == 14 || index == 15 || index == 16 || index == 19 || index == 20 || index == 23)
-            {
-                indexArrow += 1;
-                if (AllArrows.Length - 1 < indexArrow)
+                if (index == 14 || index == 15 || index == 16 || index == 19 || index == 20 || index == 23)
                 {
-                    indexArrow = AllArrows.Length - 1;
+                    indexArrow += 1;
+                    if (AllArrows.Length - 1 < indexArrow)
+                    {
+                        indexArrow = AllArrows.Length - 1;
+                    }
+                    AllArrows[indexArrow].gameObject.SetActive(true);
                 }
-                AllArrows[indexArrow].gameObject.SetActive(true);
-            }
-            else
-            {
-                AllArrows[indexArrow].gameObject.SetActive(false);
-            }
-            if (index != 23)
-            {
-                AllArrows[indexArrow - 1].gameObject.SetActive(false);
+                else
+                {
+                    AllArrows[indexArrow].gameObject.SetActive(false);
+                }
+                if (index != 23)
+                {
+                    AllArrows[indexArrow - 1].gameObject.SetActive(false);
+                }
             }
         }
         /*
