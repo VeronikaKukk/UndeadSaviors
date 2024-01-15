@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: HoleRangedZombie
   m_EditorClassIdentifier: 
   Name: Zombie_hole
-  Price: 70
+  Price: 75
   Icon: {fileID: 21300000, guid: e294d299d7d34f149abd76c9e2376713, type: 3}
   ZombiePrefab: {fileID: 2140568854778588184, guid: e3e16197094372a49b2e9c35cfbb0e78, type: 3}

@@ -210,7 +210,7 @@ public class Health : MonoBehaviour
     {
         if (UnitData.TeamName == "Plant" && lastDamaged + healthRegenWaitTime < Time.time && transform.localScale.magnitude < maxSize.magnitude)
         {
-            transform.localScale = new Vector3(transform.localScale.x + 0.05f, transform.localScale.y + 0.05f, transform.localScale.z + 0.05f);
+            transform.localScale = new Vector3(transform.localScale.x + 0.01f, transform.localScale.y + 0.01f, transform.localScale.z + 0.01f);
 
             lastDamaged = Time.time;
             MaxHealth += 5;

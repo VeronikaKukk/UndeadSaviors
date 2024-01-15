@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ShamanZombie
   m_EditorClassIdentifier: 
   Name: Zombie_shaman
-  Price: 45
+  Price: 70
   Icon: {fileID: 21300000, guid: 0aeafaa8022cf0f429cd031f8e787685, type: 3}
   ZombiePrefab: {fileID: 2140568854778588184, guid: 896ae0087b15a394398c2536bf58853c, type: 3}
