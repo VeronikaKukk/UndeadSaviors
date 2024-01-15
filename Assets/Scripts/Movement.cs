@@ -30,10 +30,11 @@ public class Movement : MonoBehaviour
         if(gameObject.name.StartsWith(unitName)) { 
             MovementSpeed += speed;
             GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.y + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.z), Quaternion.identity);
+            EntityController.Instance.Other.Add(combatText);
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + MovementSpeed;
             combatText.transform.Find("MovementSpeed").gameObject.SetActive(true);
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
-            TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
+            TweenCallback tweenCallback = () => { EntityController.Instance.Other.Remove(combatText); Destroy(combatText.gameObject);  };
             combatText.transform.localScale = combatText.transform.localScale * 0.5f;
             combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 1f).OnComplete(tweenCallback);
         }

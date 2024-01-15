@@ -133,10 +133,11 @@ public class Attacking : MonoBehaviour
         {
             AttackDamage += damage;
             GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.y + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.z), Quaternion.identity);
+            EntityController.Instance.Other.Add(combatText);
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + damage;
             combatText.transform.Find("AttackDamage").gameObject.SetActive(true);
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
-            TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
+            TweenCallback tweenCallback = () => { EntityController.Instance.Other.Remove(combatText); Destroy(combatText.gameObject);             };
             combatText.transform.localScale = combatText.transform.localScale * 0.5f;
             combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 1f).OnComplete(tweenCallback);
         }
@@ -148,10 +149,11 @@ public class Attacking : MonoBehaviour
             AttackRangeSize += rangesize;
             ChangeAttackRange();
             GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.y + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.z), Quaternion.identity);
+            EntityController.Instance.Other.Add(combatText);
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + rangesize;
             combatText.transform.Find("AttackRange").gameObject.SetActive(true);
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
-            TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
+            TweenCallback tweenCallback = () => { EntityController.Instance.Other.Remove(combatText); Destroy(combatText.gameObject);  };
             combatText.transform.localScale = combatText.transform.localScale * 0.5f;
             combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 1f).OnComplete(tweenCallback);
         }
@@ -173,10 +175,11 @@ public class Attacking : MonoBehaviour
         {
             AttackSpeed += attackSpeed;
             GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(transform.position.x + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.y + UnityEngine.Random.Range(-0.25f, 0.25f), transform.position.z), Quaternion.identity);
+            EntityController.Instance.Other.Add(combatText);
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + attackSpeed;
             combatText.transform.Find("AttackSpeed").gameObject.SetActive(true);
             combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
-            TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
+            TweenCallback tweenCallback = () => { EntityController.Instance.Other.Remove(combatText); Destroy(combatText.gameObject);  };
             combatText.transform.localScale = combatText.transform.localScale * 0.5f;
             combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 1f).OnComplete(tweenCallback);
         }
@@ -272,10 +275,11 @@ public class Attacking : MonoBehaviour
     public void CombatDamageTexts(Health target)
     {
         GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(target.transform.position.x + UnityEngine.Random.Range(-0.5f, 0.5f), target.transform.position.y + UnityEngine.Random.Range(-0.5f, 0.5f), target.transform.position.z), Quaternion.identity);
+        EntityController.Instance.Other.Add(combatText);
         combatText.transform.Find("combat_text").GetComponent<TextMeshPro>().text = "-" + AttackDamage;
         combatText.transform.Find("HealthNeg").gameObject.SetActive(true);
         combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.red;
-        TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
+        TweenCallback tweenCallback = () => { EntityController.Instance.Other.Remove(combatText); Destroy(combatText.gameObject); };
         DOTween.Sequence().Append(combatText.transform.DOScale(combatText.transform.localScale * 0.5f, 0.5f)).Append(combatText.transform.DOJump(combatText.transform.position + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 0.2f, 0), UnityEngine.Random.Range(0.01f, 0.1f), 1, 0.5f, false)).OnComplete(tweenCallback);
         //combatText.transform.DOScale(combatText.transform.localScale*0.5f, 0.5f).OnComplete(tweenCallback);
     }

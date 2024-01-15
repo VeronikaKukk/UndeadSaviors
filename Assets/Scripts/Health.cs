@@ -45,10 +45,11 @@ public class Health : MonoBehaviour
 
                 // show courage particle
                 GameObject courageParticle = GameObject.Instantiate(CourageEffectPrefab, transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+                EntityController.Instance.Other.Add(courageParticle);
                 courageParticle.GetComponent<ParticleSystem>().Play();
                 GameObject courage = GameObject.FindGameObjectWithTag("Courage").gameObject;
                 var pos = Camera.main.ScreenToWorldPoint(courage.transform.position);
-                TweenCallback tweenCallback = () => { Destroy(courageParticle.gameObject); };
+                TweenCallback tweenCallback = () => { EntityController.Instance.Other.Remove(courageParticle); Destroy(courageParticle.gameObject); };
                 courageParticle.transform.DOMove(new Vector3(pos.x, pos.y, -10), 1.5f).OnComplete(tweenCallback);
                 
                 float rnd = UnityEngine.Random.Range(0f, 1f) + (CountdownTimer.Instance.currentTime/300);
@@ -227,15 +228,15 @@ public class Health : MonoBehaviour
         combatText.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + health;
         combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.green;
         combatText.transform.Find("HealthPos").gameObject.SetActive(true);
-        TweenCallback tweenCallback = () => { Destroy(combatText.gameObject); };
+        TweenCallback tweenCallback = () => { EntityController.Instance.Other.Remove(combatText); Destroy(combatText.gameObject);};
         combatText.transform.localScale = combatText.transform.localScale * 0.5f;
         combatText.transform.DOScale(combatText.transform.localScale * 1.5f, 1f).OnComplete(tweenCallback);
-        EntityController.Instance.Other.Remove(combatText);
     }
     private void Death()
     {
         DeathSound.Play();
         GameObject deathParticle = GameObject.Instantiate(DeathParticlePrefab, transform.position, Quaternion.identity, null);
+        EntityController.Instance.Other.Add(deathParticle);
         deathParticle.GetComponent<ParticleSystem>().Play();
         Destroy(gameObject);
     }
