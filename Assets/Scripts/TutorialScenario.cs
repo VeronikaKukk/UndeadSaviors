@@ -23,7 +23,9 @@ public class TutorialScenario : MonoBehaviour
     private bool isPlantDead = false;
     public GameObject DroppablePotion;
     public GameObject SellPotion;
-    private bool allowAudioPlay;
+    private bool allowAudioPlay = true;
+
+    private GameObject collectable;
     //
 
     public static TutorialScenario Instance;
@@ -63,7 +65,7 @@ public class TutorialScenario : MonoBehaviour
             if (EntityController.Instance.PlantCharacters.Count < 1 && index == 11 && isPlantDead == false)
             {
                 isPlantDead = true;
-                Invoke("AllPlantsDead", 1f);
+                Invoke("AllPlantsDead", 2f);
             }
         }
     }
@@ -71,9 +73,9 @@ public class TutorialScenario : MonoBehaviour
     public void AllPlantsDead()
     {
         index += 1;
-        AllTexts[index - 1].gameObject.SetActive(false);
-        AllTexts[index].gameObject.SetActive(true);
-        AllArrows[indexArrow].gameObject.SetActive(false);
+        AllTexts[11].gameObject.SetActive(false);
+        AllTexts[12].gameObject.SetActive(true);
+        AllArrows[4].gameObject.SetActive(false);
         TutorialPotionDrop();
         BookPageTurnAudio.Play();
     }
@@ -136,6 +138,11 @@ public class TutorialScenario : MonoBehaviour
                 pauseButton.interactable = true;
             }
 
+            if (index == 11)
+            {
+                unitInfoButton.interactable = true;
+            }
+
             AllTexts[index].gameObject.SetActive(true);
             if (index == 3 || index == 4 || index == 5 || index == 10 || index == 11)
             {
@@ -143,12 +150,17 @@ public class TutorialScenario : MonoBehaviour
             }
         }
 
-        if (isPlantDead && index > 11 && index <= 21) // sõnumid, mis tulevad alles siis kui Plant on surma saanud ja eelnevad messaged ära näidatud
+        else if (isPlantDead && index >= 11 && index <= 21) // sõnumid, mis tulevad alles siis kui Plant on surma saanud ja eelnevad messaged ära näidatud
         {
             Image potionSlot = shopButton.GetComponentsInChildren<Image>()[4];
             AllTexts[index - 1].gameObject.SetActive(false); // loogika lihtsuse jaoks, esmakordsel sisenemisel on tarvis
             AllArrows[indexArrow - 1].gameObject.SetActive(false);
             allowAudioPlay = true;
+
+            if (index == 13)
+            {
+                collectable.GetComponent<BoxCollider2D>().enabled = true;
+            }
 
             if (index == 14 && !GameController.Instance.IsPotionPickedUp) // potion pickup loogika
             {
@@ -206,18 +218,34 @@ public class TutorialScenario : MonoBehaviour
 
     public void PauseLogic()
     {
-        index -= 1;
-        if (index == 3 || index == 4 || index == 5 || index == 10 || index == 11 || index == 14 || index == 15 || index == 16 || index == 19 || index == 22)
+        if (index != 11 && allowAudioPlay)
         {
-            indexArrow -= 1;
-            AllArrows[indexArrow].gameObject.SetActive(false);
+            index -= 1;
+            Debug.Log(index);
+            Debug.Log("arrow" + indexArrow);
+            if (index == 13 || index == 15 || index == 18)
+            {
+                indexArrow -= 1;
+                AllArrows[indexArrow].gameObject.SetActive(false);
+            }
+            AllTexts[index].gameObject.SetActive(false);
         }
-        AllTexts[index].gameObject.SetActive(false);
+        else if (index == 15 && !allowAudioPlay)
+        {
+            Debug.Log("enter");
+            BookPageTurnAudio.Play();
+        }
+        else
+        {
+            Debug.Log(index);
+        }
     }
 
-    public void TutorialPotionDrop()
+    public GameObject TutorialPotionDrop()
     {
-        GameObject collectable = GameObject.Instantiate<GameObject>(DroppablePotion, transform.position, Quaternion.identity, null);
+        collectable = GameObject.Instantiate<GameObject>(DroppablePotion, transform.position, Quaternion.identity, null);
         collectable.transform.DOMove(new Vector2((float)-8.2, 0), 1f);
+        collectable.GetComponent<BoxCollider2D>().enabled = false;
+        return collectable;
     }
 }

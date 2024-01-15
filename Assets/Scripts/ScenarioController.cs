@@ -120,13 +120,18 @@ public class ScenarioController : MonoBehaviour
             PauseButtonText.text = "II";
             levelPaused = false;
         }
-        else {
+        else if (!isRegularPause && !levelPaused) {
             HideGamePanel.SetActive(true);
             UnitInfoPanel.SetActive(true);
             Time.timeScale = 0;
             unitInfoButton.GetComponentInChildren<TMP_Text>().text = "X";
             pauseButton.gameObject.SetActive(false);
             levelPaused = true;
+
+            if (currentScene.name == "TutorialScene")
+            {
+                TutorialScenario.Instance.PauseLogic();
+            }
         }
     }
 
