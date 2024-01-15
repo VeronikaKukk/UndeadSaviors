@@ -219,6 +219,15 @@ public class ScenarioController : MonoBehaviour
             var rnd = new System.Random();
             keys = keys.OrderBy(x => rnd.Next()).ToList();
         }
+        else if (currentScene.name == "TutorialScene")
+        {
+            var x = 1;
+            GameObject deathtrap = GameObject.Instantiate(DeathTrapPrefab, keys[x].transform.position, Quaternion.identity, keys[x].transform);
+            EntityController.Instance.Other.Add(deathtrap);
+            keys.Remove(keys[x]);
+            var rnd = new System.Random();
+            keys = keys.OrderBy(x => rnd.Next()).ToList();
+        }
         for (int i = 0; i < plants.Count; i++)
         {
             GameObject spawn = keys[0];
