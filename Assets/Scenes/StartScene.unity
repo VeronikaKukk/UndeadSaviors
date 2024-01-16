@@ -1613,10 +1613,10 @@ RectTransform:
   - {fileID: 711384984}
   m_Father: {fileID: 189293929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 505.48706, y: -439}
-  m_SizeDelta: {x: -1764.9426, y: -978.1386}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 5, y: -439}
+  m_SizeDelta: {x: 155.05737, y: -978.1386}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &482069283
 MonoBehaviour:
@@ -2138,7 +2138,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 300, y: 300}
+  m_CellSize: {x: 200, y: 150}
   m_Spacing: {x: 20, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -2757,7 +2757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.7645035, y: -0.00008773804}
+  m_AnchoredPosition: {x: 1.7644958, y: -0.00008773804}
   m_SizeDelta: {x: -2.4700012, y: -0.13999939}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &711384985
@@ -3378,7 +3378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 243.9, y: 41.95}
+  m_AnchoredPosition: {x: -2, y: 41.95}
   m_SizeDelta: {x: 150, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &907814745
@@ -3988,7 +3988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1007571027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5595,12 +5595,14 @@ MonoBehaviour:
   InstructionsMenuObject: {fileID: 521481716}
   CreditsMenuObject: {fileID: 215938789}
   Levels:
+  - {fileID: 11400000, guid: f67c25677ec29184c8c1297bde74e49c, type: 2}
   - {fileID: 11400000, guid: 0ba79270505650341bc3942bd7b29eaf, type: 2}
   - {fileID: 11400000, guid: d7dedf65e510bc643a5e3e58ece75135, type: 2}
   - {fileID: 11400000, guid: 63f14726bd827d7458944f5e0fe97d79, type: 2}
   - {fileID: 11400000, guid: 6881e6a783e3cbb4582e0ac17d7ccc5c, type: 2}
   - {fileID: 11400000, guid: fb0bf88b709ecb34796e20b3e49e4ab3, type: 2}
-  - {fileID: 11400000, guid: f67c25677ec29184c8c1297bde74e49c, type: 2}
+  - {fileID: 11400000, guid: 4a483e76c87da8543926be9636f0979d, type: 2}
+  - {fileID: 11400000, guid: bf30299ec71732a4298d175fedc2847f, type: 2}
   selectedLevel: {fileID: 0}
   OpenSubMenu: 0
 --- !u!114 &1395200347
@@ -7321,7 +7323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1949145472
 RectTransform:
   m_ObjectHideFlags: 0

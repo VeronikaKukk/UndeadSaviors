@@ -10,32 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e31a7df526733644b80183a4a8054630, type: 3}
-  m_Name: Level5
+  m_Name: Level6
   m_EditorClassIdentifier: 
-  LevelName: Level 5
-  LevelNumber: 5
-  SceneName: MainScene1
-  Gametime: 91
-  StartingMoney: 150
+  LevelName: Level 6
+  LevelNumber: 6
+  SceneName: MainScene2
+  Gametime: 171
+  StartingMoney: 120
   Plants:
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
+  - {fileID: 11400000, guid: f0c02b834579d6344a316f0d127a272e, type: 2}
+  - {fileID: 11400000, guid: f0c02b834579d6344a316f0d127a272e, type: 2}
+  - {fileID: 11400000, guid: f0c02b834579d6344a316f0d127a272e, type: 2}
+  - {fileID: 11400000, guid: 0738b46096efb4c4e9edf78d6abd1b59, type: 2}
+  - {fileID: 11400000, guid: 0738b46096efb4c4e9edf78d6abd1b59, type: 2}
+  - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
+  - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
+  - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
-  - {fileID: 11400000, guid: f0c02b834579d6344a316f0d127a272e, type: 2}
-  - {fileID: 11400000, guid: f0c02b834579d6344a316f0d127a272e, type: 2}
-  - {fileID: 11400000, guid: f0c02b834579d6344a316f0d127a272e, type: 2}
-  - {fileID: 11400000, guid: 0738b46096efb4c4e9edf78d6abd1b59, type: 2}
+  - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
+  - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
   - {fileID: 11400000, guid: 0738b46096efb4c4e9edf78d6abd1b59, type: 2}
   - {fileID: 11400000, guid: a2bea8fa936db7245bd6d8814d7dd691, type: 2}
   - {fileID: 11400000, guid: a2bea8fa936db7245bd6d8814d7dd691, type: 2}
   - {fileID: 11400000, guid: a2bea8fa936db7245bd6d8814d7dd691, type: 2}
-  - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
-  - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
-  - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
-  - {fileID: 11400000, guid: 72beabf94d66f0543b87a1e66c44f031, type: 2}
   Zombies:
+  - {fileID: 11400000, guid: e985f592952ef8a4590792dd76fdd7b6, type: 2}
   - {fileID: 11400000, guid: 9eda4f0adab444949bd59ee8d176bfa6, type: 2}
   - {fileID: 11400000, guid: 69865c593f974fb48b4f54dd14dec690, type: 2}
   - {fileID: 11400000, guid: 6b845b11c69eebf429accc55bba7ce78, type: 2}
   - {fileID: 11400000, guid: abb77818ce96e444ab9ea4bc04e1042a, type: 2}
-  - {fileID: 11400000, guid: 9560627145334334994b62de6306345c, type: 2}

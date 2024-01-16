@@ -77,22 +77,22 @@ public class UnitInfoCard : MonoBehaviour
 
         if (data.MaxHealth <= 10)
         {
-            health = "                few";
+            health = "                low";
             HealthText.color = RedColor;
         }
         else if (data.MaxHealth <= 20)
         {
-            health = "                normal";
+            health = "                medium";
             HealthText.color = YellowColor;
         }
         else {
-            health = "                a lot";
+            health = "                high";
             HealthText.color = GreenColor;
         }
 
         if (data.AttackDamage <= 1)
         {
-            attack_damage = "  few";
+            attack_damage = "  low";
             AttackDamageText.color = RedColor;
         }
         else if (data.AttackDamage <= 3)
@@ -102,7 +102,7 @@ public class UnitInfoCard : MonoBehaviour
         }
         else
         {
-            attack_damage = "  a lot";
+            attack_damage = "  high";
             AttackDamageText.color = GreenColor;
         }
 
