@@ -6488,8 +6488,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -44.2, y: -23.3}
-  m_SizeDelta: {x: 35.803, y: 26.203995}
+  m_AnchoredPosition: {x: -44.2, y: -23.300049}
+  m_SizeDelta: {x: 35.803, y: 26.20398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &634097906
 MonoBehaviour:
@@ -7301,8 +7301,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -2.6582642}
-  m_SizeDelta: {x: 0, y: 5.316498}
+  m_AnchoredPosition: {x: 0.00024414062, y: 4.8830566}
+  m_SizeDelta: {x: 0.00048828, y: 94.8045}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &907227674
 MonoBehaviour:
@@ -7325,7 +7325,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 468020370, guid: 8f43210ee33f7494083d066254d014d5, type: 3}
-  m_Type: 2
+  m_Type: 1
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7854,10 +7854,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 522773788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.1069336, y: -16.324005}
-  m_SizeDelta: {x: -177.81396, y: -40.157043}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0002346, y: -2.349}
+  m_SizeDelta: {x: 612.0481, y: 389.5414}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &967354463
 MonoBehaviour:
@@ -7898,15 +7898,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
-    m_Right: 20
-    m_Top: 20
+    m_Left: 0
+    m_Right: 27
+    m_Top: 27
     m_Bottom: 20
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 150, y: 80}
-  m_Spacing: {x: 5, y: 0}
+  m_Spacing: {x: 37, y: 7}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &967354465
@@ -8968,7 +8968,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -227.4, y: 31.154}
+  m_AnchoredPosition: {x: -227.4, y: 31.154053}
   m_SizeDelta: {x: 39.5212, y: 39.1685}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1314649744
@@ -10147,7 +10147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a8e30ef8f3a8e4983e0df233da75c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OpenAnimation: {fileID: 1654163624}
 --- !u!114 &1654163623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10160,48 +10159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7587d4dd23b48c243a527a3180bd668f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  Speed: 4
-  StartScale: {x: 1, y: 1, z: 1}
-  TargetScale: {x: 0, y: 0, z: 0}
-  AnimationFinishedEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1654163622}
-        m_TargetAssemblyTypeName: TweeningPanel, Assembly-CSharp
-        m_MethodName: CloseAnimationFinished
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1654163624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10214,45 +10171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7587d4dd23b48c243a527a3180bd668f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.8966993
-      value: 1.0341289
-      inSlope: 0.26652336
-      outSlope: 0.26652336
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  Speed: 4
-  StartScale: {x: 0, y: 0, z: 0}
-  TargetScale: {x: 1, y: 1, z: 1}
-  AnimationFinishedEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1654163625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10463,7 +10381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.0000095367, y: -23.3}
+  m_AnchoredPosition: {x: -0.0000095367, y: -23.300049}
   m_SizeDelta: {x: 35.803, y: 26.2041}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1723649389
@@ -12310,7 +12228,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Click pause to exit tutorial
+  m_text: That's it! Go to pause menu to decide what to do next:)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12964,7 +12882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5383194544538270989, guid: fd41a23bb1b7d424097a92efd4b5413b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 30.18097
+      value: 30.180908
       objectReference: {fileID: 0}
     - target: {fileID: 5383194544538270989, guid: fd41a23bb1b7d424097a92efd4b5413b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

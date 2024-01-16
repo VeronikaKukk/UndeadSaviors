@@ -431,7 +431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a8e30ef8f3a8e4983e0df233da75c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OpenAnimation: {fileID: 131861381}
 --- !u!114 &131861381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,45 +443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7587d4dd23b48c243a527a3180bd668f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.8966993
-      value: 1.0341289
-      inSlope: 0.26652336
-      outSlope: 0.26652336
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  Speed: 4
-  StartScale: {x: 0, y: 0, z: 0}
-  TargetScale: {x: 1, y: 1, z: 1}
-  AnimationFinishedEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &131861382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,48 +455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7587d4dd23b48c243a527a3180bd668f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  Speed: 4
-  StartScale: {x: 1, y: 1, z: 1}
-  TargetScale: {x: 0, y: 0, z: 0}
-  AnimationFinishedEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 131861380}
-        m_TargetAssemblyTypeName: TweeningPanel, Assembly-CSharp
-        m_MethodName: CloseAnimationFinished
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &156122535
 GameObject:
   m_ObjectHideFlags: 0
@@ -4949,8 +4867,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -16.324005}
-  m_SizeDelta: {x: -90.5918, y: -40.157}
+  m_AnchoredPosition: {x: -1.7219849, y: -0.82629395}
+  m_SizeDelta: {x: -94.0358, y: -71.1522}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &382117827
 MonoBehaviour:
@@ -5731,7 +5649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -42.2, y: -23.059998}
+  m_AnchoredPosition: {x: -42.2, y: -23.060059}
   m_SizeDelta: {x: 35.803, y: 26.20401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &634097906
@@ -6341,8 +6259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.5722656, y: -2.2319946}
-  m_SizeDelta: {x: 23.901, y: 59.0293}
+  m_AnchoredPosition: {x: 0, y: -23}
+  m_SizeDelta: {x: 0.000061035, y: 202.8214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &907227674
 MonoBehaviour:
@@ -6357,7 +6275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.53333336, g: 0.7803922, b: 0.427451, a: 1}
+  m_Color: {r: 0.53333336, g: 0.78039217, b: 0.42745098, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7201,7 +7119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -255, y: 31.154}
+  m_AnchoredPosition: {x: -255, y: 31.154053}
   m_SizeDelta: {x: 39.5212, y: 39.1685}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1314649744
@@ -8111,7 +8029,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.0000095367, y: -23.3}
+  m_AnchoredPosition: {x: -0.0000095367, y: -23.300049}
   m_SizeDelta: {x: 35.803, y: 26.2041}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1723649389
@@ -9321,7 +9239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5383194544538270989, guid: fd41a23bb1b7d424097a92efd4b5413b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 30.18097
+      value: 30.180908
       objectReference: {fileID: 0}
     - target: {fileID: 5383194544538270989, guid: fd41a23bb1b7d424097a92efd4b5413b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
