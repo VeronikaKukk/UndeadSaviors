@@ -18,7 +18,7 @@ MonoBehaviour:
   CurrencyAmountOnDeath: 25
   MaxHealth: 20
   MovementSpeed: 0
-  AttackDamage: 5
+  AttackDamage: 3
   AttackSpeed: 0.6
   AttackRangeSize: 1
   UnitPrefab: {fileID: 4958010571189545127, guid: 2e1a9da55c2009e4795964166cfc4460, type: 3}

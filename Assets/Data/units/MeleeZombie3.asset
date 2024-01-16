@@ -16,7 +16,7 @@ MonoBehaviour:
   DroppablePotions: []
   UnitName: Zombie_small
   CurrencyAmountOnDeath: 0
-  MaxHealth: 10
+  MaxHealth: 8
   MovementSpeed: 1.5
   AttackDamage: 1
   AttackSpeed: 1

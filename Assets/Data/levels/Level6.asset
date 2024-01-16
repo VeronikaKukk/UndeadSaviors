@@ -15,7 +15,7 @@ MonoBehaviour:
   LevelName: Level 6
   LevelNumber: 6
   SceneName: MainScene2
-  Gametime: 171
+  Gametime: 141
   StartingMoney: 120
   Plants:
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
