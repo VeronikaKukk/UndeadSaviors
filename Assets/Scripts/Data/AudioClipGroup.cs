@@ -25,9 +25,9 @@ public class AudioClipGroup : ScriptableObject
 
     public void Play(AudioSource source) 
     {
-        if (Time.time < nextPlayTime) return;
+        if (Time.unscaledTime < nextPlayTime) return;
 
-        nextPlayTime = Time.time + Cooldown;
+        nextPlayTime = Time.unscaledTime + Cooldown;
 
         source.clip = AudioClips[Random.Range(0, AudioClips.Count)];
         source.volume = Random.Range(VolumeMin, VolumeMax);

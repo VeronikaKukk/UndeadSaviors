@@ -4166,6 +4166,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 282790658}
+        m_TargetAssemblyTypeName: ButtonHovering, Assembly-CSharp
+        m_MethodName: PlayClickedSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &282790655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4216,7 +4228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  ButtonClickAudio: {fileID: 11400000, guid: 7088e7128bbc08747a37290f91a72e9c, type: 2}
+  ButtonHoverAudio: {fileID: 11400000, guid: 93a88c0fe9bc12f46b1aa5e65b290a8a, type: 2}
 --- !u!114 &282790659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4504,6 +4517,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 292857414}
+        m_TargetAssemblyTypeName: ButtonHovering, Assembly-CSharp
+        m_MethodName: PlayClickedSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &292857410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4599,7 +4624,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  ButtonClickAudio: {fileID: 11400000, guid: 7088e7128bbc08747a37290f91a72e9c, type: 2}
+  ButtonHoverAudio: {fileID: 11400000, guid: 93a88c0fe9bc12f46b1aa5e65b290a8a, type: 2}
 --- !u!1 &315052580
 GameObject:
   m_ObjectHideFlags: 0
@@ -5792,6 +5818,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 634097910}
+        m_TargetAssemblyTypeName: ButtonHovering, Assembly-CSharp
+        m_MethodName: PlayClickedSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &634097907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5887,7 +5925,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  ButtonClickAudio: {fileID: 11400000, guid: 7088e7128bbc08747a37290f91a72e9c, type: 2}
+  ButtonHoverAudio: {fileID: 11400000, guid: 93a88c0fe9bc12f46b1aa5e65b290a8a, type: 2}
 --- !u!1 &637132633
 GameObject:
   m_ObjectHideFlags: 0
@@ -6682,6 +6721,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1190069803}
+        m_TargetAssemblyTypeName: ButtonHovering, Assembly-CSharp
+        m_MethodName: PlayClickedSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1190069800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6732,7 +6783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  ButtonClickAudio: {fileID: 11400000, guid: 7088e7128bbc08747a37290f91a72e9c, type: 2}
+  ButtonHoverAudio: {fileID: 11400000, guid: 93a88c0fe9bc12f46b1aa5e65b290a8a, type: 2}
 --- !u!114 &1190069804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6906,6 +6958,18 @@ MonoBehaviour:
           m_StringArgument: LevelChooser
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 1242721349}
+        m_TargetAssemblyTypeName: ButtonHovering, Assembly-CSharp
+        m_MethodName: PlayClickedSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1242721346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7001,7 +7065,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  ButtonClickAudio: {fileID: 11400000, guid: 7088e7128bbc08747a37290f91a72e9c, type: 2}
+  ButtonHoverAudio: {fileID: 11400000, guid: 93a88c0fe9bc12f46b1aa5e65b290a8a, type: 2}
 --- !u!1 &1250678353
 GameObject:
   m_ObjectHideFlags: 0
@@ -7651,7 +7716,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  ButtonClickAudio: {fileID: 11400000, guid: 7088e7128bbc08747a37290f91a72e9c, type: 2}
+  ButtonHoverAudio: {fileID: 11400000, guid: 93a88c0fe9bc12f46b1aa5e65b290a8a, type: 2}
 --- !u!114 &1511897406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8184,6 +8250,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1723649393}
+        m_TargetAssemblyTypeName: ButtonHovering, Assembly-CSharp
+        m_MethodName: PlayClickedSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1723649390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8279,7 +8357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  ButtonClickAudio: {fileID: 11400000, guid: 7088e7128bbc08747a37290f91a72e9c, type: 2}
+  ButtonHoverAudio: {fileID: 11400000, guid: 93a88c0fe9bc12f46b1aa5e65b290a8a, type: 2}
 --- !u!1 &1737322318
 GameObject:
   m_ObjectHideFlags: 0
@@ -8945,6 +9024,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 2075725685}
+        m_TargetAssemblyTypeName: ButtonHovering, Assembly-CSharp
+        m_MethodName: PlayClickedSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2075725682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9040,7 +9131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532187fc4ee478d4392e4fe594088147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  ButtonClickAudio: {fileID: 11400000, guid: 7088e7128bbc08747a37290f91a72e9c, type: 2}
+  ButtonHoverAudio: {fileID: 11400000, guid: 93a88c0fe9bc12f46b1aa5e65b290a8a, type: 2}
 --- !u!1 &2077562667
 GameObject:
   m_ObjectHideFlags: 0

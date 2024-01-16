@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class ButtonHovering : MonoBehaviour
 {
-    public AudioSource audioSource;
+    public AudioClipGroup ButtonClickAudio;
+    public AudioClipGroup ButtonHoverAudio;
 
     public void PointerEnter()
     {
         transform.localScale = new Vector2(1.1f, 1.1f);
-
-
+        ButtonHoverAudio.Play();
     }
 
     public void PointerExit()
@@ -21,7 +21,7 @@ public class ButtonHovering : MonoBehaviour
 
     public void PlayClickedSound()
     {
-        audioSource.Play();
+        ButtonClickAudio.Play();
     }
 
 }
