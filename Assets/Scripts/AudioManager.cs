@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Slider musicVolumeSlider, sfxVolumeSlider, masterVolumeSlider;
     [SerializeField] private bool toggleMusic, toggleSfx, toggleMaster; // for the mute buttons  
     [SerializeField] private Sprite volumeNormal, volumeMuted;
+    private float musicSavedValue, masterSavedValue, sfxSavedValue;
    
     //public float masterVolume, musicVolume, sfxVolume;
 
@@ -32,24 +33,100 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        musicVolumeSlider.value = 0.5f;
-        sfxVolumeSlider.value = 0.5f;
-        masterVolumeSlider.value = 0.5f;
-        ChangeMasterVolume(0.5f);
-        ChangeMusicVolume(0.5f);
-        ChangeSfxVolume(0.5f);
-        SetVolume();
-
         musicSource.clip = MusicSounds[0];
         musicSource.Play();
-    }
-    void SetVolume()
-    {
-        audioMixer.SetFloat("masterVolume", masterVolumeSlider.value);
-        audioMixer.SetFloat("musicVolume", musicVolumeSlider.value);
-        audioMixer.SetFloat("sfxVolume", sfxVolumeSlider.value);
+
+        //musicVolumeSlider.value = 0.5f;
+        //sfxVolumeSlider.value = 0.5f;
+        //masterVolumeSlider.value = 0.5f;
+        ChangeMasterVolume();
+        ChangeMusicVolume();
+        ChangeSfxVolume();
+        //SetVolume();
+
+        if (PlayerPrefs.HasKey("masterVolume"))
+        {
+            LoadMasterVolume();
+        } 
+        else
+        {
+            ChangeMasterVolume();
+        }
+
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            LoadMusicVolume();
+        }
+        else
+        {
+            ChangeMusicVolume();
+        }
+
+        if (PlayerPrefs.HasKey("sfxVolume"))
+        {
+            LoadSfxVolume();
+        }
+        else
+        {
+            ChangeSfxVolume();
+        }
     }
 
+    public void ChangeMasterVolume()
+    {
+        float value = masterVolumeSlider.value;
+        audioMixer.SetFloat("masterVolume", Mathf.Log10(value) *20);
+        Debug.Log("masterVolume " + value);
+        PlayerPrefs.SetFloat("masterVolume", value);
+        masterSavedValue = value;
+    }
+
+    private void LoadMasterVolume()
+    {
+        masterVolumeSlider.value = PlayerPrefs.GetFloat("masterVolume");
+        ChangeMasterVolume();
+    }
+
+    public void ChangeMusicVolume()
+    {
+        float value = musicVolumeSlider.value;
+        audioMixer.SetFloat("musicVolume", Mathf.Log10(value) *20);
+        Debug.Log("musicVolume " + value);
+        PlayerPrefs.SetFloat("musicVolume", value);
+        musicSavedValue = value;
+    }
+
+    private void LoadMusicVolume()
+    {
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        ChangeMusicVolume();
+    }
+
+    public void ChangeSfxVolume()
+    {
+        float value = sfxVolumeSlider.value;
+        audioMixer.SetFloat("sfxVolume", Mathf.Log10(value) *20);
+        Debug.Log("sfxVolume " + value);
+        PlayerPrefs.SetFloat("sfxVolume", value);
+        sfxSavedValue = value;
+    }
+
+    private void LoadSfxVolume()
+    {
+        sfxVolumeSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+        ChangeSfxVolume();
+    }
+
+    /*
+void SetVolume()
+{
+    audioMixer.SetFloat("masterVolume", masterVolumeSlider.value);
+    audioMixer.SetFloat("musicVolume", musicVolumeSlider.value);
+    audioMixer.SetFloat("sfxVolume", sfxVolumeSlider.value);
+}
+*/
+
+    /*
     public void SetSliderValues()
     {
         float mVS;
@@ -66,47 +143,36 @@ public class AudioManager : MonoBehaviour
             sfxVolumeSlider.value = mVS;
         }
     }
+    */
 
     public void SetMusicSlider(Slider slider) {
         musicVolumeSlider = slider;
-        musicVolumeSlider.onValueChanged.AddListener(ChangeMusicVolume);
+        musicVolumeSlider.value = musicSavedValue;
+        musicVolumeSlider.onValueChanged.AddListener(delegate { ChangeMusicVolume(); });
     }
+    /*
     public void RemoveSliderListeners() {
         musicVolumeSlider.onValueChanged.RemoveListener(ChangeMusicVolume);
         sfxVolumeSlider.onValueChanged.RemoveListener(ChangeSfxVolume);
         masterVolumeSlider.onValueChanged.RemoveListener(ChangeMasterVolume);
 
     }
+    */
     public void SetSfxSlider(Slider slider)
     {
         sfxVolumeSlider = slider;
-        sfxVolumeSlider.onValueChanged.AddListener(ChangeSfxVolume);
+        sfxVolumeSlider.value = sfxSavedValue;
+        sfxVolumeSlider.onValueChanged.AddListener(delegate { ChangeSfxVolume(); });
 
     }
     public void SetMasterSlider(Slider slider)
     {
         masterVolumeSlider = slider;
-        masterVolumeSlider.onValueChanged.AddListener(ChangeMasterVolume);
+        masterVolumeSlider.value = masterSavedValue;
+        masterVolumeSlider.onValueChanged.AddListener(delegate { ChangeMasterVolume(); });
 
     }
-    public void ChangeMasterVolume(float value)
-    {
-        audioMixer.SetFloat("masterVolume", Mathf.Log10(value)*20);
-        Debug.Log("masterVolume " + value);
-    }
-
-    public void ChangeMusicVolume(float value)
-    {
-        audioMixer.SetFloat("musicVolume", Mathf.Log10(value)*20);
-        Debug.Log("musicVolume " + value);
-    }
-
-    public void ChangeSfxVolume(float value)
-    {
-        audioMixer.SetFloat("sfxVolume", Mathf.Log10(value)*20);
-        Debug.Log("sfxVolume " + value);
-    }
-
+    
 
     public void ToggleMusic() // muting and un-muting music
     {

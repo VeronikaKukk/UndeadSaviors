@@ -18,17 +18,21 @@ public class OptionsMenu : MonoBehaviour
         MasterVolumeSlider = transform.Find("MasterVolumeSlider").GetComponent<Slider>();
         MusicVolumeSlider = transform.Find("MusicVolumeSlider").GetComponent<Slider>();
         SfxVolumeSlider = transform.Find("SfxVolumeSlider").GetComponent<Slider>();
+        Debug.Log("called");
     }
-
+    
     private void OnEnable()
     {
         AudioManager.Instance.SetMasterSlider(MasterVolumeSlider);
         AudioManager.Instance.SetMusicSlider(MusicVolumeSlider);
         AudioManager.Instance.SetSfxSlider(SfxVolumeSlider);
-        AudioManager.Instance.SetSliderValues();
+        //AudioManager.Instance.SetSliderValues();
     }
+    /*
     private void OnDisable()
     {
         AudioManager.Instance.RemoveSliderListeners();
     }
+    */
+    
 }
