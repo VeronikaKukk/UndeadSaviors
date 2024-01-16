@@ -4515,7 +4515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &300933184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10089,7 +10089,6 @@ GameObject:
   - component: {fileID: 1654163621}
   - component: {fileID: 1654163624}
   - component: {fileID: 1654163623}
-  - component: {fileID: 1654163622}
   m_Layer: 5
   m_Name: PauseMenuPanel
   m_TagString: Untagged
@@ -10134,19 +10133,10 @@ MonoBehaviour:
   quitButton: {fileID: 1214665974}
   mainMenuButton: {fileID: 926767716}
   restartLevelButton: {fileID: 300933184}
+  OpeningAnimation: {fileID: 1654163624}
+  ClosingAnimation: {fileID: 1654163623}
+  HideGamePanel: {fileID: 907227672}
   scenarioController: {fileID: 1919925724}
---- !u!114 &1654163622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654163619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13a8e30ef8f3a8e4983e0df233da75c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1654163623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10159,6 +10149,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7587d4dd23b48c243a527a3180bd668f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Speed: 6
+  StartScale: {x: 1, y: 1, z: 1}
+  TargetScale: {x: 0, y: 0, z: 0}
+  AnimationFinishedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1654163621}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: ClosingAnimationFinished
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1654163624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10171,6 +10203,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7587d4dd23b48c243a527a3180bd668f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.993359
+      value: 1.0583297
+      inSlope: 0.033321857
+      outSlope: 0.033321857
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Speed: 6
+  StartScale: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
+  AnimationFinishedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1654163625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10440,8 +10511,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1654163622}
-        m_TargetAssemblyTypeName: TweeningPanel, Assembly-CSharp
+      - m_Target: {fileID: 1654163621}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Open
         m_Mode: 1
         m_Arguments:

@@ -89,8 +89,8 @@ public class ScenarioController : MonoBehaviour
     {
         if (levelPaused && isRegularPause)
         {
-            HideGamePanel.SetActive(false);
-            PauseMenuPanel.SetActive(false);
+            //HideGamePanel.SetActive(false);
+            //PauseMenuPanel.SetActive(false);
             pauseButton.gameObject.SetActive(true);
             unitInfoButton.gameObject.SetActive(true);
             Time.timeScale = 1;
@@ -99,8 +99,8 @@ public class ScenarioController : MonoBehaviour
         }
         else if (!levelPaused && isRegularPause)
         {
-            HideGamePanel.SetActive(true);
-            PauseMenuPanel.SetActive(true);
+            //HideGamePanel.SetActive(true);
+            //PauseMenuPanel.SetActive(true);
             Time.timeScale = 0;
             pauseButton.gameObject.SetActive(false);
             unitInfoButton.gameObject.SetActive(false);
