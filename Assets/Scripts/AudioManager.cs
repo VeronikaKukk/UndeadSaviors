@@ -16,7 +16,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Slider musicVolumeSlider, sfxVolumeSlider, masterVolumeSlider;
     [SerializeField] private bool toggleMusic, toggleSfx, toggleMaster; // for the mute buttons  
     [SerializeField] private Sprite volumeNormal, volumeMuted;
-    private float musicSavedValue, masterSavedValue, sfxSavedValue;
    
     //public float masterVolume, musicVolume, sfxVolume;
 
@@ -78,7 +77,6 @@ public class AudioManager : MonoBehaviour
         audioMixer.SetFloat("masterVolume", Mathf.Log10(value) *20);
         Debug.Log("masterVolume " + value);
         PlayerPrefs.SetFloat("masterVolume", value);
-        masterSavedValue = value;
     }
 
     private void LoadMasterVolume()
@@ -93,7 +91,6 @@ public class AudioManager : MonoBehaviour
         audioMixer.SetFloat("musicVolume", Mathf.Log10(value) *20);
         Debug.Log("musicVolume " + value);
         PlayerPrefs.SetFloat("musicVolume", value);
-        musicSavedValue = value;
     }
 
     private void LoadMusicVolume()
@@ -108,7 +105,6 @@ public class AudioManager : MonoBehaviour
         audioMixer.SetFloat("sfxVolume", Mathf.Log10(value) *20);
         Debug.Log("sfxVolume " + value);
         PlayerPrefs.SetFloat("sfxVolume", value);
-        sfxSavedValue = value;
     }
 
     private void LoadSfxVolume()
@@ -117,12 +113,33 @@ public class AudioManager : MonoBehaviour
         ChangeSfxVolume();
     }
 
+    public void SetMusicSlider(Slider slider) {
+        musicVolumeSlider = slider;
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        musicVolumeSlider.onValueChanged.AddListener(delegate { ChangeMusicVolume(); });
+    }
+
+    public void SetSfxSlider(Slider slider)
+    {
+        sfxVolumeSlider = slider;
+        sfxVolumeSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+        sfxVolumeSlider.onValueChanged.AddListener(delegate { ChangeSfxVolume(); });
+
+    }
+    public void SetMasterSlider(Slider slider)
+    {
+        masterVolumeSlider = slider;
+        masterVolumeSlider.value = PlayerPrefs.GetFloat("masterVolume");
+        masterVolumeSlider.onValueChanged.AddListener(delegate { ChangeMasterVolume(); });
+
+    }
+
     /*
 void SetVolume()
 {
-    audioMixer.SetFloat("masterVolume", masterVolumeSlider.value);
-    audioMixer.SetFloat("musicVolume", musicVolumeSlider.value);
-    audioMixer.SetFloat("sfxVolume", sfxVolumeSlider.value);
+audioMixer.SetFloat("masterVolume", masterVolumeSlider.value);
+audioMixer.SetFloat("musicVolume", musicVolumeSlider.value);
+audioMixer.SetFloat("sfxVolume", sfxVolumeSlider.value);
 }
 */
 
@@ -145,34 +162,14 @@ void SetVolume()
     }
     */
 
-    public void SetMusicSlider(Slider slider) {
-        musicVolumeSlider = slider;
-        musicVolumeSlider.value = musicSavedValue;
-        musicVolumeSlider.onValueChanged.AddListener(delegate { ChangeMusicVolume(); });
-    }
     /*
-    public void RemoveSliderListeners() {
-        musicVolumeSlider.onValueChanged.RemoveListener(ChangeMusicVolume);
-        sfxVolumeSlider.onValueChanged.RemoveListener(ChangeSfxVolume);
-        masterVolumeSlider.onValueChanged.RemoveListener(ChangeMasterVolume);
+public void RemoveSliderListeners() {
+    musicVolumeSlider.onValueChanged.RemoveListener(ChangeMusicVolume);
+    sfxVolumeSlider.onValueChanged.RemoveListener(ChangeSfxVolume);
+    masterVolumeSlider.onValueChanged.RemoveListener(ChangeMasterVolume);
 
-    }
-    */
-    public void SetSfxSlider(Slider slider)
-    {
-        sfxVolumeSlider = slider;
-        sfxVolumeSlider.value = sfxSavedValue;
-        sfxVolumeSlider.onValueChanged.AddListener(delegate { ChangeSfxVolume(); });
-
-    }
-    public void SetMasterSlider(Slider slider)
-    {
-        masterVolumeSlider = slider;
-        masterVolumeSlider.value = masterSavedValue;
-        masterVolumeSlider.onValueChanged.AddListener(delegate { ChangeMasterVolume(); });
-
-    }
-    
+}
+*/
 
     public void ToggleMusic() // muting and un-muting music
     {
