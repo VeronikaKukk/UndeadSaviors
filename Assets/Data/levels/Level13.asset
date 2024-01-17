@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31a7df526733644b80183a4a8054630, type: 3}
+  m_Name: Level13
+  m_EditorClassIdentifier: 
+  LevelName: Level 13
+  LevelNumber: 13
+  SceneName: MainScene5
+  Gametime: 71
+  StartingMoney: 100
+  Plants:
+  - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
+  - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
+  - {fileID: 11400000, guid: f0c02b834579d6344a316f0d127a272e, type: 2}
+  - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
+  - {fileID: 11400000, guid: f0c02b834579d6344a316f0d127a272e, type: 2}
+  - {fileID: 11400000, guid: a2bea8fa936db7245bd6d8814d7dd691, type: 2}
+  - {fileID: 11400000, guid: a2bea8fa936db7245bd6d8814d7dd691, type: 2}
+  - {fileID: 11400000, guid: a2bea8fa936db7245bd6d8814d7dd691, type: 2}
+  Zombies:
+  - {fileID: 11400000, guid: e985f592952ef8a4590792dd76fdd7b6, type: 2}
+  - {fileID: 11400000, guid: 9eda4f0adab444949bd59ee8d176bfa6, type: 2}
+  - {fileID: 11400000, guid: abb77818ce96e444ab9ea4bc04e1042a, type: 2}

@@ -20,7 +20,6 @@ public class MainMenu : MonoBehaviour
 
     public bool OpenSubMenu = false; // for triggering menu panel animations
 
-
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -36,7 +35,6 @@ public class MainMenu : MonoBehaviour
 
         unlockedLevelNumber = PlayerPrefs.GetInt("levelsUnlocked");
     }
-
 
     public void PlayLevel(LevelData level)
     {
