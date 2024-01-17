@@ -23,6 +23,9 @@ public class TutorialScenario : MonoBehaviour
     private bool isPlantDead = false;
     public GameObject DroppablePotion;
     public GameObject SellPotion;
+    public GameObject SellPotion1;
+    public GameObject SellPotion2;
+    public GameObject SellPotion3;
     private bool allowAudioPlay = true;
 
     private GameObject collectable;
@@ -45,7 +48,14 @@ public class TutorialScenario : MonoBehaviour
             unitInfoButton.interactable = false;
             shopButton = ShopPanel.GetComponentInChildren<Button>();
             shopButton.interactable = false;
-            SellPotion.SetActive(false);
+            //SellPotion.SetActive(false);
+            SellPotion.tag = "Untagged";
+            SellPotion1.tag = "Untagged";
+            SellPotion1.GetComponent<Image>().enabled = false;
+            SellPotion2.tag = "Untagged";
+            SellPotion2.GetComponent<Image>().enabled = false;
+            SellPotion3.tag = "Untagged";
+            SellPotion3.GetComponent<TextMeshProUGUI>().enabled = false;
         }
     }
 
@@ -181,7 +191,14 @@ public class TutorialScenario : MonoBehaviour
                 }
                 else if (index == 18)
                 {
-                    SellPotion.SetActive(true);
+                    //SellPotion.SetActive(true);
+                    SellPotion.tag = "SellPotion";
+                    SellPotion1.tag = "SellPotion";
+                    SellPotion1.GetComponent<Image>().enabled = true;
+                    SellPotion2.tag = "SellPotion";
+                    SellPotion2.GetComponent<Image>().enabled = true;
+                    SellPotion3.tag = "SellPotion";
+                    SellPotion3.GetComponent<TextMeshProUGUI>().enabled = true;
                 }
 
                 if (allowAudioPlay)
@@ -245,7 +262,7 @@ public class TutorialScenario : MonoBehaviour
     public GameObject TutorialPotionDrop()
     {
         collectable = GameObject.Instantiate<GameObject>(DroppablePotion, transform.position, Quaternion.identity, null);
-        collectable.transform.DOMove(new Vector2((float)-8.2, 0), 1f);
+        collectable.transform.DOMove(new Vector2(-8f, 0), 1f);
         collectable.GetComponent<BoxCollider2D>().enabled = false;
         return collectable;
     }

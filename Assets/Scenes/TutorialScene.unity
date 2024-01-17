@@ -4953,6 +4953,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342679561}
   m_CullTransparentMesh: 1
+--- !u!1 &349381833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8577496227105159496, guid: fd41a23bb1b7d424097a92efd4b5413b, type: 3}
+  m_PrefabInstance: {fileID: 2601140843636403879}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &369348979
 GameObject:
   m_ObjectHideFlags: 0
@@ -8867,6 +8872,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1200408836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3000836389760840352, guid: fd41a23bb1b7d424097a92efd4b5413b, type: 3}
+  m_PrefabInstance: {fileID: 2601140843636403879}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1214665970
 GameObject:
   m_ObjectHideFlags: 0
@@ -9637,6 +9647,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463894190}
   m_CullTransparentMesh: 1
+--- !u!1 &1466989236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 480247914612958334, guid: fd41a23bb1b7d424097a92efd4b5413b, type: 3}
+  m_PrefabInstance: {fileID: 2601140843636403879}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1491419814
 GameObject:
   m_ObjectHideFlags: 0
@@ -12400,6 +12415,9 @@ MonoBehaviour:
   - {fileID: 136432714}
   DroppablePotion: {fileID: 7214415345411477701, guid: 17b2ce1bca9376b43b728e20c1511976, type: 3}
   SellPotion: {fileID: 2601140843636403880}
+  SellPotion1: {fileID: 1200408836}
+  SellPotion2: {fileID: 349381833}
+  SellPotion3: {fileID: 1466989236}
 --- !u!1 &2037621336
 GameObject:
   m_ObjectHideFlags: 0
