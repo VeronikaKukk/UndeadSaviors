@@ -23,3 +23,4 @@ MonoBehaviour:
   AttackRangeSize: 1.5
   UnitPrefab: {fileID: 2140568854778588184, guid: 896ae0087b15a394398c2536bf58853c, type: 3}
   MaxUnitsAttackingAtOnce: 3
+  Special: Heals allies in range

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class Projectile : MonoBehaviour
     private float attackDamage;
     private Health triggerTarget;
 
+    public bool isElectricity;
+    private bool hasExploded = false;
     public void SetShooter(string shooter, float attackDamage, Health target)
     {
         this.shooter = shooter;
@@ -46,9 +49,18 @@ public class Projectile : MonoBehaviour
             if ((shooter.Contains("Plant") && triggerTarget.UnitData.TeamName == "Zombie") ||
                 (shooter.Contains("Zombie") && triggerTarget.UnitData.TeamName == "Plant"))
             {
-                //Debug.Log("shooting succeed for " + shooter);
+                Debug.Log("shooting succeed for " + shooter+triggerTarget.UnitData.UnitName);
                 triggerTarget.CurrentHealth -= attackDamage;
-                GameObject.Destroy(gameObject);
+                collision.gameObject.GetComponent<Attacking>().CombatDamageTexts(triggerTarget, attackDamage);
+                if (isElectricity && !hasExploded)
+                {
+                    TweenCallback tweenCallback = () => { Destroy(gameObject); };
+                    gameObject.transform.DOScale(new Vector3(5.0f, 5.0f, 5.0f), 1).OnComplete(tweenCallback);
+                    hasExploded = true;
+                }
+                else if (!isElectricity) {
+                    GameObject.Destroy(gameObject);
+                }
             }
         }
     }

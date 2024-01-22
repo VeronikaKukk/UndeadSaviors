@@ -12,7 +12,7 @@ public class UnitInfoCard : MonoBehaviour
     public TextMeshProUGUI AttackRangeText;
     public TextMeshProUGUI MovementSpeedText;
     public TextMeshProUGUI AttackDamageText;
-
+    public TextMeshProUGUI SpecialText;
 
     public Color RedColor;
     public Color GreenColor;
@@ -33,6 +33,7 @@ public class UnitInfoCard : MonoBehaviour
         string movement_speed = "";
         string health = "";
         string attack_damage = "";
+        string special = data.Special;
         if (data.AttackRangeSize <= 1.2)
         {
             attack_range = "    melee";
@@ -106,7 +107,7 @@ public class UnitInfoCard : MonoBehaviour
             AttackDamageText.color = GreenColor;
         }
 
-        InfoText.text = "Health: \nAttack speed: \nAttack range: \nMovement speed: \nAttack damage: \n";
+        InfoText.text = "Health: \nAttack speed: \nAttack range: \nMovement speed: \nAttack damage: \nSpecial: \n";
         string h = new string(' ',"Health: ".Length*2);
         HealthText.text = h + health;
         h = new string(' ', "Attack speed: ".Length*2);
@@ -117,5 +118,7 @@ public class UnitInfoCard : MonoBehaviour
         MovementSpeedText.text = "\n\n\n"+h+ movement_speed;
         h = new string(' ', "Attack damage: ".Length * 2);
         AttackDamageText.text = "\n\n\n\n" + h + attack_damage;
+        h = new string(' ', "Special".Length * 2);
+        SpecialText.text = "\n\n\n\n\n" + h + special;
     }
 }

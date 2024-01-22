@@ -24,7 +24,6 @@ public class ScalingAnimation : MonoBehaviour
     void Update()
     {
         timeAggregate += Time.unscaledDeltaTime * Speed;
-        Debug.Log(timeAggregate);
         float value = Curve.Evaluate(timeAggregate);
         transform.localScale = Vector3.LerpUnclamped(StartScale, TargetScale, value);
         if (timeAggregate >= 1)

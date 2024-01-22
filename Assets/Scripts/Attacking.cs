@@ -233,7 +233,7 @@ public class Attacking : MonoBehaviour
                             projectile.transform.position = firePoint;
                             projectile.Target = target;
                             AttackSound.Play();
-                            CombatDamageTexts(target);
+                            //CombatDamageTexts(target);
                         }
                         else // for melee fighters
                         {
@@ -243,7 +243,7 @@ public class Attacking : MonoBehaviour
                             }
                             target.CurrentHealth -= AttackDamage;
                             AttackSound.Play();
-                            CombatDamageTexts(target);
+                            CombatDamageTexts(target, AttackDamage);
                         }
                         if (target.UnitData.TeamName == "Plant" && target.transform.localScale.magnitude > minSize.magnitude)// if unit that takes damage is plant then change plant object size
                         {
@@ -272,11 +272,11 @@ public class Attacking : MonoBehaviour
 
     }
 
-    public void CombatDamageTexts(Health target)
+    public void CombatDamageTexts(Health target, float damage)
     {
         GameObject combatText = Instantiate(CombatTextPrefab, new Vector3(target.transform.position.x + UnityEngine.Random.Range(-0.5f, 0.5f), target.transform.position.y + UnityEngine.Random.Range(-0.5f, 0.5f), target.transform.position.z), Quaternion.identity);
         EntityController.Instance.Other.Add(combatText);
-        combatText.transform.Find("combat_text").GetComponent<TextMeshPro>().text = "-" + AttackDamage;
+        combatText.transform.Find("combat_text").GetComponent<TextMeshPro>().text = "-" + damage;
         combatText.transform.Find("HealthNeg").gameObject.SetActive(true);
         combatText.transform.GetChild(0).GetComponent<TextMeshPro>().color = Color.red;
         TweenCallback tweenCallback = () => { EntityController.Instance.Other.Remove(combatText); Destroy(combatText.gameObject); };

@@ -26,3 +26,4 @@ MonoBehaviour:
   AttackRangeSize: 1.1
   UnitPrefab: {fileID: 2398547272694445393, guid: b34af7b73f2aed54eb415a5fbc5823c7, type: 3}
   MaxUnitsAttackingAtOnce: 10
+  Special: Attack all nearby enemies

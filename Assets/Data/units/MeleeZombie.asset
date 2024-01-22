@@ -23,3 +23,4 @@ MonoBehaviour:
   AttackRangeSize: 0.6
   UnitPrefab: {fileID: 5654820010355793823, guid: 5f9bef6ea6ec9e844b4b541be3c3bf93, type: 3}
   MaxUnitsAttackingAtOnce: 1
+  Special: '-'
