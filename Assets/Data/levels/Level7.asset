@@ -15,8 +15,8 @@ MonoBehaviour:
   LevelName: Level 7
   LevelNumber: 7
   SceneName: MainScene2
-  Gametime: 61
-  StartingMoney: 100
+  Gametime: 81
+  StartingMoney: 120
   Plants:
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
