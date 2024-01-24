@@ -16,7 +16,7 @@ MonoBehaviour:
   LevelNumber: 3
   SceneName: MainScene1
   Gametime: 121
-  StartingMoney: 100
+  StartingMoney: 120
   Plants:
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
   - {fileID: 11400000, guid: eef76f1d59a4e9e4fa879bd6716b20a0, type: 2}
